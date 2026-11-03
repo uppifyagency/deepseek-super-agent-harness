@@ -1,0 +1,14 @@
+$ 18:11:07 harness service install (testa 1275655, it.delera.harness.l2)
+running pid=54098, no heartbeat yet
+$ 18:11:36 launchctl print gui/$UID/it.delera.harness.l2
+	state = running
+	program = /usr/bin/env
+	exit timeout = 10
+	pid = 54098
+	last exit code = (never exited)
+	properties = keepalive | runatload | inferred program
+  <key>ThrottleInterval</key><integer>30</integer>
+  <key>ExitTimeOut</key><integer>10</integer>
+$ 18:11:36 harness service status
+running pid=54098 last heartbeat 1s ago
+{"pid":54098,"at":"2026-11-02T17:11:35.899Z","tick":1}

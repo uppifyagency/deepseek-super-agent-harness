@@ -1,0 +1,20 @@
+spawn env GH_CONFIG_DIR=/tmp/swarm-a5/worker-8/gh /tmp/swarm-a5/h.sh 8 setup --yes --repo uppifyagency/harness-sandbox --allow uppifyagency --label it.delera.harness.i8 --handle /harness-i8 --keychain harness-bot-github-test-8 --pstack /tmp/swarm-a5/pstack-claude/plugins/pstack
+gia' fatto  macOS
+gia' fatto  Node >= 26.13.0
+gia' fatto  Atomic 0.9.63 globale
+gia' fatto  pstack in /tmp/swarm-a5/pstack-claude/plugins/pstack
+gia' fatto  login Codex di Atomic
+gia' fatto  Claude Code con il login del piano
+]11;?\78? Where do you use GitHub?  [Use arrows to move, type to filter]
+> GitHub.com
+  Other
+7
+### dopo 38 s setup e' ancora fermo su gh auth login: nessun passo dopo gh
+### gh auth login chiuso da fuori senza completare il login (pkill)
+manca  gh autenticato: gh auth login
+
+### setup si ferma con il comando del login
+### exit di setup: 1
+
+config.json scritto: no
+GH_CONFIG_DIR dopo: 

@@ -1,0 +1,33 @@
+$ printf "%s
+" "$T" | harness setup --yes ... --keychain harness-bot-github-test-7   (T = token di prova casuale, mai stampato)
+gia' fatto  macOS
+gia' fatto  Node >= 26.13.0
+gia' fatto  Atomic 0.9.63 globale
+gia' fatto  pstack in /tmp/swarm-a5/pstack-claude/plugins/pstack
+gia' fatto  login Codex di Atomic
+gia' fatto  Claude Code con il login del piano
+gia' fatto  gh autenticato
+fatto       config.json
+Token del bot GitHub (non viene mostrato): 
+fatto       token del bot nel Portachiavi (harness-bot-github-test-7)
+fatto       servizio launchd (it.delera.harness.i7)
+
+ok     macOS
+ok     Node >= 26.13.0
+ok     Atomic 0.9.63 globale
+ok     pstack in /tmp/swarm-a5/pstack-claude/plugins/pstack
+ok     login Codex di Atomic
+ok     Claude Code con il login del piano
+ok     gh autenticato
+ok     config.json
+ok     token del bot nel Portachiavi (harness-bot-github-test-7)
+ok     servizio launchd (it.delera.harness.i7)
+exit 0
+
+== conteggi del token (grep -c / grep -rl, il valore non viene stampato)
+output di setup (stdout+stderr): 0
+config.json: 0
+file della home che lo contengono (log compresi, 3 file): 0
+plist del servizio: 0
+launchctl print del servizio: 0
+Portachiavi harness-bot-github-test-7 contiene il token giusto: si

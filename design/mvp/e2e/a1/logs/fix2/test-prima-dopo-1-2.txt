@@ -1,0 +1,39 @@
+$ prima: harness-ticket.ts e src/ a 166031e, test nuovi
+SyntaxError: The requested module '../src/engine.ts' does not provide an export named 'afterResumeError'
+✖ test/runs.test.ts (115.281416ms)
+✖ a resume after the work stage reaches verify and publish: the replayed JSON text reads like the live value (1.424375ms)
+ℹ pass 0
+ℹ fail 2
+✖ failing tests:
+✖ test/runs.test.ts (115.281416ms)
+✖ a resume after the work stage reaches verify and publish: the replayed JSON text reads like the live value (1.424375ms)
+    actual: undefined,
+    expected: 'done',
+$ dopo
+✔ an accepted ticket gets exactly one run.intended, with the issue text in the brief and the config frozen in (11.080709ms)
+✔ engine reports: bound, progress, ended closes the run and later reports are dropped (7.649125ms)
+✔ a run Atomic cannot resume is started again as the same attempt: rebound, never ended, no attempt spent (7.773834ms)
+✔ afterResumeError: wait out the lease, start a run with no progress again, fail on anything else (0.152334ms)
+✔ classify: done, verifier FAIL, no commit, blocked worker, budget stop, failure (0.333375ms)
+✔ two attempts on an existing clone get separate worktrees at the same base; prepare is idempotent (585.757708ms)
+✔ a verifier FAIL plans attempt 2 that resumes the worker and its commits; attempt 2 failing is final and reported once (8.927ms)
+✔ verdict: independent only on an untouched worktree; a commit after the verdict blocks publish (324.1385ms)
+✔ a comment on the ticket's issue during the run is routed in code and delivered once to the live run (6.759792ms)
+✔ after a done run, a comment on the PR starts attempt 2 on the same session and commits, carrying the comment (6.8455ms)
+✔ while a worker question is asked on the issue, a comment answers it and is not routed as new input (7.707042ms)
+✔ slots: with 2 workers, a third ticket waits until a run ends; a run waiting on a gate keeps its slot (11.296958ms)
+✔ recall follows a ticket: thread key -> runs and outcomes with readable previews (6.004792ms)
+✔ budget: a stop opens a Sì/No gate in the issue instead of a result; Sì starts the next attempt with the raised cap (7.081709ms)
+✔ budget: No leaves the ticket idle; a stop that overshot its cap asks for twice the spend (8.242083ms)
+✔ a resume after the work stage reaches verify and publish: the replayed JSON text reads like the live value (1.018542ms)
+ℹ pass 16
+ℹ fail 0
+$ prima, solo src/runs.ts a 166031e
+✖ a run Atomic cannot resume is started again as the same attempt: rebound, never ended, no attempt spent (14.520333ms)
+ℹ pass 0
+ℹ fail 1
+✖ failing tests:
+✖ a run Atomic cannot resume is started again as the same attempt: rebound, never ended, no attempt spent (14.520333ms)
+  + actual - expected
+    actual: [ [ 'f32cd126751704c34b2b2f4128d55470', 'a3241828', 1 ] ],
+    expected: [ [ 'f32cd126751704c34b2b2f4128d55470', 'f019fff8', 1 ] ],

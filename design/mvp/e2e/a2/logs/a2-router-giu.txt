@@ -1,0 +1,37 @@
+it.delera.harness.w7: running pid=59890, no heartbeat yet
+it.delera.harness.watchdog.w7: checking now, pid=59918
+18:55:14Z daemon PATH without claude: ~/.nvm/versions/node/v26.13.0/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin
+{"kind":"running","pid":59971}
+19:00:15Z after 5 minutes without claude
+--- harness (attention)
+ROUTER down since 2026-11-02T18:55:18.900Z  5 failed wakes: Error: spawn claude ENOENT
+--- router-runs.jsonl
+{"at":"2026-11-02T18:55:18.900Z","ok":false,"denied":[],"rotated":true,"text":"Error: spawn claude ENOENT"}
+{"at":"2026-11-02T18:56:21.213Z","ok":false,"denied":[],"rotated":true,"text":"Error: spawn claude ENOENT"}
+{"at":"2026-11-02T18:57:23.308Z","ok":false,"denied":[],"rotated":true,"text":"Error: spawn claude ENOENT"}
+{"at":"2026-11-02T18:58:25.522Z","ok":false,"denied":[],"rotated":true,"text":"Error: spawn claude ENOENT"}
+{"at":"2026-11-02T18:59:27.824Z","ok":false,"denied":[],"rotated":true,"text":"Error: spawn claude ENOENT"}
+19:00:15Z daemon PATH with a claude that sleeps 330 s before each turn
+{"kind":"running","pid":77426}
+19:06:01Z first router turn that worked
+--- harness (attention)
+WOULD  issue:uppifyagency/harness-sandbox#53  "Aggiungi riga "w7" a docs/w7.md"  (docs/w7.md contiene una riga "w7" (file creato se assente); PR aperta con la modifica.)
+--- router-runs.jsonl
+{"at":"2026-11-02T18:58:25.522Z","ok":false,"denied":[],"rotated":true,"text":"Error: spawn claude ENOENT"}
+{"at":"2026-11-02T18:59:27.824Z","ok":false,"denied":[],"rotated":true,"text":"Error: spawn claude ENOENT"}
+{"at":"2026-11-02T19:06:00.412Z","ok":true,"sessionId":"317741e2-fc1a-4aa8-b034-5921cd3c5214","costUsd":0.0414092,"durationMs":9507,"turns":4,"denied":[],"rotated":true,"text":"È arrivata una sola richiesta, la issue #53
+--- watchdog.log
+2026-11-02T18:55:15.116Z daemon=pid 59971 no heartbeat yet router=ok runs=not judged, no daemon beating 11ms
+2026-11-02T18:57:15.296Z daemon=ok(beat 54s ago) router=down since 2026-11-02T18:55:18.900Z (2 failed wakes: Error: spawn claude ENOENT) runs=0 live, 0 stalled 14ms
+2026-11-02T18:59:15.520Z daemon=ok(beat 50s ago) router=down since 2026-11-02T18:55:18.900Z (4 failed wakes: Error: spawn claude ENOENT) runs=0 live, 0 stalled 11ms
+2026-11-02T19:01:15.695Z daemon=ok(beat 59s ago, lap busy 59s) router=down since 2026-11-02T18:55:18.900Z (5 failed wakes: Error: spawn claude ENOENT) runs=0 live, 0 stalled 12ms
+2026-11-02T19:03:15.873Z daemon=ok(beat 59s ago, lap busy 179s) router=down since 2026-11-02T18:55:18.900Z (5 failed wakes: Error: spawn claude ENOENT) runs=0 live, 0 stalled 14ms
+2026-11-02T19:05:16.110Z daemon=ok(beat 59s ago, lap busy 299s) router=down since 2026-11-02T18:55:18.900Z (5 failed wakes: Error: spawn claude ENOENT) runs=0 live, 0 stalled 12ms
+--- launchctl print
+	state = running
+	runs = 1
+	pid = 77426
+	last exit code = (never exited)
+		state = active
+		state = active
+2026-11-02T19:07:16.386Z daemon=ok(beat 14s ago) router=ok runs=0 live, 0 stalled 11ms

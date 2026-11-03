@@ -1,0 +1,136 @@
+{
+  "phase": "ended",
+  "phaseStartedAt": 1793632229132,
+  "phaseAgeMs": 2413,
+  "lastProgressAt": 1793632229128,
+  "runId": "1a454364-3410-4c6d-a913-bf3662e94309",
+  "name": "harness-ticket",
+  "identity": "ebc581a6117032296e9532b0046ab0bc",
+  "status": "completed",
+  "mode": "single",
+  "startedAt": 1793632126445,
+  "endedAt": 1793632229132,
+  "durationMs": 102687,
+  "inputs": {
+    "runKey": "ebc581a6117032296e9532b0046ab0bc"
+  },
+  "stages": [
+    {
+      "id": "9a948404-58b5-47ed-90ef-4f63db612001:645b1526-b054-40cd-9df8-4554e59e6531",
+      "name": "work",
+      "intercomGroup": "workflow:1a454364-3410-4c6d-a913-bf3662e94309",
+      "replayKey": "stage:work:1",
+      "status": "completed",
+      "parentIds": [
+        "9a948404-58b5-47ed-90ef-4f63db612001:tool:h4d212d61ffdfb2d978b47125ed2be5d7"
+      ],
+      "toolEvents": [],
+      "pendingStageDeliveryAvailable": true,
+      "executionOrder": 2,
+      "startedAt": 1793632130312,
+      "startup": {
+        "phase": "first-dispatch",
+        "startedAt": 1793632130314,
+        "phaseStartedAt": 1793632130622,
+        "state": "dispatched",
+        "ownershipPending": false
+      },
+      "sessionId": "01a19cce-550d-73b2-ac07-cbf65f82c1d7",
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinkingLevel": "high",
+      "attemptedModels": [
+        "openai-codex/gpt-6.1-sol"
+      ],
+      "modelAttempts": [
+        {
+          "model": "openai-codex/gpt-6.1-sol",
+          "success": true,
+          "reasoningLevel": "high",
+          "usage": {
+            "input": 46658,
+            "output": 1513,
+            "cacheRead": 252800,
+            "cacheWrite": 0,
+            "cost": 0.13372599999999998,
+            "turns": 7
+          }
+        }
+      ],
+      "result": "{\n  \"status\": \"verify-ready\",\n  \"summary\": \"Creato docs/budget.md con due righe in italiano: il ticket viene sospeso se supera il budget; Vlad decide se continuare. Verifica riuscita e commit 67b004b riportati nello stato.\"\n}",
+      "endedAt": 1793632229120,
+      "durationMs": 98808,
+      "workflowGraphTarget": {
+        "runId": "9a948404-58b5-47ed-90ef-4f63db612001",
+        "stageId": "645b1526-b054-40cd-9df8-4554e59e6531",
+        "runName": "harness-ticket-attempt",
+        "depth": 1
+      }
+    }
+  ],
+  "tools": [
+    {
+      "kind": "tool",
+      "id": "tool:ha29deb83742521cd77e6c126fd6306b3",
+      "name": "budget",
+      "args": {
+        "runKey": "ebc581a6117032296e9532b0046ab0bc"
+      },
+      "source": "async () => (await bridge().prepare(runKey)).budget",
+      "argsHash": "ha29deb83742521cd77e6c126fd6306b3",
+      "ordinal": 1,
+      "parentIds": [],
+      "status": "completed",
+      "attachable": false,
+      "executionOrder": 1,
+      "startedAt": 1793632126465,
+      "endedAt": 1793632130269,
+      "durationMs": 3804,
+      "result": {
+        "maxCostUsd": 0.03,
+        "maxDurationMs": 2700000
+      },
+      "resultSummary": "{\"maxCostUsd\":0.03,\"maxDurationMs\":2700000}",
+      "runId": "1a454364-3410-4c6d-a913-bf3662e94309",
+      "runName": "harness-ticket",
+      "depth": 0
+    },
+    {
+      "kind": "tool",
+      "id": "9a948404-58b5-47ed-90ef-4f63db612001:tool:h4d212d61ffdfb2d978b47125ed2be5d7",
+      "name": "prepare",
+      "args": {
+        "runKey": "ebc581a6117032296e9532b0046ab0bc"
+      },
+      "source": "() => bridge().prepare(runKey)",
+      "argsHash": "h4d212d61ffdfb2d978b47125ed2be5d7",
+      "ordinal": 1,
+      "parentIds": [
+        "tool:ha29deb83742521cd77e6c126fd6306b3"
+      ],
+      "status": "completed",
+      "attachable": false,
+      "executionOrder": 1,
+      "startedAt": 1793632130280,
+      "endedAt": 1793632130305,
+      "durationMs": 25,
+      "result": {
+        "brief": "You are a worker of Vlad's harness. Ticket: \"Aggiungi docs/budget.md sul superamento del budget\" on uppifyagency/harness-sandbox (issue:uppifyagency/harness-sandbox#16).\nDone when: Creare docs/budget.md con due righe in italiano: (1) cosa succede quando un ticket dell'harness supera il budget, (2) chi decide se continuare. Fatto quando il file esiste con le due righe.\n\nThe request, verbatim from the issue:\n> Prova unità 8: budget\n> \n> /harness Aggiungi docs/budget.md con due righe in italiano: cosa succede quando un ticket dell'harness supera il budget, e chi decide se continuare. Fatto quando il file esiste con le due righe.\n\nRules for this attempt:\n- Your cwd is a git worktree made for this ticket. You have full autonomy inside it; work only there.\n- Work the pstack way (poteto-mode).\n- Commit your work with git when it is done. Never push, never run gh, never change remotes: publishing is a later step that is not yours.\n- If only a human can unblock you (a fact, a choice that is theirs), ask with the ask_user_question tool: the question reaches them in the issue and the answer comes back to you. Ask only then, and offer options when you can.\n- Do not spawn subagents.\n- Finish with the final-answer tool: status \"verify-ready\" when the work is committed and ready for an independent check, or \"blocked\"; plus a short summary. Another model then verifies your commits; if it finds a problem you get another attempt with its reasons.",
+        "model": "openai-codex/gpt-6.1-sol:high",
+        "worktree": "<sessione>/scratchpad/home-unit8/worktrees/5f2d608c275f-a1",
+        "base": "e2dad7721262f18f04bb076e63eb8f17d8e08437",
+        "budget": {
+          "maxCostUsd": 0.03,
+          "maxDurationMs": 2700000
+        }
+      },
+      "resultSummary": "{\"brief\":\"You are a worker of Vlad's harness. Ticket: \\\"Aggiungi docs/budget.md sul superamento del budget\\\" on uppifyagency/harness-sandbox (issue:uppifyagency/harness-sandbox#16).\\nDone when: Creare docs/budget.md con due righe in ital...",
+      "runId": "9a948404-58b5-47ed-90ef-4f63db612001",
+      "runName": "harness-ticket-attempt",
+      "depth": 1
+    }
+  ],
+  "deliveryStates": [],
+  "result": {
+    "attempt": "{\"workflow\":\"harness-ticket-attempt\",\"runId\":\"9a948404-58b5-47ed-90ef-4f63db612001\",\"status\":\"blocked\",\"exited\":true,\"outputs\":{\"status\":\"budget_exceeded\"}}"
+  }
+}

@@ -1,0 +1,34 @@
+# prova-h1.sh 2 /tmp/mai-a2f-1, issue #109 (scope da accept.ts), codice 9ae456b, stuckAfterMin 2, giri di 300 s. Avvio 2026-11-02T20:27:19Z
+20:27:20Z run 61b93add5f127a6696625d404fed3c0f bound
+20:32:21Z giro finito, controllo: 2026-11-02T20:32:28.019Z daemon=ok(beat 0s ago) router=ok runs=1 live, 1 stalled judged=[61b93add:stuck $0.0336 4.8s] 6198ms
+20:32:28Z primo giudizio stuck. Sblocco il worker: /tmp/mai-a2f-1
+20:32:34Z gate b0660130e7807171e7139a4d13829d08 aperto
+20:32:34Z risposta: answered
+20:32:34Z aspetto il giro dopo
+20:37:25Z giro finito. stop.intended del run: 0, run.ended: 0
+20:37:25Z ora il worker gira in tondo: secondo giudizio
+20:42:27Z giro finito, controllo: 2026-11-02T20:42:36.341Z daemon=ok(beat 2s ago) router=ok runs=1 live, 1 stalled judged=[61b93add:stuck $0.0248 7.0s] 8360ms
+20:42:36Z secondo giudizio stuck, aspetto lo stop
+20:47:33Z run.ended
+--- eventi del run
+605|2026-11-02T20:27:18.901Z|run.bound|{"run":"61b93add5f127a6696625d404fed3c0f","atomic":"6220da85-ac1d-48b6-8456-5a00ffe78bc8"}
+614|2026-11-02T20:32:28.018Z|watchdog.judged|{"run":"61b93add5f127a6696625d404fed3c0f","verdict":"stuck","evidence":"At 20:27:28 the worker started `while ! test -f /tmp/mai-a2f-1; do sleep 20; done` with a 3600s timeout, and at 20:27:40 it called wait on that task with a budget of 3600000 ms. Nothing in
+615|2026-11-02T20:32:32.335Z|gate.opened|{"run":"61b93add5f127a6696625d404fed3c0f","gate":"b0660130e7807171e7139a4d13829d08","spec":{"kind":"question","audience":"requester","question":"NOTE-A o NOTE-B?","options":["NOTE-A","NOTE-B"]},"to":{"kind":"issue","repo":"uppifyagency/harness-sandbox","number
+616|2026-11-02T20:32:34.266Z|gate.answered|{"gate":"b0660130e7807171e7139a4d13829d08","answer":"NOTE-B","requestId":"8de97540-2019-471b-9bba-9094bbcb725a"}
+627|2026-11-02T20:42:36.340Z|watchdog.judged|{"run":"61b93add5f127a6696625d404fed3c0f","verdict":"stuck","evidence":"At 20:32:39 the worker began a polling loop waiting for /tmp/mai-a2f-2 and has been blocked on it since 20:32:53, about 10 minutes with no new output. The goal does not ask for this file, 
+646|2026-11-02T20:47:28.435Z|stop.intended|{"run":"61b93add5f127a6696625d404fed3c0f","reason":"watchdog stuck: At 20:32:39 the worker began a polling loop waiting for /tmp/mai-a2f-2 and has been blocked on it since 20:32:53, about 10 minutes with no new output. The goal does not ask for this file, and 
+647|2026-11-02T20:47:28.771Z|run.ended|{"run":"61b93add5f127a6696625d404fed3c0f","outcome":{"kind":"failed","cause":"stopped","retryable":false,"evidence":"watchdog stuck: At 20:32:39 the worker began a polling loop waiting for /tmp/mai-a2f-2 and has been blocked on it since 20:32:53, about 10 minu
+--- conteggi
+run.ended|1
+stop.intended|1
+watchdog.judged|2
+--- watchdog.log
+2026-11-02T20:32:28.019Z daemon=ok(beat 0s ago) router=ok runs=1 live, 1 stalled judged=[61b93add:stuck $0.0336 4.8s] 6198ms
+2026-11-02T20:42:36.341Z daemon=ok(beat 2s ago) router=ok runs=1 live, 1 stalled judged=[61b93add:stuck $0.0248 7.0s] 8360ms
+--- engine.log
+2026-11-02T20:32:32.336Z gate b0660130e7807171e7139a4d13829d08 opened run 61b93add5f127a6696625d404fed3c0f: "NOTE-A o NOTE-B?"
+2026-11-02T20:32:34.346Z gates answered run 61b93add5f127a6696625d404fed3c0f: ["NOTE-B"]
+2026-11-02T20:47:28.769Z stop 61b93add5f127a6696625d404fed3c0f: quit 6220da85-ac1d-48b6-8456-5a00ffe78bc8 -> {"action":"quit","runId":"6220da85-ac1d-48b6-8456-5a00ffe78bc8","status":"paused","message":"Run 6220da85-ac1d-48b6-8456-5a00ffe78bc8 quit and can be resumed with /workflow resume."}
+--- worktree
+--- harness
+STUCK  issue:uppifyagency/harness-sandbox#109  watchdog stuck: At 20:32:39 the worker began a polling loop waiting for /tmp/mai-a2f-2 and has been blocked on it since 20:32:53, about 10 minutes with no new output. The goal does not ask for this file, and nothing indicates it will ever appear. Only scripts/a2f-t2.txt (NOTE-B, 20:32:38) has been w

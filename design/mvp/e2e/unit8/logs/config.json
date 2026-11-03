@@ -1,0 +1,17 @@
+{
+  "repos": [
+    {
+      "repo": "uppifyagency/harness-sandbox",
+      "listen": "explicit"
+    }
+  ],
+  "allowedActors": [
+    "uppifyagency"
+  ],
+  "handles": [
+    "/harness"
+  ],
+  "budget": {
+    "maxCostUsd": 0.03
+  }
+}

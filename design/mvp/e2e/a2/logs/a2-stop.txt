@@ -1,0 +1,36 @@
+# lane 1, head (31989f0 code path unchanged for this lane: 672c743+), home w1
+it.delera.harness.w1: running pid=56371, no heartbeat yet
+it.delera.harness.watchdog.w1: checking now, pid=56408
+18:54:45Z heartbeat {"pid":56371,"at":"2026-11-02T18:54:44.989Z","everyMs":60000,"tick":0,"busySince":"2026-11-02T18:54:44.989Z"}
+18:54:45Z kill -STOP 56371
+18:58:56Z new pid 74809 beating after 251 s: {"pid":74809,"at":"2026-11-02T18:58:55.561Z","everyMs":60000,"tick":0,"busySince":"2026-11-02T18:58:55.561Z"}
+18:58:56Z after 251 s: old pid 56371 state=gone
+it.delera.harness.w1: running pid=74809 last heartbeat 1s ago
+it.delera.harness.watchdog.w1: loaded, next check within 120 s
+--- watchdog.log
+2026-11-02T18:54:43.466Z daemon=pid 56371 no heartbeat yet router=ok runs=not judged, no daemon beating 12ms
+2026-11-02T18:56:43.752Z daemon=ok(beat 119s ago, lap busy 119s) router=ok runs=0 live, 0 stalled 19ms
+2026-11-02T18:58:54.037Z daemon=stale(pid 56371, beat 239s ago) -> kickstart -k 10108ms
+--- launchctl print
+	state = running
+	runs = 2
+	pid = 74809
+	last terminating signal = Killed: 9
+		state = active
+		state = active
+
+# lane 1, trunk b196bf0 (no watchdog), home w1t
+running pid=56356, no heartbeat yet
+18:54:48Z heartbeat {"pid":56356,"at":"2026-11-02T18:54:47.648Z","tick":1}
+18:54:48Z kill -STOP 56356
+19:00:18Z after 330 s: old pid 56356 state=T   
+running pid=56356 last heartbeat 331s ago
+--- watchdog.log
+(none: no watchdog on this checkout)
+--- launchctl print
+	state = running
+	runs = 1
+	pid = 56356
+	last exit code = (never exited)
+		state = active
+		state = active

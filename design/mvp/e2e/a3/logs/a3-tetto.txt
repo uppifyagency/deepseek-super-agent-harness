@@ -1,0 +1,41 @@
+# lane 5, maxPerDay 2, issue #66 #67 #68, 2026-11-02T19:13:43Z
+$ harness tick
+2026-11-02T19:12:29.777Z uppifyagency/harness-sandbox: 17 items {"duplicate":14,"to-router":3}
+router: ok=true (new session) cost=$0.0864 time=18.2s turns=6 denied=[]
+$ cat logs/mcp.log   (chiamate del router)
+2026-11-02T19:12:37.466Z next {}
+2026-11-02T19:12:40.521Z decide {"eval":"0bf1811d85bd395090e7f9027e8d9cd1","decision":{"kind":"accept","silent":true,"title":"Correggi conta-parole.sh -l quando il file non finisce con a capo","scope":"conta-parole.sh -l conta anche l'ultima riga se il file no
+2026-11-02T19:12:41.965Z decide {"eval":"22509027797a8b41d6b27a83a16e9990","decision":{"kind":"accept","silent":true,"title":"Correggi ciao.sh con nomi che contengono spazi","scope":"ciao.sh stampa il saluto con il nome completo anche quando contiene spazi (qu
+2026-11-02T19:12:43.284Z decide {"eval":"8be4d9f287620fefbdaff7bf18ef4c86","decision":{"kind":"accept","silent":true,"title":"Fai uscire conta.sh con codice non zero se il file non esiste","scope":"conta.sh esce con codice diverso da 0 e messaggio su stderr qu
+2026-11-02T19:12:44.488Z next {}
+$ harness recall issue:uppifyagency/harness-sandbox#66
+thread issue:uppifyagency/harness-sandbox#66
+5 events, 1 triggers, 0 dropped, ticket ticket:34d680a94827aec92f0552b04d1a7a64
+  -> trigger          fa30412593ce4791029e42bfd4a09115  uppifyagency: [a3-s5] conta-parole.sh -l conta una riga in meno se il file non finisce con un a capo Lane 5 di A3 (tetto maxPerDay 2).
+  -> trigger.filtered caa55bc86a0c58927bf2101b6e78f821  PASS candidate
+  -> eval.opened      0bf1811d85bd395090e7f9027e8d9cd1  eval.opened
+  -> decided          816e6fde0798a24946be0f0618aa241c  accept: Correggi conta-parole.sh -l quando il file non finisce con a capo
+  -> subscribed       0ec33f5f824f1648ff79137eb5adf4b2  subscribed to ticket 34d680a94827aec92f0552b04d1a7a64
+$ harness recall issue:uppifyagency/harness-sandbox#67
+thread issue:uppifyagency/harness-sandbox#67
+5 events, 1 triggers, 0 dropped, ticket ticket:daff7ca03b242e081dac825316028621
+  -> trigger          b230defaefa5841e7ad76b3ae2eaa9d3  uppifyagency: [a3-s5] ciao.sh stampa il saluto senza il nome quando il nome contiene uno spazio Lane 5 di A3 (tetto maxPerDay 2). Segn
+  -> trigger.filtered c9768ea67af6541e6a7997b73a7d9c02  PASS candidate
+  -> eval.opened      22509027797a8b41d6b27a83a16e9990  eval.opened
+  -> decided          b999c9ec8d3f4217e228375487ed46e4  accept: Correggi ciao.sh con nomi che contengono spazi
+  -> subscribed       c58676ff583a6244a7bd9e67c0c266f9  subscribed to ticket daff7ca03b242e081dac825316028621
+$ harness recall issue:uppifyagency/harness-sandbox#68
+thread issue:uppifyagency/harness-sandbox#68
+4 events, 1 triggers, 0 dropped
+  -> trigger          45dfb2fe9d2519815fa50a0889b6f95d  uppifyagency: [a3-s5] conta.sh esce con 0 anche quando il file non esiste Lane 5 di A3 (tetto maxPerDay 2). Segnalazione di un bug, se
+  -> trigger.filtered 695cf4213a14b744a4f79a2f029dbf60  PASS candidate
+  -> eval.opened      8be4d9f287620fefbdaff7bf18ef4c86  eval.opened
+  -> decided          e889ee28a725f81f7661d14c81f9dac4  ignore: speculative cap: 2 per day
+$ run.intended nel registro (planRuns gia eseguito una volta)
+run.intended: 2, tickets: 34d680a9, daff7ca0
+$ gh: commenti su #66
+0
+$ gh: commenti su #67
+0
+$ gh: commenti su #68
+0

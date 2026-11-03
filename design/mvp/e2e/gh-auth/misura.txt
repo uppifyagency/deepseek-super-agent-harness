@@ -1,0 +1,14 @@
+# gh 2.92.0, macOS 27.0, 2026-11-03T06:00:52Z, doctor timeout 2.5 s
+run  1    0.65 s  exit 0
+run  2    0.54 s  exit 0
+run  3    0.56 s  exit 0
+run  4    0.62 s  exit 0
+run  5    0.58 s  exit 0
+run  6    0.62 s  exit 0
+run  7    0.59 s  exit 0
+run  8    0.55 s  exit 0
+run  9    0.54 s  exit 0
+run 10    0.56 s  exit 0
+run 11    0.53 s  exit 0
+run 12    0.55 s  exit 0
+# over 2.5 s: 0 of 12

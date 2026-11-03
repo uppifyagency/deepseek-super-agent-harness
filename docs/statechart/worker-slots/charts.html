@@ -1,0 +1,138 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>worker-slots statechart</title>
+<style>:root{--bg:#fafafa;--fg:#1c1c1c;--muted:#555;--card:#fff;--line:#ddd}@media (prefers-color-scheme:dark){:root{--bg:#161616;--fg:#f0f0f0;--muted:#aaa;--card:#202020;--line:#3a3a3a}}body{font-family:-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:24px 16px;max-width:1200px}h1{font-size:22px}h2{font-size:18px;margin:28px 0 8px}.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto}.note,li{color:var(--muted);font-size:14px;line-height:1.5}code{font-size:13px}</style></head><body>
+<h1>Worker slots never exceed maxWorkers</h1>
+<p class="note">Model <code>worker_slots.tla</code>, checked with TLC 2.19 (tla2tools 1.7.4) and drawn with the pstack statechart skill. Each state names the log fact (<code>Kinds</code> in harness/src/domain.ts) that stands for it. Rebuild with <code>node docs/statechart/build.mjs worker-slots</code>.</p>
+<h2>Rules</h2><ul><li>WithinCap: live Atomic workers never exceed maxWorkers.</li><li>OneWorkerPerRun: one run key never has two live Atomic runs.</li><li>VisibleFirst: a pass never picks a silent run while it leaves a visible run waiting.</li></ul>
+<h2>The model as configured</h2><p class="note">java -XX:+UseParallelGC -cp $TLA2TOOLS tlc2.TLC -workers 1 -config worker-slots.cfg worker_slots.tla<br>No error. 246 states generated, 138 distinct, depth 9.</p>
+<div class="card"><pre class="mermaid">---
+title: &quot;Worker slots never exceed maxWorkers&quot;
+---
+stateDiagram-v2
+  state &quot;Legend&quot; as legend {
+    lg0: No worker
+    lg1: Starting a run
+    lg2: Workers live
+  }
+  class lg0 tan
+  class lg1 yellow
+  class lg2 blue
+  s0: No worker, 3 waiting (run.intended)
+  s1: 1 worker (0 run.bound, 1 starting), 2 waiting (run.intended)
+  s2: 1 worker (1 run.bound), 2 waiting (run.intended)
+  s3: No worker, 2 waiting (run.intended)
+  s4: 2 workers (1 run.bound, 1 starting), 1 waiting (run.intended)
+  s5: 1 worker (0 run.bound, 1 starting), 1 waiting (run.intended)
+  s6: 2 workers (2 run.bound), 1 waiting (run.intended)
+  s7: 1 worker (1 run.bound), 1 waiting (run.intended)
+  s8: No worker, 1 waiting (run.intended)
+  s9: 2 workers (1 run.bound, 1 starting), 0 waiting (run.intended)
+  s10: 1 worker (0 run.bound, 1 starting), 0 waiting (run.intended)
+  s11: 2 workers (2 run.bound), 0 waiting (run.intended)
+  s12: 1 worker (1 run.bound), 0 waiting (run.intended)
+  s13: No worker, 0 waiting (run.intended)
+  [*] --&gt; s0
+  s0 --&gt; s1: the daemon starts the next run in its pass
+  s1 --&gt; s2: Atomic gives the run id (run.bound)
+  s2 --&gt; s3: a run ends (run.ended)
+  s2 --&gt; s4: the daemon starts the next run in its pass
+  s3 --&gt; s5: the daemon starts the next run in its pass
+  s4 --&gt; s5: a run ends (run.ended)
+  s4 --&gt; s6: Atomic gives the run id (run.bound)
+  s5 --&gt; s7: Atomic gives the run id (run.bound)
+  s6 --&gt; s7: a run ends (run.ended)
+  s7 --&gt; s8: a run ends (run.ended)
+  s7 --&gt; s9: the daemon starts the next run in its pass
+  s8 --&gt; s10: the daemon starts the next run in its pass
+  s9 --&gt; s10: a run ends (run.ended)
+  s9 --&gt; s11: Atomic gives the run id (run.bound)
+  s10 --&gt; s12: Atomic gives the run id (run.bound)
+  s11 --&gt; s12: a run ends (run.ended)
+  s12 --&gt; s13: a run ends (run.ended)
+  class s0 tan
+  class s1 yellow
+  class s2 blue
+  class s3 tan
+  class s4 yellow
+  class s5 yellow
+  class s6 blue
+  class s7 blue
+  class s8 tan
+  class s9 yellow
+  class s10 yellow
+  class s11 blue
+  class s12 blue
+  class s13 tan
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px
+</pre></div>
+<h2>Where each state and arrow is in the code</h2><ul><li>Waiting: run.intended with no run.bound yet. The chart starts with 3 runs intended at once, as in the unit 10 proof (design/mvp/e2e/unit10/REPORT.md).</li><li>Picks the runs to start: runsToStart counts bound, not ended runs as held slots and returns the oldest unbound runs while slots are free (runs.ts:174-185).</li><li>Starting: engine.start is in flight. The daemon awaits each start before the next (cli.ts:75-78), and launch writes run.bound before it returns (engine.ts:223-234).</li><li>run.bound: Atomic gave the run id. A bound run holds its slot also while it waits on a gate.</li><li>Ends: run.ended frees the slot (runs.ts:179).</li><li>maxWorkers comes from policy.set (domain.ts:99, service.ts:84-88, default 2). The chart uses 2. The same model passes with 1 and 3.</li><li>Silent runs yield: with SilentYields = TRUE a silent run sorts after every visible run (plan A3). Today runsToStart sorts by age only.</li></ul>
+<h2>The broken model</h2><p class="note">Starters = {daemon, work} and MaxWorkers = 1. harness work (cli.ts:175-183) calls startRuns without the run lock that harness run takes (cli.ts:151). The slot rule counts only bound runs (runs.ts:180), so a run that one process is starting is free for the other process to start again.</p><p class="note">java -XX:+UseParallelGC -cp $TLA2TOOLS tlc2.TLC -workers 1 -config worker-slots.rotto.cfg worker_slots.tla<br>Invariant WithinCap is violated, trace of 5 states. 96 states generated, 65 distinct.</p>
+<div class="card"><pre class="mermaid">---
+title: &quot;Worker slots never exceed maxWorkers&quot;
+---
+stateDiagram-v2
+  state &quot;Legend&quot; as legend {
+    lg0: No worker
+    lg1: Starting a run
+    lg2: Breaks OneWorkerPerRun or WithinCap
+    lg3: Path to the OneWorkerPerRun or WithinCap bug
+  }
+  class lg0 tan
+  class lg1 yellow
+  class lg2 breaks
+  class lg3 bugPath
+  s0: No worker, 3 waiting (run.intended)
+  s1: 1 worker (0 run.bound, 1 starting), 2 waiting (run.intended)
+  s2: 2 workers (0 run.bound, 2 starting), 2 waiting (run.intended)
+  [*] --&gt; s0
+  s0 --&gt; s0: the daemon picks the runs to start (runsToStart)
+  s0 --&gt; s1: the daemon starts the next run in its pass
+  s1 --&gt; s1: harness work picks the runs to start (runsToStart)
+  s1 --&gt; s2: harness work starts the next run in its pass
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px
+  classDef breaks fill:#ffecee,stroke:#e72e3b,stroke-width:2.5px,color:#cd2834
+  class s0 tan
+  class s0 bugPath
+  class s1 yellow
+  class s1 bugPath
+  class s2 yellow
+  class s2 breaks
+  class s2 bugPath
+</pre></div>
+<pre class="note"># worker_slots
+
+TLC reached 1,230 states, more than the chart budget of 500, so the chart draws only the bug paths: 3 states and 4 arrows.
+
+## WithinCap breaks
+The shortest path has 4 steps:
+0. No worker, 3 waiting (run.intended)
+1. the daemon picks the runs to start (runsToStart): No worker, 3 waiting (run.intended)
+2. the daemon starts the next run in its pass: 1 worker (0 run.bound, 1 starting), 2 waiting (run.intended)
+3. harness work picks the runs to start (runsToStart): 1 worker (0 run.bound, 1 starting), 2 waiting (run.intended)
+4. harness work starts the next run in its pass: 2 workers (0 run.bound, 2 starting), 2 waiting (run.intended)
+
+## OneWorkerPerRun breaks
+The shortest path has 4 steps:
+0. No worker, 3 waiting (run.intended)
+1. the daemon picks the runs to start (runsToStart): No worker, 3 waiting (run.intended)
+2. the daemon starts the next run in its pass: 1 worker (0 run.bound, 1 starting), 2 waiting (run.intended)
+3. harness work picks the runs to start (runsToStart): 1 worker (0 run.bound, 1 starting), 2 waiting (run.intended)
+4. harness work starts the next run in its pass: 2 workers (0 run.bound, 2 starting), 2 waiting (run.intended)
+
+## Rules that hold
+TypeOK, VisibleFirst, NoDeadlock</pre>
+<h2>What the model leaves out</h2><ul><li>Lowering maxWorkers while runs are live: the new cap applies only to later starts, live runs keep their slots.</li><li>Resume of runs bound by a dead process (cli.ts:70-74). They are bound, so they count as held.</li><li>The chart hides the failed start (run.ended with no run.bound). The model has it.</li></ul>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:true,securityLevel:"strict",theme:"default"});</script></body></html>

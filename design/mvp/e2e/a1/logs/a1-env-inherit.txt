@@ -1,0 +1,5 @@
+Prova del meccanismo: una variabile *_TOKEN nell'ambiente del genitore (come farebbe launchctl setenv) non passa oltre env -i.
+$ FAKE_GITHUB_TOKEN=finto GITHUB_PERSONAL_ACCESS_TOKEN=finto /usr/bin/env -i HOME=$HOME PATH=/usr/bin:/bin node -e 'nomi'
+HOME PATH __CF_USER_TEXT_ENCODING
+$ stesso comando senza env -i
+CLAUDE_CODE_MESSAGING_TOKEN FAKE_GITHUB_TOKEN GITHUB_PERSONAL_ACCESS_TOKEN

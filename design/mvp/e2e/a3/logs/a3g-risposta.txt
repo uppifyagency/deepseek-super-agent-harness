@@ -1,0 +1,33 @@
+== testa 82a8239 (dopo)
+reply {"to":"issue:uppifyagency/harness-sandbox#111","purpose":"ack","text":"Ci guardo.","about":"a42cf574406994831054b3f74fd4801b"}
+  -> {
+  "ok": false,
+  "problem": "nobody called the harness on this issue: post nothing"
+}
+decide {"eval":"a42cf574406994831054b3f74fd4801b","kind":"ignore","reason":"prova"}
+  -> {
+  "ok": true,
+  "decision": "ignore"
+}
+reply {"to":"issue:uppifyagency/harness-sandbox#111","purpose":"ack","text":"Ci guardo dopo.","about":"a42cf574406994831054b3f74fd4801b"}
+  -> {
+  "ok": false,
+  "problem": "nobody called the harness on this issue: post nothing"
+}
+outbox: ["Ciao."]
+== af77b47 (prima), stessa home copiata
+reply {"to":"issue:uppifyagency/harness-sandbox#111","purpose":"ack","text":"Ci guardo.","about":"a42cf574406994831054b3f74fd4801b"}
+  -> {
+  "ok": true,
+  "intent": "533efd2427048031beeaa305fb512d57"
+}
+decide {"eval":"a42cf574406994831054b3f74fd4801b","kind":"ignore","reason":"prova"}
+  -> {
+  "ok": true,
+  "decision": "ignore"
+}
+reply {"to":"issue:uppifyagency/harness-sandbox#111","purpose":"ack","text":"Ci guardo dopo.","about":"a42cf574406994831054b3f74fd4801b"}
+  -> {
+  "ok": true,
+  "intent": "8207bb4cc16e9d1517b1c617f03ac3e3"
+}

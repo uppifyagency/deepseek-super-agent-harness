@@ -1,0 +1,8 @@
+riferimenti/
+harness-home-sandbox/
+node_modules
+*.sqlite
+*.sqlite-*
+.audit/
+.DS_Store
+.claude/

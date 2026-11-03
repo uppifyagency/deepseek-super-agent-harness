@@ -1,0 +1,66 @@
+19:45:40Z service restart, 3 s into verify
+it.delera.harness.w3: running pid=33471, no heartbeat yet
+it.delera.harness.watchdog.w3: loaded, next check within 120 s
+19:48:31Z run.ended
+--- run events
+302|2026-11-02T18:54:16.607Z|run.intended|{"ticket":"cde079ad1d17e5a34412d5e8247069e0","attempt":1,"repo":"uppifyagency/harness-sandbox","baseBranch":"main","brief":{"preview":"You are a worker of Vlad's harness. Ticket: \"Aggiungi scripts/lungo-w3.sh e il suo test\" on uppifyagency/harness-sandbox (i
+303|2026-11-02T18:54:16.658Z|run.bound|{"run":"31cb1b0f8a06624c3c5b1b5eed5eed7e","atomic":"88d73446-6a9a-4934-8a5c-d7c203eedcae"}
+326|2026-11-02T19:00:06.692Z|watchdog.judged|{"run":"31cb1b0f8a06624c3c5b1b5eed5eed7e","verdict":"progressing","evidence":"Alle 18:55:31 il worker ha scritto scripts/lungo-w3.sh e scripts/test-lungo-w3.sh. Alle 18:58:07 la verifica con DURATA=60 è passata (riga 1 a circa 30 s, riga 2 a circa 60 s, poi fa
+335|2026-11-02T19:06:13.275Z|watchdog.judged|{"run":"31cb1b0f8a06624c3c5b1b5eed5eed7e","verdict":"progressing","evidence":"At 18:58:07 the independent DURATA=60 check passed (riga 1 at about 30s, riga 2 at about 60s, then fatto), and at 18:56:09 the existing tests and the DURATA=0 tests passed. The first
+358|2026-11-02T19:12:19.856Z|watchdog.judged|{"run":"31cb1b0f8a06624c3c5b1b5eed5eed7e","verdict":"progressing","evidence":"The independent check with DURATA=60 passed at 18:58:07: two lines came about 30 s apart, followed by `fatto`, and the existing tests passed at 18:56:09. At 19:04:06 the 20-minute te
+435|2026-11-02T19:24:44.103Z|watchdog.judged|{"run":"31cb1b0f8a06624c3c5b1b5eed5eed7e","verdict":"progressing","evidence":"At 19:04:36 the worker said the 20-minute run had been interrupted and started it again in full with the default DURATA. The ticket requires that run before the commit, and that call
+438|2026-11-02T19:26:24.445Z|run.progress|{"run":"31cb1b0f8a06624c3c5b1b5eed5eed7e","stage":"verify","summary":"started on 52b3d68b"}
+439|2026-11-02T19:26:25.437Z|run.progress|{"run":"31cb1b0f8a06624c3c5b1b5eed5eed7e","stage":"work","summary":"completed"}
+448|2026-11-02T19:28:57.805Z|run.ended|{"run":"31cb1b0f8a06624c3c5b1b5eed5eed7e","outcome":{"kind":"failed","cause":"verifier-failed","retryable":true,"evidence":"the verifier changed the worktree (?? .atomic/, ?? .audit/): verdict discarded","workerSession":"durable-replay:work","sha":"52b3d68ba2a
+449|2026-11-02T19:29:44.362Z|run.intended|{"ticket":"cde079ad1d17e5a34412d5e8247069e0","attempt":2,"repo":"uppifyagency/harness-sandbox","baseBranch":"main","brief":{"preview":"You are a worker of Vlad's harness. Ticket: \"Aggiungi scripts/lungo-w3.sh e il suo test\" on uppifyagency/harness-sandbox (i
+450|2026-11-02T19:29:44.386Z|run.bound|{"run":"a1a3ecd6641bf5c68bd6d51e0f5103ed","atomic":"f37851e7-94e0-4885-a246-b7b4276d6b7f"}
+451|2026-11-02T19:29:47.393Z|run.progress|{"run":"a1a3ecd6641bf5c68bd6d51e0f5103ed","stage":"workflow:harness-ticket-attempt","summary":"failed"}
+452|2026-11-02T19:29:47.396Z|run.ended|{"run":"a1a3ecd6641bf5c68bd6d51e0f5103ed","outcome":{"kind":"failed","cause":"error","retryable":true,"evidence":"atomic-workflows: child workflow \"harness-ticket-attempt\" (harness-ticket-attempt) failed with status failed: Session not found: durable-replay:
+467|2026-11-02T19:35:39.493Z|run.intended|{"ticket":"f6c96a4538d8e7e884faf6ac3fbf1020","attempt":1,"repo":"uppifyagency/harness-sandbox","baseBranch":"main","brief":{"preview":"You are a worker of Vlad's harness. Ticket: \"Aggiungi scripts/lungo-w3b.sh e il suo test\" on uppifyagency/harness-sandbox (
+468|2026-11-02T19:35:39.548Z|run.bound|{"run":"629d230c724383aae4dda8386133d213","atomic":"987d58f1-b0f5-47de-9dc1-865e8cb2bc65"}
+471|2026-11-02T19:41:38.363Z|watchdog.judged|{"run":"629d230c724383aae4dda8386133d213","verdict":"progressing","evidence":"At 19:36:39 the worker wrote both scripts. At 19:38:12 the independent DURATA=60 check passed (\"30.036s riga 1 60.096s riga 2 60.097s fatto PASS\"), and at 19:38:28 it staged the di
+472|2026-11-02T19:45:36.842Z|run.progress|{"run":"629d230c724383aae4dda8386133d213","stage":"verify","summary":"started on 0a5a7aa0"}
+473|2026-11-02T19:45:37.231Z|run.progress|{"run":"629d230c724383aae4dda8386133d213","stage":"work","summary":"completed"}
+480|2026-11-02T19:48:07.431Z|run.ended|{"run":"629d230c724383aae4dda8386133d213","outcome":{"kind":"done","verdict":{"repo":"uppifyagency/harness-sandbox","sha":"0a5a7aa06223ea07a225847222a293f4c76a57ae","patchId":"22df33f8b21e864948b2e0fa25bdf23d92d14cbc","verdict":"unit-test-verified","evidence":
+--- attempts: 1  ended: 1  stops: 0
+--- watchdog.log
+2026-11-02T18:53:50.798Z daemon=pid 45696 no heartbeat yet router=ok runs=not judged, no daemon beating 41ms
+2026-11-02T18:55:51.095Z daemon=ok(beat 32s ago) router=ok runs=1 live, 0 stalled 14ms
+2026-11-02T18:57:55.499Z daemon=ok(beat 4s ago) router=ok runs=1 live, 0 stalled 47ms
+2026-11-02T19:00:06.692Z daemon=ok(beat 6s ago) router=ok runs=1 live, 1 stalled judged=[31cb1b0f:progressing $0.0585 8.5s] 9987ms
+2026-11-02T19:02:06.941Z daemon=ok(beat 16s ago) router=ok runs=1 live, 0 stalled 22ms
+2026-11-02T19:04:07.192Z daemon=pid 98377 no heartbeat yet router=ok runs=1 live, 0 stalled 19ms
+2026-11-02T19:06:13.276Z daemon=ok(beat 55s ago) router=ok runs=1 live, 1 stalled judged=[31cb1b0f:progressing $0.0457 4.4s] 5885ms
+2026-11-02T19:08:13.497Z daemon=ok(beat 6s ago) router=ok runs=1 live, 0 stalled 13ms
+2026-11-02T19:10:13.771Z daemon=ok(beat 6s ago) router=ok runs=1 live, 0 stalled 12ms
+2026-11-02T19:12:19.857Z daemon=ok(beat 6s ago) router=ok runs=1 live, 1 stalled judged=[31cb1b0f:progressing $0.0452 4.4s] 5862ms
+2026-11-02T19:14:20.165Z daemon=ok(beat 12s ago) router=ok runs=1 live, 0 stalled 66ms
+2026-11-02T19:24:44.104Z daemon=ok(beat 30s ago) router=ok runs=1 live, 1 stalled judged=[31cb1b0f:progressing $0.0455 4.8s] 6582ms
+2026-11-02T19:25:28.281Z daemon=ok(beat 0s ago, lap busy 0s) router=ok runs=1 live, 0 stalled 12ms
+2026-11-02T19:27:28.450Z daemon=ok(beat 52s ago) router=ok runs=1 live, 0 stalled 12ms
+2026-11-02T19:29:28.610Z daemon=ok(beat 47s ago) router=ok runs=0 live, 0 stalled 14ms
+2026-11-02T19:31:29.781Z daemon=ok(beat 21s ago) router=ok runs=0 live, 0 stalled 12ms
+2026-11-02T19:33:29.959Z daemon=ok(beat 16s ago) router=ok runs=0 live, 0 stalled 15ms
+2026-11-02T19:35:30.090Z daemon=ok(beat 16s ago, lap busy 16s) router=ok runs=0 live, 0 stalled 13ms
+2026-11-02T19:37:30.260Z daemon=ok(beat 18s ago) router=ok runs=1 live, 0 stalled 13ms
+2026-11-02T19:39:30.414Z daemon=ok(beat 19s ago) router=ok runs=1 live, 0 stalled 15ms
+2026-11-02T19:41:38.364Z daemon=ok(beat 19s ago) router=ok runs=1 live, 1 stalled judged=[629d230c:progressing $0.0456 5.9s] 7760ms
+2026-11-02T19:43:39.574Z daemon=ok(beat 28s ago) router=ok runs=1 live, 0 stalled 16ms
+2026-11-02T19:45:40.726Z daemon=ok(beat 29s ago) router=ok runs=1 live, 0 stalled 12ms
+2026-11-02T19:47:40.894Z daemon=ok(beat 52s ago) router=ok runs=1 live, 0 stalled 18ms
+--- engine.log
+2026-11-02T19:26:36.593Z resume 88d73446-6a9a-4934-8a5c-d7c203eedcae: {"action":"resume","runId":"88d73446-6a9a-4934-8a5c-d7c203eedcae","status":"running","message":"Resuming durable workflow \"harness-ticket\" (88d73446-6a9a-4934-8a5c-d7c203eedcae) — completed checkpoints will be replayed."}
+2026-11-02T19:28:56.639Z verify 31cb1b0f8a06624c3c5b1b5eed5eed7e PASS -> refused: the verifier changed the worktree (?? .atomic/, ?? .audit/): verdict discarded cost=0.054610000000000006 session=2170c184-d6dc-44c4-bcc6-982b2a938902
+2026-11-02T19:28:57.807Z run 31cb1b0f8a06624c3c5b1b5eed5eed7e 88d73446-6a9a-4934-8a5c-d7c203eedcae ended failed
+2026-11-02T19:29:44.387Z run a1a3ecd6641bf5c68bd6d51e0f5103ed bound to f37851e7-94e0-4885-a246-b7b4276d6b7f
+2026-11-02T19:29:47.397Z run a1a3ecd6641bf5c68bd6d51e0f5103ed f37851e7-94e0-4885-a246-b7b4276d6b7f ended failed
+2026-11-02T19:34:09.487Z engine disposed in 37 ms
+2026-11-02T19:34:11.865Z engine session 01a19dc1-450d-794d-bb40-197d96a498b9 pid 3440
+2026-11-02T19:35:39.548Z run 629d230c724383aae4dda8386133d213 bound to 987d58f1-b0f5-47de-9dc1-865e8cb2bc65
+2026-11-02T19:45:41.204Z diagnostic {"level":"error","source":"~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs","message":"Extension session_shutdown failed","sessionId":"01a19dc1-450d-794d-bb40-197d96a498b9"}
+2026-11-02T19:45:41.212Z engine dispose failed after 540 ms: Session shutdown failed ["~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs: Workflow cleanup left uncooperative tools: ea4524ab-1bb5-42e2-87f3-31eb9049adea/tool:hc4912525563f1d647206c00803c944fc"]
+2026-11-02T19:45:43.101Z engine session 01a19dcb-d16b-785b-b174-423e41eb946b pid 33471
+2026-11-02T19:45:46.193Z resume 987d58f1-b0f5-47de-9dc1-865e8cb2bc65: {"action":"resume","runId":"987d58f1-b0f5-47de-9dc1-865e8cb2bc65","status":"running","message":"Resuming durable workflow \"harness-ticket\" (987d58f1-b0f5-47de-9dc1-865e8cb2bc65) — completed checkpoints will be replayed."}
+2026-11-02T19:48:00.078Z verify 629d230c724383aae4dda8386133d213 PASS -> independent PASS cost=0.04686320000000001 session=d3386c50-77e7-4a46-9976-343c549d50c0
+2026-11-02T19:48:05.263Z publish 629d230c724383aae4dda8386133d213 0a5a7aa0 -> https://github.com/uppifyagency/harness-sandbox/pull/84
+2026-11-02T19:48:07.432Z run 629d230c724383aae4dda8386133d213 987d58f1-b0f5-47de-9dc1-865e8cb2bc65 ended done

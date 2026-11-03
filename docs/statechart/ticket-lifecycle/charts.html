@@ -1,0 +1,180 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ticket-lifecycle statechart</title>
+<style>:root{--bg:#fafafa;--fg:#1c1c1c;--muted:#555;--card:#fff;--line:#ddd}@media (prefers-color-scheme:dark){:root{--bg:#161616;--fg:#f0f0f0;--muted:#aaa;--card:#202020;--line:#3a3a3a}}body{font-family:-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:24px 16px;max-width:1200px}h1{font-size:22px}h2{font-size:18px;margin:28px 0 8px}.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto}.note,li{color:var(--muted);font-size:14px;line-height:1.5}code{font-size:13px}</style></head><body>
+<h1>Ticket lifecycle, with silent tickets (A3)</h1>
+<p class="note">Model <code>ticket_lifecycle.tla</code>, checked with TLC 2.19 (tla2tools 1.7.4) and drawn with the pstack statechart skill. Each state names the log fact (<code>Kinds</code> in harness/src/domain.ts) that stands for it. Rebuild with <code>node docs/statechart/build.mjs ticket-lifecycle</code>.</p>
+<h2>Rules</h2><ul><li>SilentStaysQuiet: while a ticket is silent, its issue gets no ack, no question, no result, and at most one comment (the PASS link).</li><li>DiscardedHasNoPR: a discarded ticket never has a PR.</li></ul>
+<h2>The model as configured</h2><p class="note">java -XX:+UseParallelGC -cp $TLA2TOOLS tlc2.TLC -workers 1 -config ticket-lifecycle.cfg ticket_lifecycle.tla<br>No error. 87 states generated, 54 distinct, depth 10.</p>
+<div class="card"><pre class="mermaid">---
+title: &quot;Ticket lifecycle, with silent tickets (A3)&quot;
+---
+stateDiagram-v2
+  state &quot;Legend&quot; as legend {
+    lg0: Visible ticket
+    lg1: Silent ticket (A3)
+    lg2: Merged
+    lg3: Closed without merge
+  }
+  class lg0 blue
+  class lg1 purple
+  class lg2 teal
+  class lg3 tan
+  s0: Silent, waiting for a run (ticket.opened silent)
+  s1: Visible, waiting for a run (ticket.opened visible)
+  s2: Silent, worker on it (run.intended, run.bound)
+  s3: Visible, worker on it (run.intended, run.bound)
+  s4: Discarded, no comment (ticket.closed discarded)
+  s5: Visible, question asked in the issue (gate.opened)
+  s6: Silent, speculative PR open (run.ended done)
+  s7: Visible, PR open (run.ended done)
+  s8: Stopped by Vlad (ticket.closed stopped)
+  s9: Closed by Vlad (ticket.closed closed)
+  s10: Merged (ticket.closed merged)
+  s11: Visible, attempts used up (run.ended failed)
+  [*] --&gt; s0
+  [*] --&gt; s1
+  s0 --&gt; s1: Vlad writes /harness in the thread (reply.intended ack)
+  s0 --&gt; s2: a slot is free, the daemon starts a run
+  s1 --&gt; s3: a slot is free, the daemon starts a run
+  s2 --&gt; s3: Vlad writes /harness in the thread (reply.intended ack)
+  s2 --&gt; s4: FAIL, budget, stuck or a question, no comment
+  s2 --&gt; s6: verifier PASS, bot opens a PR and posts one link comment
+  s3 --&gt; s5: the worker asks or hits its budget (reply.intended ask)
+  s3 --&gt; s7: verifier PASS, bot opens the PR (reply.intended result)
+  s3 --&gt; s1: the attempt fails, attempts left (run.ended failed)
+  s3 --&gt; s8: Vlad stops it (stop.intended)
+  s5 --&gt; s3: the answer arrives (gate.answered)
+  s5 --&gt; s8: Vlad stops it (stop.intended)
+  s6 --&gt; s9: the issue or the PR is closed
+  s6 --&gt; s10: the PR is merged
+  s6 --&gt; s7: Vlad writes /harness in the thread (reply.intended ack)
+  s7 --&gt; s9: the issue or the PR is closed
+  s7 --&gt; s10: the PR is merged
+  s3 --&gt; s11: the last attempt fails (reply.intended result)
+  s11 --&gt; s9: the issue or the PR is closed
+  class s0 purple
+  class s1 blue
+  class s2 purple
+  class s3 blue
+  class s4 tan
+  class s5 blue
+  class s6 purple
+  class s7 blue
+  class s8 tan
+  class s9 tan
+  class s10 teal
+  class s11 blue
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px
+</pre></div>
+<h2>Where each state and arrow is in the code</h2><ul><li>Start states: ticket.opened with visibility visible or silent (domain.ts:86). Today decide() always writes visible (routing.ts:134, routing.ts:146), so the silent half of the chart is the A3 plan, not code.</li><li>Worker on it: run.intended from planRuns (runs.ts:104-149), then run.bound from the engine (engine.ts:223-234).</li><li>Question asked in the issue: gate.opened (gates.ts:49-56), then the router asks with reply.intended purpose ask.</li><li>Attempt fails, attempts left: run.ended failed and retryable, isFinal false (runs.ts:62-65), so planRuns writes the next run.intended.</li><li>PR open: run.ended done after the verifier PASS and publish (engine.ts:116-133). The result reply goes only to visible tickets (runs.ts:161).</li><li>Silent end with no comment: ticket.closed discarded after FAIL, budget, stuck or a question (plan A3).</li><li>Promotion: Vlad writes /harness in the same thread, a trigger with addressed true (service.ts:58-61), then reply.intended ack. Kinds has no fact for the change of visibility yet.</li><li>Closed states: ticket.closed with outcome merged, closed, discarded or stopped (domain.ts:98). Nothing writes ticket.closed yet. ticketsView only reads it (routing.ts:195-210).</li><li>Stopped by Vlad: decided stop (domain.ts:37), then stop.intended (domain.ts:95). Nothing writes stop.intended yet.</li></ul>
+<h2>The broken model</h2><p class="note">GatesSkipSilent = FALSE. A question or a budget gate in a silent ticket is asked in the issue, which is what gates.ts does today: openGate (gates.ts:49-56), gatesForRouter (gates.ts:70-72) and the budget gate (runs.ts:211-213, audience requester at runs.ts:71) never look at visibility.</p><p class="note">java -XX:+UseParallelGC -cp $TLA2TOOLS tlc2.TLC -workers 1 -config ticket-lifecycle.rotto.cfg ticket_lifecycle.tla<br>Invariant SilentStaysQuiet is violated, trace of 3 states. 10 states generated, 9 distinct.</p>
+<div class="card"><pre class="mermaid">---
+title: &quot;Ticket lifecycle, with silent tickets (A3)&quot;
+---
+stateDiagram-v2
+  state &quot;Legend&quot; as legend {
+    lg0: Visible ticket
+    lg1: Silent ticket (A3)
+    lg2: Merged
+    lg3: Closed without merge
+    lg4: Breaks SilentStaysQuiet
+    lg5: Breaks SilentStaysQuiet in some cases
+    lg6: Path to the SilentStaysQuiet bug
+  }
+  class lg0 blue
+  class lg1 purple
+  class lg2 teal
+  class lg3 tan
+  class lg4 breaks
+  class lg5 mayBreak
+  class lg6 bugPath
+  s0: Silent, waiting for a run (ticket.opened silent)
+  s1: Visible, waiting for a run (ticket.opened visible)
+  s2: Silent, worker on it (run.intended, run.bound)
+  s3: Visible, worker on it (run.intended, run.bound)
+  s4: Discarded, no comment (ticket.closed discarded)
+  s5: Silent, question asked in the issue (gate.opened)
+  s6: Visible, question asked in the issue (gate.opened)
+  s7: Silent, speculative PR open (run.ended done)
+  s8: Visible, PR open (run.ended done)
+  s9: Stopped by Vlad (ticket.closed stopped)
+  s10: Closed by Vlad (ticket.closed closed)
+  s11: Merged (ticket.closed merged)
+  s12: Visible, attempts used up (run.ended failed)
+  [*] --&gt; s0
+  [*] --&gt; s1
+  s0 --&gt; s1: Vlad writes /harness in the thread (reply.intended ack)
+  s0 --&gt; s2: a slot is free, the daemon starts a run
+  s1 --&gt; s3: a slot is free, the daemon starts a run
+  s2 --&gt; s3: Vlad writes /harness in the thread (reply.intended ack)
+  s2 --&gt; s4: FAIL, budget, stuck or a question, no comment
+  s2 --&gt; s5: the worker asks or hits its budget (reply.intended ask)
+  s2 --&gt; s7: verifier PASS, bot opens a PR and posts one link comment
+  s3 --&gt; s6: the worker asks or hits its budget (reply.intended ask)
+  s3 --&gt; s8: verifier PASS, bot opens the PR (reply.intended result)
+  s3 --&gt; s1: the attempt fails, attempts left (run.ended failed)
+  s3 --&gt; s9: Vlad stops it (stop.intended)
+  s5 --&gt; s2: the answer arrives (gate.answered)
+  s6 --&gt; s3: the answer arrives (gate.answered)
+  s6 --&gt; s9: Vlad stops it (stop.intended)
+  s7 --&gt; s10: the issue or the PR is closed
+  s7 --&gt; s11: the PR is merged
+  s7 --&gt; s8: Vlad writes /harness in the thread (reply.intended ack)
+  s8 --&gt; s10: the issue or the PR is closed
+  s8 --&gt; s11: the PR is merged
+  s3 --&gt; s12: the last attempt fails (reply.intended result)
+  s12 --&gt; s10: the issue or the PR is closed
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px
+  classDef breaks fill:#ffecee,stroke:#e72e3b,stroke-width:2.5px,color:#cd2834
+  classDef mayBreak fill:#fff3e6,stroke:#e8730c,stroke-width:2.5px,color:#b85a06
+  class s0 purple
+  class s0 bugPath
+  class s1 blue
+  class s2 purple
+  class s2 mayBreak
+  class s2 bugPath
+  class s3 blue
+  class s4 tan
+  class s4 mayBreak
+  class s5 purple
+  class s5 breaks
+  class s5 bugPath
+  class s6 blue
+  class s7 purple
+  class s7 mayBreak
+  class s8 blue
+  class s9 tan
+  class s10 tan
+  class s10 mayBreak
+  class s11 teal
+  class s11 mayBreak
+  class s12 blue
+</pre></div>
+<pre class="note"># ticket_lifecycle
+
+TLC reached 62 states and 98 steps. The chart draws 13 states and 21 arrows.
+The view hides 32 steps, so the chart does not draw them.
+
+## SilentStaysQuiet breaks
+The shortest path has 2 steps:
+0. Silent, waiting for a run (ticket.opened silent)
+1. a slot is free, the daemon starts a run: Silent, worker on it (run.intended, run.bound)
+2. the worker asks or hits its budget (reply.intended ask): Silent, question asked in the issue (gate.opened)
+
+## Rules that hold
+TypeOK, DiscardedHasNoPR, NoDeadlock</pre>
+<h2>What the model leaves out</h2><ul><li>One ticket, at most 2 attempts, at most one question per attempt.</li><li>The budget gate of a visible ticket is drawn as a question. The run-stop chart shows it in detail.</li><li>Follow-ups (input.routed) and the PR review thread.</li></ul>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:true,securityLevel:"strict",theme:"default"});</script></body></html>

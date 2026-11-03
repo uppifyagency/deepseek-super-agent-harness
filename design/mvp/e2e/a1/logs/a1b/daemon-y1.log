@@ -1,0 +1,19 @@
+2026-11-02T18:51:07.578Z uppifyagency/harness-sandbox: 141 items {"filtered":141}
+2026-11-02T18:51:30.114Z uppifyagency/harness-sandbox: 19 items {"duplicate":18,"to-router":1}
+router: ok=true (new session) cost=$0.0503 time=11.0s turns=5 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/48#issuecomment-6585491598
+run intended: 738e70a8defc4e66dc4af1c254ff97d7
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a1b/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a1b/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run 738e70a8defc4e66dc4af1c254ff97d7 started (ticket f0d0df1ff758e700c5d2f0cf0468e4af, attempt 1, openai-codex/gpt-6.1-sol:high)
+2026-11-02T18:53:52.468Z uppifyagency/harness-sandbox: 18 items {"duplicate":13,"filtered":5}
+run 738e70a8defc4e66dc4af1c254ff97d7 resuming a7e00f39-cc46-4dc9-8217-b1642c899a94 (after Atomic's lease)
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a1b/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a1b/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+2026-11-02T18:54:07.330Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+run 738e70a8defc4e66dc4af1c254ff97d7 resuming 3bcc55ed-18b4-40f6-b392-54c58a97ecfd (after Atomic's lease)
+2026-11-02T18:54:29.316Z uppifyagency/harness-sandbox: 8 items {"duplicate":6,"filtered":2}
+2026-11-02T18:54:51.388Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T18:55:13.444Z uppifyagency/harness-sandbox: 9 items {"duplicate":8,"filtered":1}
+2026-11-02T18:55:35.582Z uppifyagency/harness-sandbox: 10 items {"duplicate":9,"filtered":1}
+2026-11-02T18:55:57.629Z uppifyagency/harness-sandbox: 10 items {"duplicate":10}
+router: ok=true cost=$0.0876 time=11.4s turns=4 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/48#issuecomment-6585620059

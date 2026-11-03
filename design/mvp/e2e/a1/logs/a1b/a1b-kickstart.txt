@@ -1,0 +1,85 @@
+{
+  "repos": [
+    {
+      "repo": "uppifyagency/harness-sandbox",
+      "listen": "explicit"
+    }
+  ],
+  "allowedActors": [
+    "uppifyagency"
+  ],
+  "handles": [
+    "/harness-y1"
+  ],
+  "serviceLabel": "it.delera.harness.y1"
+}
+$ 18:51:02Z service install --every 20
+running pid=39859, no heartbeat yet
+$ 18:51:03Z harness work while the service (pid 39859) holds the lock
+already running (pid 39859)
+exit code: 3
+$ 18:51:07Z issue #48 created
+$ 18:51:44Z first run.bound: 2026-11-02T18:51:44.455Z
+$ 18:51:46Z service restart (pid before 39859)
+running pid=41568, no heartbeat yet
+pid after 41568
+$ 18:53:52Z new process took the run back: 2026-11-02T18:53:52.488Z resume a7e00f39-cc46-4dc9-8217-b1642c899a94 refused (Workflow a7e00f39-cc46-4dc9-8217-b1642c899a94 has no durable checkpoint or pending prompt progress and is not resumable.):
+$ 18:54:02Z service restart (pid before 41568)
+running pid=51590, no heartbeat yet
+pid after 51590
+$ 18:56:03Z finished waiting after 121 s from second restart
+$ 18:56:03Z run events
+2026-11-02T18:51:44.417Z|run.intended|{"ticket":"f0d0df1ff758e700c5d2f0cf0468e4af","attempt":1,"repo":"uppifyagency/harness-sandbox","baseBranch":"main","brief":{"preview":"You are a worker of Vlad's harness. Ticket: \"Aggiungi scripts/somma-y1.sh con test\"
+2026-11-02T18:51:44.455Z|run.bound|{"run":"738e70a8defc4e66dc4af1c254ff97d7","atomic":"a7e00f39-cc46-4dc9-8217-b1642c899a94"}
+2026-11-02T18:53:52.518Z|run.bound|{"run":"738e70a8defc4e66dc4af1c254ff97d7","atomic":"3bcc55ed-18b4-40f6-b392-54c58a97ecfd"}
+2026-11-02T18:55:30.210Z|run.progress|{"run":"738e70a8defc4e66dc4af1c254ff97d7","stage":"verify","summary":"started on 4ef1e7a1"}
+2026-11-02T18:55:31.574Z|run.progress|{"run":"738e70a8defc4e66dc4af1c254ff97d7","stage":"work","summary":"completed"}
+2026-11-02T18:55:55.607Z|run.ended|{"run":"738e70a8defc4e66dc4af1c254ff97d7","outcome":{"kind":"done","verdict":{"repo":"uppifyagency/harness-sandbox","sha":"4ef1e7a178bd5d3a218e601adf37efc948d965f1","patchId":"49add0f2207dafa612318d62b8d33a74c9a053a9","v
+$ run.intended attempts
+1
+$ run.ended count per run
+738e70a8defc4e66dc4af1c254ff97d7|done|1
+$ engine.log
+2026-11-02T18:51:04.835Z engine session 01a19d99-cb37-7f0a-b8cb-253788cf5ec0 pid 39859
+2026-11-02T18:51:44.455Z run 738e70a8defc4e66dc4af1c254ff97d7 bound to a7e00f39-cc46-4dc9-8217-b1642c899a94
+2026-11-02T18:51:47.299Z diagnostic {"level":"error","source":"~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs","message":"Extension session_shutdown failed","sessionId":"01a19d99-cb37-7f0a-b8cb-253788cf5ec0"}
+2026-11-02T18:51:47.307Z engine dispose failed after 546 ms: Session shutdown failed ["~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs: Workflow cleanup left uncooperative tools: a7e00f39-cc46-4dc9-8217-b1642c899
+2026-11-02T18:53:50.117Z engine session 01a19d9c-5135-7595-b48d-e81c818e3dd7 pid 41568
+2026-11-02T18:53:52.488Z resume a7e00f39-cc46-4dc9-8217-b1642c899a94 refused (Workflow a7e00f39-cc46-4dc9-8217-b1642c899a94 has no durable checkpoint or pending prompt progress and is not resumable.): nothing to lose, starting 738e70a8defc4e66dc4af1c254ff97d7 again as the same attempt
+2026-11-02T18:53:52.488Z abandoned a7e00f39-cc46-4dc9-8217-b1642c899a94: Atomic 0.9.63 has no call that ends a run (session.workflows offers pause, quit, resume), so it stays non-terminal in Atomic's records
+2026-11-02T18:53:52.518Z run 738e70a8defc4e66dc4af1c254ff97d7 bound to 3bcc55ed-18b4-40f6-b392-54c58a97ecfd
+2026-11-02T18:54:02.765Z engine disposed in 53 ms
+2026-11-02T18:54:04.926Z engine session 01a19d9c-8b28-7257-8401-bcd5798d4abc pid 51590
+2026-11-02T18:54:07.468Z resume 3bcc55ed-18b4-40f6-b392-54c58a97ecfd: {"action":"resume","runId":"3bcc55ed-18b4-40f6-b392-54c58a97ecfd","status":"running","message":"Resuming durable workflow \"harness-ticket\" (3bcc55ed-18b4-40f6-b392-54c58a97ecfd) — completed checkpoints will be replayed."}
+2026-11-02T18:55:47.385Z verify 738e70a8defc4e66dc4af1c254ff97d7 PASS -> independent PASS cost=0.081035 session=7c031764-7065-4634-a71c-d62fdc3351a2
+2026-11-02T18:55:53.110Z publish 738e70a8defc4e66dc4af1c254ff97d7 4ef1e7a1 -> https://github.com/uppifyagency/harness-sandbox/pull/54
+2026-11-02T18:55:55.609Z run 738e70a8defc4e66dc4af1c254ff97d7 3bcc55ed-18b4-40f6-b392-54c58a97ecfd ended done
+$ daemon.log tail
+2026-11-02T18:51:07.578Z uppifyagency/harness-sandbox: 141 items {"filtered":141}
+2026-11-02T18:51:30.114Z uppifyagency/harness-sandbox: 19 items {"duplicate":18,"to-router":1}
+router: ok=true (new session) cost=$0.0503 time=11.0s turns=5 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/48#issuecomment-6585491598
+run intended: 738e70a8defc4e66dc4af1c254ff97d7
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a1b/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | pos
+run 738e70a8defc4e66dc4af1c254ff97d7 started (ticket f0d0df1ff758e700c5d2f0cf0468e4af, attempt 1, openai-codex/gpt-6.1-sol:high)
+2026-11-02T18:53:52.468Z uppifyagency/harness-sandbox: 18 items {"duplicate":13,"filtered":5}
+run 738e70a8defc4e66dc4af1c254ff97d7 resuming a7e00f39-cc46-4dc9-8217-b1642c899a94 (after Atomic's lease)
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a1b/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | pos
+2026-11-02T18:54:07.330Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+run 738e70a8defc4e66dc4af1c254ff97d7 resuming 3bcc55ed-18b4-40f6-b392-54c58a97ecfd (after Atomic's lease)
+2026-11-02T18:54:29.316Z uppifyagency/harness-sandbox: 8 items {"duplicate":6,"filtered":2}
+2026-11-02T18:54:51.388Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T18:55:13.444Z uppifyagency/harness-sandbox: 9 items {"duplicate":8,"filtered":1}
+2026-11-02T18:55:35.582Z uppifyagency/harness-sandbox: 10 items {"duplicate":9,"filtered":1}
+2026-11-02T18:55:57.629Z uppifyagency/harness-sandbox: 10 items {"duplicate":10}
+$ PRs for issue #48
+#54 lunadelera-ops OPEN harness/f0d0df1ff758 ["scripts/somma-y1.sh","scripts/test-somma-y1.sh"]
+$ issue #48 comments
+2026-11-02T18:51:44Z uppifyagency: Presa in carico: lavoro avviato. /  / Ho capito così: / - creare `scripts/somma-y1.sh`, che stampa la somma dei due argomenti / - aggiungere il test `scripts/test-somma-y1.sh` che ne verifica il compo
+$ bridge records of every Atomic run bound to this ticket
+# a7e00f39-cc46-4dc9-8217-b1642c899a94
+~/.atomic/agent/remote-bridge/01a19d99-cb37-7f0a-b8cb-253788cf5ec0/meta.json
+{"status":"closed","enginePid":39859,"closeReason":"quit","pendingRuns":["a7e00f39-cc46-4dc9-8217-b1642c899a94"]}
+# 3bcc55ed-18b4-40f6-b392-54c58a97ecfd
+~/.atomic/agent/remote-bridge/01a19d9c-5135-7595-b48d-e81c818e3dd7/meta.json
+{"status":"closed","enginePid":41568,"closeReason":"quit","pendingRuns":["3bcc55ed-18b4-40f6-b392-54c58a97ecfd"]}

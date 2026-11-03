@@ -1,0 +1,26 @@
+# lane 9, issue #65, 2026-11-02T19:11:58Z
+$ harness tick
+2026-11-02T19:12:00.854Z uppifyagency/harness-sandbox: 15 items {"duplicate":11,"filtered":4}
+$ harness recall issue:uppifyagency/harness-sandbox#65
+thread issue:uppifyagency/harness-sandbox#65
+2 events, 1 triggers, 1 dropped
+  -> trigger          c1ed29c0e7e8a820d825c3aae5b67af3  uppifyagency: [a3-s9] conta-parole.sh -l sbaglia su un file senza a capo finale Lane 9 di A3 (autore non in allowedActors della lane).
+  -> trigger.filtered f6e942c79402dda49007dd02d9595a57  DROP actor-not-allowed
+$ harness status
+{
+  "mode": "auto",
+  "maxWorkers": 1,
+  "policy": "f9a18167d23489470bf9efdbe800eef9",
+  "head": 355,
+  "filter": {
+    "drop:actor-not-allowed": 86,
+    "drop:own-message": 91
+  },
+  "waitingForRouter": 0,
+  "outbox": 0
+}
+$ harness   (attention)
+$ ls router-runs.jsonl
+ls: /tmp/swarm-a3/worker-9/home/router-runs.jsonl: No such file or directory
+$ gh issue view 65 --comments
+0

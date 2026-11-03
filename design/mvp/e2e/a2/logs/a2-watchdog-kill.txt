@@ -1,0 +1,30 @@
+19:06:37Z run 70ac4ada422a2c2c1354f0ca2c943d62
+19:09:43Z kickstart it.delera.harness.watchdog.w2
+19:09:43Z watchdog pid 19390 judging (child 19414 )
+19:09:43Z kill -9 19390
+19:09:44Z after kill:  state = not running last terminating signal = Killed: 9 state = active state = active 
+19:09:44Z judged so far: 1
+19:24:44Z run.ended
+--- events of the run
+350|2026-11-02T19:06:32.575Z|run.bound|{"run":"70ac4ada422a2c2c1354f0ca2c943d62","atomic":"14c68b10-f4e7-404c-9e95-416fdb4a7810"}
+369|2026-11-02T19:11:50.371Z|watchdog.judged|{"run":"70ac4ada422a2c2c1354f0ca2c943d62","verdict":"stuck","evidence":"At 19:06:49 the worker started a loop that checks every 30 seconds for a file, /tmp/mai, and at 19:07:25 it began waiting up to 
+380|2026-11-02T19:12:45.623Z|stop.intended|{"run":"70ac4ada422a2c2c1354f0ca2c943d62","reason":"watchdog stuck: At 19:06:49 the worker started a loop that checks every 30 seconds for a file, /tmp/mai, and at 19:07:25 it began waiting up to 3600
+443|2026-11-02T19:24:42.707Z|run.ended|{"run":"70ac4ada422a2c2c1354f0ca2c943d62","outcome":{"kind":"failed","cause":"stopped","retryable":false,"evidence":"watchdog stuck: At 19:06:49 the worker started a loop that checks every 30 seconds 
+--- counts
+run.ended|1
+stop.intended|1
+watchdog.judged|1
+--- watchdog.log
+2026-11-02T19:06:00.992Z daemon=ok(beat 30s ago) router=ok runs=0 live, 0 stalled 11ms
+2026-11-02T19:08:01.196Z daemon=ok(beat 26s ago) router=ok runs=1 live, 0 stalled 12ms
+2026-11-02T19:11:50.371Z daemon=ok(beat 0s ago) router=ok runs=1 live, 1 stalled judged=[70ac4ada:stuck $0.0199 5.1s] 6658ms
+2026-11-02T19:13:50.623Z daemon=ok(beat 2s ago) router=ok runs=1 live, 0 stalled 12ms
+2026-11-02T19:24:37.633Z daemon=pid 62580 no heartbeat yet router=ok runs=not judged, no daemon beating 45ms
+--- engine.log
+2026-11-02T19:12:46.006Z stop 70ac4ada422a2c2c1354f0ca2c943d62: quit 14c68b10-f4e7-404c-9e95-416fdb4a7810 -> {"action":"quit","runId":"14c68b10-f4e7-404c-9e95-416fdb4a7810","status":"paused","message":"Run 14c68b10-f4e7-404c-9e95-416fdb4a7810 quit and can be resumed with /workflow resume."}
+2026-11-02T19:20:14.790Z engine disposed in 36 ms
+2026-11-02T19:24:40.127Z engine session 01a19db8-8be2-711d-82f6-14a4d07dd852 pid 62580
+2026-11-02T19:24:42.707Z stop 70ac4ada422a2c2c1354f0ca2c943d62: not running here, ended in the log
+--- harness
+STUCK  issue:uppifyagency/harness-sandbox#51  watchdog stuck: At 18:54:17 the worker started `until test -f /tmp/mai; do sleep 30; done` with a 3600s timeout. That was its second try, after the 86400s timeout was rejected at 18:54:12. It is waiting for a file that nothing will create (the issue title is "worker che gira in tondo"), and no code 
+STUCK  issue:uppifyagency/harness-sandbox#58  watchdog stuck: At 19:06:49 the worker started a loop that checks every 30 seconds for a file, /tmp/mai, and at 19:07:25 it began waiting up to 3600000 ms (an hour) on that task. Nothing in the ticket creates /tmp/mai, and "mai" means "never" in Italian. By 19:11:43 it had made no further moves and 

@@ -1,0 +1,8 @@
+# Default rules, plus one allowlist: a runKey is a content hash of the harness's own run, not a credential.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "harness runKey content hashes"
+regexTarget = "match"
+regexes = ['''runKey"?:\s*"[0-9a-f]{32}"''']

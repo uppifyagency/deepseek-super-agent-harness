@@ -1,0 +1,13 @@
+$ 17:09:47Z harness service uninstall (it.delera.harness.l90)
+not installed
+launchctl print l90 exit=113
+ls: ~/Library/LaunchAgents/it.delera.harness.l90.plist: No such file or directory
+$ 17:09:47Z serviceLabel -> it.delera.harness.l5; harness service install
+running pid=49844, no heartbeat yet
+	state = running
+	exit timeout = 10
+	pid = 49844
+$ engine.log
+2026-11-02T17:09:47.620Z engine disposed in 42 ms
+2026-11-02T17:10:02.199Z engine session 01a19d3d-40c2-741e-b136-814cd31e3f9b pid 49844
+2026-11-02T17:10:05.802Z resume 36a178b7-179b-4a2a-811d-a07515913244: {"action":"resume","runId":"36a178b7-179b-4a2a-811d-a07515913244","status":"running","message":"Resuming durable workflow \"harness-ticket\" (36a178b7-179b-4a2a-811d-a07515913244) — completed checkpoints will be replayed."}

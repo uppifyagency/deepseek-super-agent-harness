@@ -1,0 +1,19 @@
+$ date
+Mon Nov  2 17:03:26 CET 2026
+$ harness service status
+running pid=62492 last heartbeat 2s ago
+$ cat heartbeat.json
+{"pid":62492,"at":"2026-11-02T16:03:24.165Z","tick":1}
+$ launchctl print gui/501/it.delera.harness.l2 (estratto)
+	path = ~/Library/LaunchAgents/it.delera.harness.l2.plist
+	state = running
+	program = /usr/bin/env
+	stdout path = /tmp/swarm-a1/worker-2/home/logs/daemon.log
+	stderr path = /tmp/swarm-a1/worker-2/home/logs/daemon.log
+	runs = 1
+	pid = 62492
+	last exit code = (never exited)
+		state = active
+		state = active
+$ tail daemon.log
+2026-11-02T16:03:24.156Z uppifyagency/harness-sandbox: 52 items {"filtered":52}

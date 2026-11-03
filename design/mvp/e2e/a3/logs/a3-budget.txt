@@ -1,0 +1,25 @@
+# lane 8, issue #72, budget speculativo 0.01 $, 2026-11-02T19:17:52Z
+$ harness
+DISCARDED  issue:uppifyagency/harness-sandbox#72  "Correggi conteggio righe di conta-parole.sh -l senza a capo finale"  budget
+$ harness recall issue:uppifyagency/harness-sandbox#72
+thread issue:uppifyagency/harness-sandbox#72
+5 events, 1 triggers, 0 dropped, ticket ticket:31beca0359fe6ce4880826fd84e80187
+  -> trigger          49580400d91b64aea1161d8514541dd6  uppifyagency: [a3-s8] conta-parole.sh -l conta una riga in meno senza a capo finale Con un file che non finisce con un a capo, `script
+  -> trigger.filtered 10fafc758214a3bbcc85e1018610daf6  PASS candidate
+  -> eval.opened      e031acd9314c158358749930f945dff1  eval.opened
+  -> decided          4f1abf51ab36bf2b43c1693bc7d988bb  accept: Correggi conteggio righe di conta-parole.sh -l senza a capo finale
+  -> subscribed       5b992e81411ac5e28a097dd78626c806  subscribed to ticket 31beca0359fe6ce4880826fd84e80187
+$ harness recall ticket:31beca03...
+thread ticket:31beca0359fe6ce4880826fd84e80187
+6 events
+  -> ticket.opened    967011c57824df00a819f812321fc1af  ticket "Correggi conteggio righe di conta-parole.sh -l senza a capo finale": scripts/conta-parole.sh -l conta anche l'ultima riga quando il file non termina con a capo: `printf 'uno\ndue' > f.txt; 
+  -> run.intended     551749d19f2dd234e3446fe3cbbdf92d  attempt 1 on uppifyagency/harness-sandbox
+  -> run.bound        2d921e1bf1729e0a68983d2f5d6322cd  run.bound
+  -> run.progress     b64a2b26e4c53f80992b6487bc2c8a0c  work: completed
+  -> run.ended        a72704dcca48c4c353737c73072cf1da  stopped by budget at $0.20
+  -> ticket.closed    9fb8a628fa2fa8f262c8a0a721708d2d  closed discarded: budget
+$ grep ended logs/engine.log
+2026-11-02T19:16:37.808Z run 551749d19f2dd234e3446fe3cbbdf92d ab5dd6fb-7414-426f-b358-8c92bdaca434 ended budget
+$ ls worktrees/
+$ gh: commenti su #72
+0

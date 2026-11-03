@@ -1,0 +1,16 @@
+$ 17:09:11Z ultimo stadio nel registro
+2026-11-02T17:08:36.606Z|run.bound||
+2026-11-02T17:08:36.356Z|run.intended||
+$ 17:09:11Z harness service status
+running pid=47535 last heartbeat 35s ago
+$ 17:09:11Z harness service restart
+running pid=49006, no heartbeat yet
+$ 17:09:37Z launchctl print (exit)
+	exit timeout = 10
+	pid = 49006
+	last exit code = 0
+$ engine.log
+2026-11-02T17:08:36.614Z run b7c61499e9eebb79be7633deb72ea75b bound to 36a178b7-179b-4a2a-811d-a07515913244
+2026-11-02T17:09:11.963Z engine disposed in 48 ms
+2026-11-02T17:09:22.436Z engine session 01a19d3c-a691-73ed-a5fa-f8ad848e9bf5 pid 49006
+2026-11-02T17:09:26.402Z resume 36a178b7-179b-4a2a-811d-a07515913244: {"action":"resume","runId":"36a178b7-179b-4a2a-811d-a07515913244","status":"running","message":"Resuming durable workflow \"harness-ticket\" (36a178b7-179b-4a2a-811d-a07515913244) — completed checkpoints will be replayed."}

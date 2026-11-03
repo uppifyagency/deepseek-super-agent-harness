@@ -1,0 +1,25 @@
+# lane 2 (dalla home della lane 6), issue #74: correggere scripts/somma-a3.sh, che non esiste, 2026-11-02T19:20:30Z
+$ harness recall issue:uppifyagency/harness-sandbox#74
+thread issue:uppifyagency/harness-sandbox#74
+5 events, 1 triggers, 0 dropped, ticket ticket:82d5d1b90e3ce39bc117d3a23c76d2b6
+  -> trigger          79a26f8d85c1787e2353d0fea8e346dc  uppifyagency: [a3-s6] scripts/somma-a3.sh somma male i numeri negativi Con `scripts/somma-a3.sh -2 3` il risultato e' sbagliato: dovre
+  -> trigger.filtered 55dd13055eac7ee77f6e17265cb3017f  PASS candidate
+  -> eval.opened      fef59912b94e74625e246d6c031f1675  eval.opened
+  -> decided          46f411d3fd626858932725208d28eb9a  accept: Fix negative number handling in scripts/somma-a3.sh
+  -> subscribed       a5906db1c1e4448b9dcb3c11758badce  subscribed to ticket 82d5d1b90e3ce39bc117d3a23c76d2b6
+$ harness recall ticket:82d5d1b9...
+thread ticket:82d5d1b90e3ce39bc117d3a23c76d2b6
+6 events
+  -> ticket.opened    9a0254b0250cc689dbb0552413c8c5d4  ticket "Fix negative number handling in scripts/somma-a3.sh": `scripts/somma-a3.sh -2 3` prints 1; negative arguments are summed correctly (not parsed as options). Add/verify a test 
+  -> run.intended     8bfd398f9a454a28026aa41361355029  attempt 1 on uppifyagency/harness-sandbox
+  -> run.bound        1b8795ee6c5a419ff63b9b7808b3e4a8  run.bound
+  -> run.progress     a75aa9dd21650c608539fd227000e106  work: completed
+  -> run.ended        e89d34e8a8ba08665d0651769407d3e3  stopped by budget at $0.10
+  -> ticket.closed    cefcbec184b6cdf63864a6fd3b650b2b  closed discarded: budget
+$ harness
+DISCARDED  issue:uppifyagency/harness-sandbox#74  "Fix negative number handling in scripts/somma-a3.sh"  budget
+$ esito del figlio Atomic
+blocked blocked The reported negative-number bug cannot be reproduced because scripts/somma-a3.sh is absent from this worktree and its available git history. No changes or commits were made.
+# nota: il motivo "budget" e il difetto di classify corretto dopo in 7cc3f1b (test in runs.test.ts); ora sarebbe "blocked"
+$ gh: commenti su #74
+0

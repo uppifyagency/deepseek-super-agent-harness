@@ -1,0 +1,21 @@
+2026-11-02T16:15:51.500Z uppifyagency/harness-sandbox: 65 items {"filtered":65}
+2026-11-02T16:16:14.618Z uppifyagency/harness-sandbox: 7 items {"duplicate":6,"to-router":1}
+router: ok=true (new session) cost=$0.0495 time=13.1s turns=5 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/25#issuecomment-6582123805
+run intended: b666c74e92a38eafc589734d750e7d92
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a1/worker-8/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a1/worker-8/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run b666c74e92a38eafc589734d750e7d92 started (ticket 49675541b9181253cbd11b8b8415db35, attempt 1, openai-codex/gpt-6.1-sol:high)
+2026-11-02T16:17:03.735Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+router: ok=true cost=$0.0737 time=13.3s turns=4 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/25#issuecomment-6582141734
+2026-11-02T16:17:48.009Z uppifyagency/harness-sandbox: 8 items {"duplicate":6,"filtered":1,"to-ticket":1}
+router: ok=true cost=$0.0946 time=9.3s turns=4 denied=[]
+2026-11-02T16:18:51.880Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:19:20.484Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:19:48.131Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:20:11.741Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:20:36.030Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+router: ok=true cost=$0.1292 time=11.3s turns=4 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/25#issuecomment-6582221225
+2026-11-02T16:21:17.712Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+2026-11-02T16:21:40.582Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}

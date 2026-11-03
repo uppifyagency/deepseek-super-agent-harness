@@ -1,0 +1,13 @@
+$ PATH senza ~/.nvm/versions/node/v26.13.0/bin: command -v atomic -> ''
+$ HARNESS_HOME=/tmp/swarm-a5/worker-5/home harness doctor
+ok     macOS
+ok     Node >= 26.13.0
+manca  Atomic 0.9.63 globale: npm i -g @bastani/atomic@0.9.63
+ok     pstack in /tmp/swarm-a5/worker-5/pstack-claude/plugins/pstack
+manca  login Codex di Atomic: atomic, poi /login (OpenAI Codex)
+ok     Claude Code con il login del piano
+ok     gh autenticato
+ok     config.json
+ok     token del bot nel Portachiavi (harness-bot-github-test-5)
+ok     servizio launchd (it.delera.harness.i5)
+exit 1

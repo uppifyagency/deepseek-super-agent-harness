@@ -1,0 +1,19 @@
+# pulizia 2026-11-02T20:47:46Z
+it.delera.harness.t2: not installed
+it.delera.harness.watchdog.t2: not installed
+it.delera.harness.t1: not installed
+it.delera.harness.watchdog.t1: not installed
+it.delera.harness.t2: not installed
+it.delera.harness.watchdog.t2: not installed
+it.delera.harness.t3: not installed
+it.delera.harness.watchdog.t3: not installed
+--- launchctl t*
+nessuna etichetta t*
+--- plist t*
+nessun plist t*
+--- processi a2f
+nessuno
+✓ Closed issue uppifyagency/harness-sandbox#109 (A2f t2: prova del watchdog (gate dopo un giudizio stuck))
+[]
+CLOSED
+CLOSED

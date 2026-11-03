@@ -1,0 +1,16 @@
+{
+  "name": "super-agent-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal super-agent harness: dsh service layer + Atomic engine + pstack method",
+  "engines": { "node": ">=26.13.0" },
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "typescript": "7.0.2"
+  }
+}

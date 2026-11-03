@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1010" width="1500" height="1010" role="img" aria-labelledby="t d">
+<title id="t">pstack inside every worker</title>
+<desc id="d">One Atomic run is one attempt of one ticket: prepare (worktree and brief), work (the Sol stage), inspect, verify (a fresh Opus session), publish (bot push and one pull request). pstack is loaded into the work stage: poteto-mode, the mandate; the matched playbook, copied into a todolist; the principles, named per decision. Verification by a different model family is attached to the verify step: Sol writes, Opus checks, and the verdict is bound to the commit. A FAIL returns its reasons as a new attempt.</desc>
+<style>
+.s{font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif}
+.m{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+@media (prefers-reduced-motion:no-preference){
+@keyframes march{to{stroke-dashoffset:-32}}
+@keyframes d1{0%,3.0%{stroke-dashoffset:1;opacity:1}9.0%,90%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes f1{0%,3.0%{opacity:0}9.0%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes b1{0%,3.0%{opacity:.25}9.0%,90%{opacity:1}97%,100%{opacity:.25}}
+.d1{stroke-dasharray:1 1;animation:d1 10s linear infinite}
+.h1{animation:f1 10s linear infinite}
+.f1.march{animation:f1 10s linear infinite,march 1.4s linear infinite}
+.b1{animation:b1 10s linear infinite}
+@keyframes d2{0%,11.2%{stroke-dashoffset:1;opacity:1}17.2%,90%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes f2{0%,11.2%{opacity:0}17.2%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes b2{0%,11.2%{opacity:.25}17.2%,90%{opacity:1}97%,100%{opacity:.25}}
+.d2{stroke-dasharray:1 1;animation:d2 10s linear infinite}
+.h2{animation:f2 10s linear infinite}
+.f2.march{animation:f2 10s linear infinite,march 1.4s linear infinite}
+.b2{animation:b2 10s linear infinite}
+@keyframes d3{0%,19.4%{stroke-dashoffset:1;opacity:1}25.4%,90%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes f3{0%,19.4%{opacity:0}25.4%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes b3{0%,19.4%{opacity:.25}25.4%,90%{opacity:1}97%,100%{opacity:.25}}
+.d3{stroke-dasharray:1 1;animation:d3 10s linear infinite}
+.h3{animation:f3 10s linear infinite}
+.f3.march{animation:f3 10s linear infinite,march 1.4s linear infinite}
+.b3{animation:b3 10s linear infinite}
+@keyframes d4{0%,27.6%{stroke-dashoffset:1;opacity:1}33.6%,90%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes f4{0%,27.6%{opacity:0}33.6%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes b4{0%,27.6%{opacity:.25}33.6%,90%{opacity:1}97%,100%{opacity:.25}}
+.d4{stroke-dasharray:1 1;animation:d4 10s linear infinite}
+.h4{animation:f4 10s linear infinite}
+.f4.march{animation:f4 10s linear infinite,march 1.4s linear infinite}
+.b4{animation:b4 10s linear infinite}
+@keyframes d5{0%,35.8%{stroke-dashoffset:1;opacity:1}41.8%,90%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes f5{0%,35.8%{opacity:0}41.8%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes b5{0%,35.8%{opacity:.25}41.8%,90%{opacity:1}97%,100%{opacity:.25}}
+.d5{stroke-dasharray:1 1;animation:d5 10s linear infinite}
+.h5{animation:f5 10s linear infinite}
+.f5.march{animation:f5 10s linear infinite,march 1.4s linear infinite}
+.b5{animation:b5 10s linear infinite}
+@keyframes d6{0%,44.0%{stroke-dashoffset:1;opacity:1}50.0%,90%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes f6{0%,44.0%{opacity:0}50.0%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes b6{0%,44.0%{opacity:.25}50.0%,90%{opacity:1}97%,100%{opacity:.25}}
+.d6{stroke-dasharray:1 1;animation:d6 10s linear infinite}
+.h6{animation:f6 10s linear infinite}
+.f6.march{animation:f6 10s linear infinite,march 1.4s linear infinite}
+.b6{animation:b6 10s linear infinite}
+@keyframes d7{0%,52.2%{stroke-dashoffset:1;opacity:1}58.2%,90%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes f7{0%,52.2%{opacity:0}58.2%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes b7{0%,52.2%{opacity:.25}58.2%,90%{opacity:1}97%,100%{opacity:.25}}
+.d7{stroke-dasharray:1 1;animation:d7 10s linear infinite}
+.h7{animation:f7 10s linear infinite}
+.f7.march{animation:f7 10s linear infinite,march 1.4s linear infinite}
+.b7{animation:b7 10s linear infinite}
+@keyframes d8{0%,60.4%{stroke-dashoffset:1;opacity:1}66.4%,90%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes f8{0%,60.4%{opacity:0}66.4%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes b8{0%,60.4%{opacity:.25}66.4%,90%{opacity:1}97%,100%{opacity:.25}}
+.d8{stroke-dasharray:1 1;animation:d8 10s linear infinite}
+.h8{animation:f8 10s linear infinite}
+.f8.march{animation:f8 10s linear infinite,march 1.4s linear infinite}
+.b8{animation:b8 10s linear infinite}
+@keyframes d9{0%,68.6%{stroke-dashoffset:1;opacity:1}74.6%,90%{stroke-dashoffset:0;opacity:1}96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes f9{0%,68.6%{opacity:0}74.6%,90%{opacity:1}96%,100%{opacity:0}}
+@keyframes b9{0%,68.6%{opacity:.25}74.6%,90%{opacity:1}97%,100%{opacity:.25}}
+.d9{stroke-dasharray:1 1;animation:d9 10s linear infinite}
+.h9{animation:f9 10s linear infinite}
+.f9.march{animation:f9 10s linear infinite,march 1.4s linear infinite}
+.b9{animation:b9 10s linear infinite}
+@keyframes b0{0%{opacity:.25}3%,90%{opacity:1}97%,100%{opacity:.25}}
+.b0{animation:b0 10s linear infinite}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#13224a" stroke-width="1"/></pattern><pattern id="G" width="120" height="120" patternUnits="userSpaceOnUse"><path d="M120 0H0V120" fill="none" stroke="#182b58" stroke-width="1.2"/></pattern><clipPath id="c"><rect width="1500" height="1010" rx="28"/></clipPath></defs><g clip-path="url(#c)"><rect width="1500" height="1010" fill="#0a1330"/><rect width="1500" height="1010" fill="url(#g)"/><rect width="1500" height="1010" fill="url(#G)"/></g><rect x="1" y="1" width="1498" height="1008" rx="27" fill="none" stroke="#1d2f5e" stroke-width="2"/>
+<text x="70" y="92" font-size="54" fill="#f3f7ff" class="s" font-weight="800">pstack inside every worker</text>
+<text x="72" y="136" font-size="20" fill="#8fb0e0" class="m" letter-spacing="1.5" data-maxw="1360">ONE ATOMIC RUN IS ONE ATTEMPT · THE METHOD RUNS INSIDE IT</text>
+<rect x="70" y="192" width="1380" height="290" rx="16" fill="none" stroke="#3d5d99" stroke-width="1.6" stroke-dasharray="8 6"/>
+<text x="92" y="228" font-size="17" fill="#86a3d3" class="m" letter-spacing="3" data-maxw="1340">ATOMIC WORKFLOW · HARNESS-TICKET-ATTEMPT</text>
+<g class="b0">
+<rect x="92" y="250" width="228" height="200" rx="12" fill="#0f1f47" stroke="#4cc3f5" stroke-width="2"/>
+<text x="114" y="293" font-size="29" fill="#f3f7ff" class="m" font-weight="700" data-maxw="188">prepare</text>
+<text x="114" y="327" font-size="19" fill="#86abdf" class="m" data-maxw="188">host tool</text>
+<text x="114" y="365" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">brief and a</text>
+<text x="114" y="394" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">fresh worktree</text>
+</g>
+<g class="b1">
+<rect x="369" y="250" width="228" height="200" rx="12" fill="#0f1f47" stroke="#4cc3f5" stroke-width="2"/>
+<text x="391" y="293" font-size="29" fill="#f3f7ff" class="m" font-weight="700" data-maxw="188">work</text>
+<text x="391" y="327" font-size="19" fill="#86abdf" class="m" data-maxw="188">stage, Sol</text>
+<text x="391" y="365" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">pstack loaded,</text>
+<text x="391" y="394" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">commits,</text>
+<text x="391" y="423" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">never pushes</text>
+</g>
+<g class="b4">
+<rect x="646" y="250" width="228" height="200" rx="12" fill="#0f1f47" stroke="#4cc3f5" stroke-width="2"/>
+<text x="668" y="293" font-size="29" fill="#f3f7ff" class="m" font-weight="700" data-maxw="188">inspect</text>
+<text x="668" y="327" font-size="19" fill="#86abdf" class="m" data-maxw="188">host tool</text>
+<text x="668" y="365" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">new commits?</text>
+<text x="668" y="394" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">clean tree?</text>
+</g>
+<g class="b5">
+<rect x="923" y="250" width="228" height="200" rx="12" fill="#0f1f47" stroke="#4cc3f5" stroke-width="2"/>
+<text x="945" y="293" font-size="29" fill="#f3f7ff" class="m" font-weight="700" data-maxw="188">verify</text>
+<text x="945" y="327" font-size="19" fill="#86abdf" class="m" data-maxw="188">host step, Opus</text>
+<text x="945" y="365" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">fresh session,</text>
+<text x="945" y="394" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">runs the tests,</text>
+<text x="945" y="423" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">edits void it</text>
+</g>
+<g class="b9">
+<rect x="1200" y="250" width="228" height="200" rx="12" fill="#0c2a2d" stroke="#4fd69c" stroke-width="2"/>
+<text x="1222" y="293" font-size="29" fill="#f3f7ff" class="m" font-weight="700" data-maxw="188">publish</text>
+<text x="1222" y="327" font-size="19" fill="#86abdf" class="m" data-maxw="188">host step, bot</text>
+<text x="1222" y="365" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">push, one PR,</text>
+<text x="1222" y="394" font-size="21" fill="#d8e2f3" class="s" data-maxw="188">Closes #n</text>
+</g>
+<path d="M320 350 L354 350" pathLength="1" fill="none" stroke="#4cc3f5" stroke-width="3" stroke-linejoin="round" class="d1"/>
+<polygon points="369,350 354,359 354,341" fill="#4cc3f5" class="h1"/>
+<g class="h1"><circle cx="344.5" cy="316.0" r="17" fill="#4cc3f5" stroke="#0a1330" stroke-width="3"/>
+<text x="344.5" y="322.5" font-size="18" fill="#0a1330" class="m" font-weight="700" text-anchor="middle">1</text>
+</g>
+<path d="M597 350 L631 350" pathLength="1" fill="none" stroke="#4cc3f5" stroke-width="3" stroke-linejoin="round" class="d4"/>
+<polygon points="646,350 631,359 631,341" fill="#4cc3f5" class="h4"/>
+<g class="h4"><circle cx="621.5" cy="316.0" r="17" fill="#4cc3f5" stroke="#0a1330" stroke-width="3"/>
+<text x="621.5" y="322.5" font-size="18" fill="#0a1330" class="m" font-weight="700" text-anchor="middle">2</text>
+</g>
+<path d="M874 350 L908 350" pathLength="1" fill="none" stroke="#4cc3f5" stroke-width="3" stroke-linejoin="round" class="d5"/>
+<polygon points="923,350 908,359 908,341" fill="#4cc3f5" class="h5"/>
+<g class="h5"><circle cx="898.5" cy="316.0" r="17" fill="#4cc3f5" stroke="#0a1330" stroke-width="3"/>
+<text x="898.5" y="322.5" font-size="18" fill="#0a1330" class="m" font-weight="700" text-anchor="middle">3</text>
+</g>
+<path d="M1151 350 L1185 350" pathLength="1" fill="none" stroke="#4fd69c" stroke-width="3" stroke-linejoin="round" class="d9"/>
+<polygon points="1200,350 1185,359 1185,341" fill="#4fd69c" class="h9"/>
+<g class="h9"><circle cx="1175.5" cy="316.0" r="17" fill="#4fd69c" stroke="#0a1330" stroke-width="3"/>
+<text x="1175.5" y="322.5" font-size="18" fill="#0a1330" class="m" font-weight="700" text-anchor="middle">4</text>
+</g>
+<path d="M1037 250 L1037 168 L483 168 L483 235" fill="none" stroke="#ffad42" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 7" class="f8 march"/>
+<polygon points="483,250 474,235 492,235" fill="#ffad42" class="h8"/>
+<g class="h8"><rect x="556.85" y="152" width="406.3" height="32" rx="16" fill="#0a1330" stroke="#ffad42" stroke-opacity="0.6"/>
+<text x="760.0" y="174" font-size="18" fill="#ffad42" class="m" text-anchor="middle" data-maxw="392.3">FAIL: the reasons start attempt n+1</text>
+</g>
+<rect x="70" y="560" width="1380" height="310" rx="16" fill="none" stroke="#3d5d99" stroke-width="1.6" stroke-dasharray="8 6"/>
+<text x="92" y="596" font-size="17" fill="#86a3d3" class="m" letter-spacing="3" data-maxw="1340">PSTACK · METHOD</text>
+<g>
+<rect x="92" y="615" width="316" height="230" rx="12" fill="#0f1f47" stroke="#4cc3f5" stroke-width="2"/>
+<text x="114" y="656" font-size="27" fill="#f3f7ff" class="m" font-weight="700" data-maxw="276">poteto-mode</text>
+<text x="114" y="690" font-size="19" fill="#86abdf" class="m" data-maxw="276">the mandate</text>
+<text x="114" y="728" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">the session hook</text>
+<text x="114" y="757" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">puts it in the work</text>
+<text x="114" y="786" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">stage; the guard</text>
+<text x="114" y="815" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">logs mandate=true</text>
+</g>
+<g>
+<rect x="432" y="615" width="316" height="230" rx="12" fill="#0f1f47" stroke="#4cc3f5" stroke-width="2"/>
+<text x="454" y="656" font-size="27" fill="#f3f7ff" class="m" font-weight="700" data-maxw="276">playbook</text>
+<text x="454" y="690" font-size="19" fill="#86abdf" class="m" data-maxw="276">todolist first</text>
+<text x="454" y="728" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">the matched</text>
+<text x="454" y="757" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">playbook's steps,</text>
+<text x="454" y="786" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">copied verbatim</text>
+<text x="454" y="815" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">(Feature, Bug fix)</text>
+</g>
+<g>
+<rect x="772" y="615" width="316" height="230" rx="12" fill="#0f1f47" stroke="#4cc3f5" stroke-width="2"/>
+<text x="794" y="656" font-size="27" fill="#f3f7ff" class="m" font-weight="700" data-maxw="276">principles</text>
+<text x="794" y="690" font-size="19" fill="#86abdf" class="m" data-maxw="276">leaf skills</text>
+<text x="794" y="728" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">Prove It Works,</text>
+<text x="794" y="757" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">Laziness Protocol,</text>
+<text x="794" y="786" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">each one named</text>
+<text x="794" y="815" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">where it decided</text>
+</g>
+<g>
+<rect x="1112" y="615" width="316" height="230" rx="12" fill="#0f1f47" stroke="#4cc3f5" stroke-width="2"/>
+<text x="1134" y="656" font-size="27" fill="#f3f7ff" class="m" font-weight="700" data-maxw="276">other family</text>
+<text x="1134" y="690" font-size="19" fill="#86abdf" class="m" data-maxw="276">Sol writes, Opus checks</text>
+<text x="1134" y="728" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">verdict bound to</text>
+<text x="1134" y="757" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">sha and patch-id;</text>
+<text x="1134" y="786" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">a later commit</text>
+<text x="1134" y="815" font-size="21" fill="#d8e2f3" class="s" data-maxw="276">blocks publish</text>
+</g>
+<path d="M368 615 L368 525" fill="none" stroke="#b49cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 7" class="f2 march"/>
+<path d="M708 615 L708 525" fill="none" stroke="#b49cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 7" class="f2 march"/>
+<path d="M1048 615 L1048 525" fill="none" stroke="#b49cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 7" class="f2 march"/>
+<path d="M368 525 L1048 525" fill="none" stroke="#b49cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 7" class="f2 march"/>
+<path d="M483 525 L483 465" fill="none" stroke="#b49cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 7" class="f2 march"/>
+<polygon points="483,450 492,465 474,465" fill="#b49cff" class="h2"/>
+<g class="h3"><rect x="732.19" y="509" width="291.62" height="32" rx="16" fill="#0a1330" stroke="#b49cff" stroke-opacity="0.6"/>
+<text x="878.0" y="531" font-size="17" fill="#b49cff" class="m" text-anchor="middle" data-maxw="277.62">loaded into the work stage</text>
+</g>
+<path d="M1388 615 L1388 547 L1101 547 L1101 465" fill="none" stroke="#b49cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 7" class="f6 march"/>
+<polygon points="1101,450 1110,465 1092,465" fill="#b49cff" class="h6"/>
+<g class="h7"><rect x="1140.17" y="531" width="208.66" height="32" rx="16" fill="#0a1330" stroke="#b49cff" stroke-opacity="0.6"/>
+<text x="1244.5" y="553" font-size="17" fill="#b49cff" class="m" text-anchor="middle" data-maxw="194.66">checks the commits</text>
+</g>
+<line x1="72" y1="930" x2="124" y2="930" stroke="#4cc3f5" stroke-width="3"/>
+<text x="138" y="937" font-size="20" fill="#86abdf" class="m">the attempt moves on</text>
+<line x1="434.0" y1="930" x2="486.0" y2="930" stroke="#ffad42" stroke-width="3" stroke-dasharray="9 7"/>
+<text x="500.0" y="937" font-size="20" fill="#86abdf" class="m">state comes back</text>
+<line x1="747.6" y1="930" x2="799.6" y2="930" stroke="#4fd69c" stroke-width="3"/>
+<text x="813.6" y="937" font-size="20" fill="#86abdf" class="m">delivery</text>
+<line x1="964.4000000000001" y1="930" x2="1016.4000000000001" y2="930" stroke="#b49cff" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+<text x="1030.4" y="937" font-size="20" fill="#86abdf" class="m">pstack feeds a step</text>
+<text x="1430" y="974" font-size="16" fill="#86a3d3" class="m" text-anchor="end">stages from harness/atomic/harness-ticket.ts</text>
+</svg>

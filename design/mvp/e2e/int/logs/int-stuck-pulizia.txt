@@ -1,0 +1,18 @@
+# Pulizia 2026-11-02T22:20:05Z
+--- plist m1 / si
+nessuno
+--- launchctl
+nessuno
+--- processi da /tmp/swarm-int o /tmp/sah-int-setup
+nessuno
+--- issue #127 #128
+CLOSED
+CLOSED
+--- PR aperte
+0
+--- Portachiavi harness-bot-github-test-int
+assente
+--- /tmp
+ls: /tmp/sah-int-setup: No such file or directory
+ls: /tmp/swarm-int/m1: No such file or directory
+ls: /tmp/swarm-int/repo: No such file or directory

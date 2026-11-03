@@ -1,0 +1,5 @@
+$ 18:12:40 harness service status
+running pid=55041 last heartbeat 39s ago
+$ 18:12:40 harness run --every 60 (a mano, stessa home)
+already running (pid 55041)
+exit code=3

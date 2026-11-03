@@ -1,0 +1,16 @@
+SIMULAZIONE: il sonno reale del Mac (pmset sleepnow) NON e' stato esercitato. Il daemon e' fermato con kill -STOP per 6 minuti.
+$ 17:05:44 kill -STOP 64807
+64807 T   
+$ 17:05:44 gh issue create
+https://github.com/uppifyagency/harness-sandbox/issues/18
+$ 17:12:18 kill -CONT 64807 (fermo per circa 6 minuti)
+64807 R   
+$ daemon.log dopo il risveglio
+2026-11-02T16:04:35.012Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:05:05.703Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:05:28.914Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:12:21.028Z uppifyagency/harness-sandbox: 19 items {"duplicate":8,"to-router":1,"filtered":10}
+router: ok=true (new session) cost=$0.0373 time=11.9s turns=4 denied=[]
+2026-11-02T16:13:08.399Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+$ heartbeat
+{"pid":64807,"at":"2026-11-02T16:13:08.407Z","tick":4}

@@ -1,0 +1,67 @@
+---
+title: "Ticket lifecycle, with silent tickets (A3)"
+---
+stateDiagram-v2
+  state "Legend" as legend {
+    lg0: Visible ticket
+    lg1: Silent ticket (A3)
+    lg2: Merged
+    lg3: Closed without merge
+  }
+  class lg0 blue
+  class lg1 purple
+  class lg2 teal
+  class lg3 tan
+  s0: Silent, waiting for a run (ticket.opened silent)
+  s1: Visible, waiting for a run (ticket.opened visible)
+  s2: Silent, worker on it (run.intended, run.bound)
+  s3: Visible, worker on it (run.intended, run.bound)
+  s4: Discarded, no comment (ticket.closed discarded)
+  s5: Visible, question asked in the issue (gate.opened)
+  s6: Silent, speculative PR open (run.ended done)
+  s7: Visible, PR open (run.ended done)
+  s8: Stopped by Vlad (ticket.closed stopped)
+  s9: Closed by Vlad (ticket.closed closed)
+  s10: Merged (ticket.closed merged)
+  s11: Visible, attempts used up (run.ended failed)
+  [*] --> s0
+  [*] --> s1
+  s0 --> s1: Vlad writes /harness in the thread (reply.intended ack)
+  s0 --> s2: a slot is free, the daemon starts a run
+  s1 --> s3: a slot is free, the daemon starts a run
+  s2 --> s3: Vlad writes /harness in the thread (reply.intended ack)
+  s2 --> s4: FAIL, budget, stuck or a question, no comment
+  s2 --> s6: verifier PASS, bot opens a PR and posts one link comment
+  s3 --> s5: the worker asks or hits its budget (reply.intended ask)
+  s3 --> s7: verifier PASS, bot opens the PR (reply.intended result)
+  s3 --> s1: the attempt fails, attempts left (run.ended failed)
+  s3 --> s8: Vlad stops it (stop.intended)
+  s5 --> s3: the answer arrives (gate.answered)
+  s5 --> s8: Vlad stops it (stop.intended)
+  s6 --> s9: the issue or the PR is closed
+  s6 --> s10: the PR is merged
+  s6 --> s7: Vlad writes /harness in the thread (reply.intended ack)
+  s7 --> s9: the issue or the PR is closed
+  s7 --> s10: the PR is merged
+  s3 --> s11: the last attempt fails (reply.intended result)
+  s11 --> s9: the issue or the PR is closed
+  class s0 purple
+  class s1 blue
+  class s2 purple
+  class s3 blue
+  class s4 tan
+  class s5 blue
+  class s6 purple
+  class s7 blue
+  class s8 tan
+  class s9 tan
+  class s10 teal
+  class s11 blue
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px

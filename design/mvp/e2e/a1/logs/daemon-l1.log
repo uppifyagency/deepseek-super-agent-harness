@@ -1,0 +1,45 @@
+2026-11-02T16:06:11.874Z uppifyagency/harness-sandbox: 53 items {"filtered":53}
+2026-11-02T16:06:34.898Z uppifyagency/harness-sandbox: 9 items {"duplicate":7,"to-router":1,"filtered":1}
+router: ok=true (new session) cost=$0.0487 time=9.8s turns=5 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/19#issuecomment-6581907530
+run intended: 5a7d11a8a7fe2816ec072fcb10969f30
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a1/worker-1/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a1/worker-1/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run 5a7d11a8a7fe2816ec072fcb10969f30 started (ticket 790053531c8be668479b8190fe9b8708, attempt 1, openai-codex/gpt-6.1-sol:high)
+2026-11-02T16:07:14.538Z uppifyagency/harness-sandbox: 11 items {"duplicate":9,"filtered":2}
+2026-11-02T16:07:37.497Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:08:00.719Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:08:24.043Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:08:47.252Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:09:10.643Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:09:33.349Z uppifyagency/harness-sandbox: 6 items {"duplicate":5,"filtered":1}
+router: ok=true cost=$0.0856 time=10.2s turns=4 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/19#issuecomment-6581972306
+2026-11-02T16:10:14.724Z uppifyagency/harness-sandbox: 7 items {"duplicate":6,"filtered":1}
+2026-11-02T16:10:38.503Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+2026-11-02T16:11:03.008Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:11:27.136Z uppifyagency/harness-sandbox: 10 items {"duplicate":8,"filtered":2}
+2026-11-02T16:11:49.864Z uppifyagency/harness-sandbox: 10 items {"duplicate":9,"filtered":1}
+2026-11-02T16:12:13.266Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:12:36.876Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:13:02.039Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:13:25.340Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:13:48.323Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:14:11.409Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:14:35.544Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:14:59.325Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:15:22.369Z uppifyagency/harness-sandbox: 10 items {"duplicate":9,"filtered":1}
+2026-11-02T16:15:45.715Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:16:09.304Z uppifyagency/harness-sandbox: 10 items {"duplicate":8,"filtered":2}
+2026-11-02T16:16:32.098Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:16:55.596Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+2026-11-02T16:17:18.374Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T16:17:41.169Z uppifyagency/harness-sandbox: 8 items {"duplicate":6,"filtered":2}
+2026-11-02T16:18:04.188Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:18:49.760Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:19:20.469Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:19:48.321Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:20:11.783Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:20:35.729Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+2026-11-02T16:20:58.716Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+2026-11-02T16:21:21.458Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T16:21:44.047Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}

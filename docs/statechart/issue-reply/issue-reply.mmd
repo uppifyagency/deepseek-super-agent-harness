@@ -1,0 +1,54 @@
+---
+title: "A reply in the issue across a crash between the POST and reply.settled"
+---
+stateDiagram-v2
+  state "Legend" as legend {
+    lg0: Before the reply
+    lg1: Daemon sending
+    lg2: Daemon down
+    lg3: Settled
+  }
+  class lg0 tan
+  class lg1 blue
+  class lg2 orange
+  class lg3 teal
+  s0: Nothing to send yet
+  s1: Pending in the outbox (reply.intended)
+  s2: No marker on GitHub, about to POST
+  s3: Daemon down before the POST, still pending (reply.intended)
+  s4: Comment posted, settle not written yet
+  s5: Settled, one comment (reply.settled sent)
+  s6: Daemon down after the POST, still pending (reply.intended)
+  s7: Daemon back, comment on GitHub, still pending (reply.intended)
+  s8: Marker found on GitHub, no new POST
+  [*] --> s0
+  s0 --> s1: the router replies (reply.intended)
+  s1 --> s2: the daemon lists the comments, no marker
+  s1 --> s3: the daemon crashes
+  s2 --> s3: the daemon crashes
+  s2 --> s4: the daemon POSTs the comment with the marker
+  s3 --> s1: launchd restarts the daemon
+  s4 --> s5: the daemon writes reply.settled
+  s4 --> s6: the daemon crashes
+  s6 --> s7: launchd restarts the daemon
+  s7 --> s8: the daemon lists the comments and finds the marker
+  s7 --> s6: the daemon crashes
+  s8 --> s5: the daemon writes reply.settled
+  s8 --> s6: the daemon crashes
+  class s0 tan
+  class s1 blue
+  class s2 blue
+  class s3 orange
+  class s4 blue
+  class s5 teal
+  class s6 orange
+  class s7 blue
+  class s8 blue
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px

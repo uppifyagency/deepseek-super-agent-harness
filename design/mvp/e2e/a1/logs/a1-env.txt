@@ -1,0 +1,36 @@
+$ launchctl print gui/501/it.delera.harness.l2: sezioni environment (solo nomi)
+	inherited environment = {
+		SSH_AUTH_SOCK 
+	}
+	default environment = {
+		PATH 
+	}
+	environment = {
+		OSLogRateLimit 
+		ATOMIC_CODING_AGENT_DIR 
+		HARNESS_HOME 
+		USER 
+		LANG 
+		PATH 
+		LOGNAME 
+		SHELL 
+		HOME 
+		TMPDIR 
+		XPC_SERVICE_NAME 
+	}
+$ ps eww 62492: nomi delle variabili d'ambiente del processo reale
+ATOMIC_CODING_AGENT_DIR
+HARNESS_HOME
+HOME
+LANG
+LOGNAME
+PATH
+SHELL
+TMPDIR
+USER
+$ conteggio TOKEN nel processo
+0
+$ launchctl getenv GITHUB_PERSONAL_ACCESS_TOKEN | wc -c (dominio launchd globale)
+       0
+$ shell di chi installa: GITHUB_PERSONAL_ACCESS_TOKEN presente?
+si

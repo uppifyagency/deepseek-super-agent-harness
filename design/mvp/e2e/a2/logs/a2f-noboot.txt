@@ -1,0 +1,34 @@
+# noboot.sh, codice 9ae456b, 2026-11-02T20:26:40Z
+it.delera.harness.t3: running pid=51819, no heartbeat yet
+it.delera.harness.watchdog.t3: checking now, pid=51854
+20:26:43Z primo daemon: {"pid":51819,"since":"2026-11-02T20:26:42.203Z","at":"2026-11-02T20:26:42.211Z","everyMs":60000,"tick":0,"busySince":"2026-11-02T20:26:42.211Z"}
+20:27:12Z kickstart -k: pid nuovo 53941 fermato con STOP. Il battito nomina ancora: 51819
+  PID STAT ELAPSED COMMAND
+53941 T      00:00 ~/.nvm/versions/node/v26.13.0/bin/node /private/tmp/swarm-a2f/repo/harness/src/cli
+20:27:32Z ps T 00:20 | harness: (niente)
+20:27:52Z ps T 00:40 | harness: (niente)
+20:28:12Z ps T 01:00 | harness: (niente)
+20:28:32Z ps T 01:20 | harness: (niente)
+20:28:52Z ps T 01:40 | harness: (niente)
+20:29:13Z ps T 02:01 | harness: DAEMON boot-hung(pid 53941 up 121s, never beat): the watchdog restarts it at its next check
+20:29:33Z ps T 02:21 | harness: DAEMON boot-hung(pid 53941 up 141s, never beat): the watchdog restarts it at its next check
+20:29:53Z ps T 02:41 | harness: DAEMON boot-hung(pid 53941 up 161s, never beat): the watchdog restarts it at its next check
+20:30:13Z ps T 03:01 | harness: DAEMON boot-hung(pid 53941 up 181s, never beat): the watchdog restarts it at its next check
+20:30:33Z ps T 03:21 | harness: DAEMON boot-hung(pid 53941 up 201s, never beat): the watchdog restarts it at its next check
+20:30:53Z ps  | harness: (niente)
+20:30:53Z pid nuovo: 59249
+20:30:53Z battito del pid nuovo: {"pid":59249,"since":"2026-11-02T20:30:42.714Z","at":"2026-11-02T20:30:48.122Z","everyMs":60000,"tick":1}
+--- watchdog.log
+2026-11-02T20:26:42.229Z daemon=ok(beat 0s ago, lap busy 0s) router=ok runs=0 live, 0 stalled 16ms
+2026-11-02T20:28:42.404Z daemon=pid 53941 no heartbeat yet router=ok runs=not judged, no daemon beating 15ms
+2026-11-02T20:30:42.578Z daemon=boot-hung(pid 53941 up 210s, never beat) -> kickstart -k 29ms
+--- launchctl
+	runs = 3
+	pid = 59249
+	last terminating signal = Terminated: 15
+  PID STAT
+pid 53941 non c'e' piu'
+--- harness dopo
+(nessuna riga DAEMON)
+it.delera.harness.t3: not installed
+it.delera.harness.watchdog.t3: not installed

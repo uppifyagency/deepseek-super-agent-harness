@@ -1,0 +1,17 @@
+17:06:13 head: servizio l1 installato (nessun comando dopo install); trunk: harness run a mano (home worker-13)
+17:06:13 issue head:
+https://github.com/uppifyagency/harness-sandbox/issues/19
+17:06:15 issue trunk:
+https://github.com/uppifyagency/harness-sandbox/issues/20
+
+PNG non possibile: harness-sandbox e' privato e il Chrome di chrome-devtools non ha la sessione GitHub (Page not found). Cattura di testo con gh:
+issue #19 creata 2026-11-02T16:06:14Z: A1 lane 1 testa: scripts/ciao.sh
+  2026-11-02T16:06:50Z uppifyagency: Preso in carico: creo scripts/ciao.sh con un test.
+  2026-11-02T16:09:51Z uppifyagency: Fatto: PR pronta, https://github.com/uppifyagency/harness-sandbox/pull/21
+issue #20 creata 2026-11-02T16:06:16Z: A1 lane 1 trunk: scripts/ciao.sh
+  2026-11-02T16:06:38Z uppifyagency: Presa in carico: script `scripts/ciao.sh` con test.
+  2026-11-02T16:11:01Z uppifyagency: Fatto: PR pronta, https://github.com/uppifyagency/harness-sandbox/pull/22
+PR #21 di lunadelera-ops creata 2026-11-02T16:09:27Z branch harness/790053531c8b file ["scripts/ciao.sh","scripts/test-ciao.sh"]
+PR #22 di lunadelera-ops creata 2026-11-02T16:10:24Z branch harness/ad69a5892409 file ["scripts/ciao.sh","scripts/test-ciao.sh"]
+testa (servizio l1): issue #19 16:06:13Z -> PR #21 16:09:27Z = 194 s, nessun comando dopo service install
+trunk (harness run a mano): issue #20 16:06:15Z -> PR #22 16:10:24Z = 249 s, con un push rifiutato da GitHub (HTTP 500) al tentativo 1 e il tentativo 2 riuscito

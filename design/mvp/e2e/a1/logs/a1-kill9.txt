@@ -1,0 +1,9 @@
+every=20 s, ThrottleInterval=30 s, soglia 30 + 20 = 50 s
+killed 62492 at 17:03:51, new pid 63704 heartbeat {"pid":63704,"at":"2026-11-02T16:04:04.651Z","tick":1} after 13. s
+killed 63704 at 17:04:05, new pid 64246 heartbeat {"pid":64246,"at":"2026-11-02T16:04:35.031Z","tick":1} after 30.299999952316284 s
+killed 64246 at 17:04:35, new pid 64807 heartbeat {"pid":64807,"at":"2026-11-02T16:05:05.713Z","tick":1} after 30.700000047683716 s
+	state = running
+	runs = 4
+	last terminating signal = Killed: 9
+		state = active
+		state = active

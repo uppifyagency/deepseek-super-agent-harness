@@ -1,0 +1,31 @@
+trial 1: 2 held; refused 16735 | refused 16735 | exited 1: Error: ENOENT: no such file or directory, open '/var/folders/xx/2vqnykrx5_zbgnl1t94mtt9c0000gn/T/lock-stress-home-nOr7GQ/run.lock' | refused 16735
+trial 2: 2 held; refused 16821 | refused 16821 | refused 16821 | refused 16821
+trial 3: 1 held; refused 16915 | refused 16915 | refused 16915 | refused 16915 | refused 16915
+trial 4: 1 held; refused 17010 | refused 17010 | refused 17010 | refused 17010 | refused 17010
+trial 5: 1 held; refused 17110 | refused 17110 | refused 17110 | refused 17110 | refused 17110
+trial 6: 2 held; exited 1: Error: ENOENT: no such file or directory, open '/var/folders/xx/2vqnykrx5_zbgnl1t94mtt9c0000gn/T/lock-stress-home-boiCdY/run.lock' | refused 17209 | refused 17209 | refused 17209
+trial 7: 1 held; refused 17301 | refused 17301 | refused 17301 | refused 17301 | refused 17301
+trial 8: 2 held; refused 17374 | refused 17374 | refused 17374 | refused 17372
+trial 9: 2 held; refused 17470 | exited 1: Error: ENOENT: no such file or directory, open '/var/folders/xx/2vqnykrx5_zbgnl1t94mtt9c0000gn/T/lock-stress-home-i5h2c6/run.lock' | refused 17467 | refused 17470
+trial 10: 1 held; refused 17575 | refused 17575 | refused 17575 | refused 17575 | refused 17575
+trial 11: 1 held; refused 17674 | refused 17674 | refused 17674 | refused 17674 | refused 17674
+trial 12: 1 held; refused 17751 | refused 17751 | refused 17751 | refused 17751 | refused 17751
+trial 13: 3 held; exited 1: Error: ENOENT: no such file or directory, open '/var/folders/xx/2vqnykrx5_zbgnl1t94mtt9c0000gn/T/lock-stress-home-AsHxqg/run.lock' | refused 17847 | refused 17846
+trial 14: 3 held; refused 17932 | exited 1: Error: ENOENT: no such file or directory, open '/var/folders/xx/2vqnykrx5_zbgnl1t94mtt9c0000gn/T/lock-stress-home-BBp8ws/run.lock' | refused 17933
+trial 15: 3 held; exited 1: Error: ENOENT: no such file or directory, open '/var/folders/xx/2vqnykrx5_zbgnl1t94mtt9c0000gn/T/lock-stress-home-Damvia/run.lock' | refused 18016 | exited 1: Error: ENOENT: no such file or directory, open '/var/folders/xx/2vqnykrx5_zbgnl1t94mtt9c0000gn/T/lock-stress-home-Damvia/run.lock'
+trial 16: 1 held; refused 18084 | refused 18084 | refused 18084 | refused 18084 | refused 18084
+trial 17: 1 held; refused 18186 | refused 18186 | refused 18186 | refused 18186 | refused 18186
+trial 18: 1 held; refused 18288 | refused 18288 | refused 18288 | refused 18288 | refused 18288
+trial 19: 1 held; refused 18375 | refused 18375 | refused 18375 | refused 18375 | refused 18375
+trial 20: 1 held; refused 18466 | refused 18466 | refused 18466 | refused 18466 | refused 18466
+trial 21: 3 held; refused 18572 | refused 18573 | refused 18572
+trial 22: 1 held; refused 18661 | refused 18661 | refused 18661 | refused 18661 | refused 18661
+trial 23: 1 held; refused 18760 | refused 18760 | refused 18760 | refused 18760 | refused 18760
+trial 24: 2 held; refused 18854 | refused 18851 | exited 1: Error: ENOENT: no such file or directory, open '/var/folders/xx/2vqnykrx5_zbgnl1t94mtt9c0000gn/T/lock-stress-home-mYnKVo/run.lock' | refused 18851
+trial 25: 1 held; refused 18939 | refused 18939 | refused 18939 | refused 18939 | refused 18939
+trial 26: 2 held; refused 19042 | refused 19042 | refused 19042 | refused 19042
+trial 27: 1 held; refused 19113 | refused 19113 | refused 19113 | refused 19113 | refused 19113
+trial 28: 1 held; refused 19208 | refused 19208 | refused 19208 | refused 19208 | refused 19208
+trial 29: 1 held; refused 19331 | refused 19331 | refused 19331 | refused 19331 | refused 19331
+trial 30: 1 held; refused 19428 | refused 19428 | refused 19428 | refused 19428 | refused 19428
+6 processes x 30 trials: double holds 11, no holder 0, holders per trial [2,2,1,1,1,2,1,2,2,1,1,1,3,3,3,1,1,1,1,1,3,1,1,2,1,2,1,1,1,1]

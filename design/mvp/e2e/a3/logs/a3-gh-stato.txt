@@ -1,0 +1,22 @@
+# stato su GitHub prima della pulizia, 2026-11-02T19:20:55Z (testo da gh: il Chrome di chrome-devtools non ha la sessione GitHub)
+#64 [a3-s7] conta-parole.sh -l sbaglia su un file senza a capo finale | commenti: 0
+#65 [a3-s9] conta-parole.sh -l sbaglia su un file senza a capo finale | commenti: 0
+#66 [a3-s5] conta-parole.sh -l conta una riga in meno se il file non finisce con un a capo | commenti: 0
+#67 [a3-s5] ciao.sh stampa il saluto senza il nome quando il nome contiene uno spazio | commenti: 0
+#68 [a3-s5] conta.sh esce con 0 anche quando il file non esiste | commenti: 0
+#69 [a3-s1] conta-parole.sh -l conta una riga in meno senza a capo finale | commenti: 1
+    uppifyagency: Ho preparato una correzione in anticipo: https://github.com/uppifyagency/harness-sandbox/pull/78
+#70 [a3-s3] ciao.sh ignora il nome passato come argomento | commenti: 0
+#71 [a3-s4] conta-parole.sh con un file inesistente stampa un errore della shell | commenti: 3
+    uppifyagency: /harness-s4 procedi tu
+    uppifyagency: Ci stavo gia' lavorando in anticipo. Da ora seguo questo ticket qui: ti scrivo quando la PR e' pronta.
+    uppifyagency: Correzione pronta: https://github.com/uppifyagency/harness-sandbox/pull/76
+#72 [a3-s8] conta-parole.sh -l conta una riga in meno senza a capo finale | commenti: 0
+#73 [a3-trunk] conta-parole.sh -l conta una riga in meno senza a capo finale | commenti: 1
+    uppifyagency: Presa in carico: correzione del conteggio righe di `conta-parole.sh -l`.
+#74 [a3-s6] scripts/somma-a3.sh somma male i numeri negativi | commenti: 0
+#75 [a3-s6] conta-parole.sh -l conta una riga in meno senza a capo finale | commenti: 0
+#77 [a3-s6v] crea scripts/a3-s6.sh | commenti: 1
+    uppifyagency: Presa in carico: creo `scripts/a3-s6.sh`.
+PR #76 Messaggio chiaro per file inesistente in conta-parole.sh di lunadelera-ops OPEN
+PR #78 [speculativa] Fix conta-parole.sh -l line count without trailing newline di lunadelera-ops OPEN

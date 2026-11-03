@@ -1,0 +1,22 @@
+== before, setup --yes  su una home vuota
+exit 0
+fatto       config.json
+  "mode": "auto",
+== before, setup --yes --mode observe su una home vuota
+exit 1
+Unknown option '--mode'
+== before, setup --yes --mode auto su una home vuota
+exit 1
+Unknown option '--mode'
+== after, setup --yes  su una home vuota
+exit 0
+fatto       config.json
+  "mode": "observe",
+== after, setup --yes --mode observe su una home vuota
+exit 0
+fatto       config.json e modo observe
+  "mode": "observe",
+== after, setup --yes --mode auto su una home vuota
+exit 0
+fatto       config.json e modo auto
+  "mode": "auto",

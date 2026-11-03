@@ -1,0 +1,33 @@
+$ 18:03:03Z restart 1, 2 s after run.bound (before the first checkpoint)
+2026-11-02T18:03:00.604Z|run.intended
+2026-11-02T18:03:00.912Z|run.bound
+running pid=43275, no heartbeat yet
+$ 18:06:50Z after run.ended
+2026-11-02T18:03:00.604Z|run.intended|||1|||
+2026-11-02T18:03:00.912Z|run.bound|9e783ed02cf6158c10f17d9de41ffdcf|b4768b18-06b4-4555-9517-6b61dd29879e||||
+2026-11-02T18:03:26.526Z|run.bound|9e783ed02cf6158c10f17d9de41ffdcf|25f1c132-d051-4e92-b5d6-db6d29060256||||
+2026-11-02T18:06:18.091Z|run.ended|9e783ed02cf6158c10f17d9de41ffdcf|||done|https://github.com/uppifyagency/harness-sandbox/pull/41|
+$ launchctl print
+	state = running
+	runs = 2
+	pid = 43275
+	last exit code = 0
+		state = active
+		state = active
+$ engine.log
+2026-11-02T18:02:15.544Z engine session 01a19d6d-1295-7c5a-9eab-b72c9064dc60 pid 40704
+2026-11-02T18:03:00.914Z run 9e783ed02cf6158c10f17d9de41ffdcf bound to b4768b18-06b4-4555-9517-6b61dd29879e
+2026-11-02T18:03:03.925Z engine lost the run 9e783ed02cf6158c10f17d9de41ffdcf: WorkflowRunControlUnavailableError: Workflow run control is unavailable for this session.
+    at executeContext (file://~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs:105111:11)
+    at request (file://~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs:105190:19)
+    at Object.getRun (file://~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs:105258:28)
+    at SessionWorkflowsHandle.getRun (file://~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/core/extensions/workflow-run-control-hub.js:112:31)
+    at watch (file:///private/tmp/swarm-a1r/repo/harness/src/engine.ts:191:35)
+2026-11-02T18:03:04.224Z diagnostic {"level":"error","source":"~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs","message":"Extension session_shutdown failed","sessionId":"01a19d6d-1295-7c5a-9eab-b72c9064dc60"}
+2026-11-02T18:03:04.233Z engine dispose failed after 535 ms: Session shutdown failed ["~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs: Workflow cleanup left uncooperative tools: b4768b18-06b4-4555-9517-6b61dd29879e/tool:ha66a4d3a324947a2ee494d9df771306e"]
+2026-11-02T18:03:19.511Z engine session 01a19d6d-f6a6-7708-960a-cb687c0bdf16 pid 43275
+2026-11-02T18:03:25.034Z resume b4768b18-06b4-4555-9517-6b61dd29879e refused (Workflow b4768b18-06b4-4555-9517-6b61dd29879e has no durable checkpoint or pending prompt progress and is not resumable.): nothing to lose, starting 9e783ed02cf6158c10f17d9de41ffdcf again as the same attempt
+2026-11-02T18:03:26.528Z run 9e783ed02cf6158c10f17d9de41ffdcf bound to 25f1c132-d051-4e92-b5d6-db6d29060256
+2026-11-02T18:06:09.306Z verify 9e783ed02cf6158c10f17d9de41ffdcf PASS -> independent PASS cost=0.06428600000000001 session=f5197f00-6a08-4ad1-b974-7c5f6d706a90
+2026-11-02T18:06:15.356Z publish 9e783ed02cf6158c10f17d9de41ffdcf a151b78f -> https://github.com/uppifyagency/harness-sandbox/pull/41
+2026-11-02T18:06:18.110Z run 9e783ed02cf6158c10f17d9de41ffdcf 25f1c132-d051-4e92-b5d6-db6d29060256 ended done

@@ -1,0 +1,73 @@
+# lane 1, 2026-11-02T19:20:16Z
+## trunk 6e9beeb, issue gemella #73 (trunk-lane1.ts)
+ingest -> to-router
+router: ok=true cost=$0.0577 turns=5
+reply ack sent: https://github.com/uppifyagency/harness-sandbox/issues/73#issuecomment-6586127085
+  Presa in carico: correzione del conteggio righe di `conta-parole.sh -l`.
+  
+  **Cosa ho capito**
+  - Se il file non termina con un a capo, `-l` non conta l'ultima riga (`printf 'uno\ndue'` dà 1 invece di 2).
+  - La correzione deve contare anche l'ultima riga senza a capo, senza contare due volte nei file che terminano con un a capo e restituendo 0 per i file vuoti.
+  - Aggiungerò un test che copra questi casi.
+planRuns -> 1 run.intended
+  -> trigger          uppifyagency: [a3-trunk] conta-parole.sh -l conta una riga in meno senza a capo finale Con un file che non finisce con un a capo, `scr
+  -> trigger.filtered PASS candidate
+  -> eval.opened      eval.opened
+  -> decided          accept: Correggi conteggio righe di conta-parole.sh -l senza a capo finale
+  -> subscribed       subscribed to ticket 06cfb72e48d0397f54f061e98bd1469f
+  -> reply.intended   ack -> issue:uppifyagency/harness-sandbox#73: Presa in carico: correzione del conteggio righe di `conta-parole.sh -l`. **Cosa ho capito** - Se il file non termina con
+  -> reply.settled    reply.settled
+$ gh: commenti su #73
+uppifyagency: Presa in carico: correzione del conteggio righe di `conta-parole.sh -l`.
+
+## testa, issue #69 (daemon harness run, kill -9 a meta' del run: lane 10)
+$ harness recall issue:uppifyagency/harness-sandbox#69
+thread issue:uppifyagency/harness-sandbox#69
+9 events, 2 triggers, 1 dropped, ticket ticket:f8d07cd956a584eea729142b344995f8
+  -> trigger          341b9d52b3e038d1f8d28259ebce5a68  uppifyagency: [a3-s1] conta-parole.sh -l conta una riga in meno senza a capo finale Con un file che non finisce con un a capo, `script
+  -> trigger.filtered 2ae3a991c45aa6064d4881b20f690c9e  PASS candidate
+  -> eval.opened      c9d85a96928c92c69d8d414f0c19620c  eval.opened
+  -> decided          bf16f3b5d839bfa7173d484453e4660e  accept: Fix conta-parole.sh -l line count without trailing newline
+  -> subscribed       2c34c150e13156982599f68a7df25819  subscribed to ticket f8d07cd956a584eea729142b344995f8
+  -> reply.intended   2b1e16fbcfc6267ac904009c4265b741  result -> issue:uppifyagency/harness-sandbox#69: Ho preparato una correzione in anticipo: https://github.com/uppifyagency/harness-sandbox/pull/78
+  -> reply.settled    51de5c26321e93ea79914f4a3c02f2ee  reply.settled
+  -> trigger          1530abaecd1cbad3b59cef074f4f15e8  uppifyagency: Ho preparato una correzione in anticipo: https://github.com/uppifyagency/harness-sandbox/pull/78 <!-- harness:2b1e16fbcf
+  -> trigger.filtered 0058fd298ac62c9db75a7a110b1afacc  DROP own-message
+$ harness recall ticket:f8d07cd9...
+thread ticket:f8d07cd956a584eea729142b344995f8
+7 events
+  -> ticket.opened    4c5c85a2c48e66fd2a8bf1b88250d9f3  ticket "Fix conta-parole.sh -l line count without trailing newline": scripts/conta-parole.sh -l counts the last line even when the file lacks a final newline: `printf 'uno\ndue' > f.txt; sc
+  -> run.intended     bdc7f7679e08912d812b174dea16f30b  attempt 1 on uppifyagency/harness-sandbox
+  -> run.bound        ca3f1c9eee33dbcd711bb97517772b19  run.bound
+  -> run.progress     5e24e1a99090920682848b1314042b5e  verify: started on c7f98ae3
+  -> run.progress     2f96e86370919fb00f7d922854cc454d  work: completed
+  -> run.ended        785a02985b6871e758505a1b64f59003  done: PR #78 https://github.com/uppifyagency/harness-sandbox/pull/78
+  -> ticket.promoted  05d526a85afd821b46d457476f54d491  promoted to visible (delivered)
+$ gh issue view 69 --comments (testo)
+2026-11-02T19:19:25Z uppifyagency: Ho preparato una correzione in anticipo: https://github.com/uppifyagency/harness-sandbox/pull/78
+
+$ gh pr view 78
+title: [speculativa] Fix conta-parole.sh -l line count without trailing newline
+author: lunadelera-ops
+state: OPEN
+branch: harness/f8d07cd956a5
+Committed fix for -l undercounting files without a final newline using awk record counting. Added regression tests for both newline variants; existing empty-file coverage remains. Reported commits: e623168 and c7f98ae; ready for verification.
+
+**Verifica indipendente** (opus, unit-test-verified): Ho letto il diff 950d70e..c7f98ae, che contiene 2 commit. In scripts/conta-parole.sh, con -l il conteggio ora usa `awk 'END { print NR }'` invece di `wc -l`; il percorso -w (parole) non cambia. scripts/test-conta-parole.sh aggiunge due casi: 'uno\ndue\n' deve dare 2 e 'uno\ndue' deve dare 2. Il caso del file vuoto per -l c'era già.
+
+Cosa ho eseguito e cosa ho visto:
+- `bash scripts/test-conta-parole.sh`: tutti gli OK, rc=0.
+- Riproduzione con lo script originale (`git show 950d70e:scripts/conta-parole.sh` copiato in una cartella temporanea): `-l` su 'uno\ndue' stampa 1. Il bug è confermato, quindi anche il nuovo test fallisce sul codice vecchio.
+- Con lo script nuovo:
+  - 'uno\ndue' dà 2;
+  - il file vuoto dà 0;
+  - 'a\n\n' dà 2, invariato;
+  - 'a\r\nb' dà 2;
+  - un file inesistente dà errore con rc=1, come prima.
+
+Il worktree è pulito. Il cambiamento è piccolo, limitato al ticket e senza altre modifiche.
+
+Closes #69
+
+
+$ ls worktrees/

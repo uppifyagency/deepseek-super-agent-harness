@@ -1,0 +1,52 @@
+2026-11-02T16:06:03.369Z uppifyagency/harness-sandbox: 53 items {"filtered":53}
+2026-11-02T16:06:25.508Z uppifyagency/harness-sandbox: 9 items {"duplicate":7,"filtered":1,"to-router":1}
+router: ok=true (new session) cost=$0.0513 time=9.2s turns=5 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/20#issuecomment-6581902583
+run intended: cce5dc1b2294d96b16c59a59131e620a
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a1/worker-13/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a1/worker-13/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run cce5dc1b2294d96b16c59a59131e620a started (ticket ad69a5892409a47f148f33e7a2eda3ad, attempt 1, openai-codex/gpt-6.1-sol:high)
+2026-11-02T16:07:00.547Z uppifyagency/harness-sandbox: 11 items {"duplicate":9,"filtered":2}
+2026-11-02T16:07:22.868Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:07:44.779Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:08:06.928Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:08:28.893Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:08:51.004Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+run intended: 127f6e4d1bb4cd93814381e2e49c5e08
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a1/worker-13/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a1/worker-13/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run 127f6e4d1bb4cd93814381e2e49c5e08 started (ticket ad69a5892409a47f148f33e7a2eda3ad, attempt 2, openai-codex/gpt-6.1-sol:high)
+2026-11-02T16:09:13.185Z uppifyagency/harness-sandbox: 5 items {"duplicate":5}
+2026-11-02T16:09:35.371Z uppifyagency/harness-sandbox: 6 items {"duplicate":5,"filtered":1}
+2026-11-02T16:09:57.594Z uppifyagency/harness-sandbox: 7 items {"duplicate":6,"filtered":1}
+2026-11-02T16:10:19.994Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:10:42.014Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+router: ok=true cost=$0.0979 time=16.2s turns=4 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/20#issuecomment-6582000345
+2026-11-02T16:11:24.556Z uppifyagency/harness-sandbox: 10 items {"duplicate":8,"filtered":2}
+2026-11-02T16:11:46.680Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:12:09.065Z uppifyagency/harness-sandbox: 10 items {"duplicate":9,"filtered":1}
+2026-11-02T16:12:31.328Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:12:53.437Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:13:15.625Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:13:37.731Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:13:59.764Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:14:21.894Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:14:43.845Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:15:06.344Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:15:28.929Z uppifyagency/harness-sandbox: 10 items {"duplicate":9,"filtered":1}
+2026-11-02T16:15:51.159Z uppifyagency/harness-sandbox: 9 items {"duplicate":8,"filtered":1}
+2026-11-02T16:16:13.312Z uppifyagency/harness-sandbox: 7 items {"duplicate":6,"filtered":1}
+2026-11-02T16:16:35.643Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:16:57.751Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+2026-11-02T16:17:19.801Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T16:17:41.805Z uppifyagency/harness-sandbox: 8 items {"duplicate":6,"filtered":2}
+2026-11-02T16:18:03.902Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:18:26.283Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:18:48.644Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:19:11.451Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:19:33.883Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:19:56.371Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:20:18.701Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:20:40.947Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+2026-11-02T16:21:03.139Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+2026-11-02T16:21:25.408Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T16:21:47.658Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}

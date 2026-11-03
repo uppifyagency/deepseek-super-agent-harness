@@ -1,0 +1,33 @@
+# Stop del watchdog su un run visibile fermo davvero (issue #127, home /tmp/swarm-int/m1/home, label it.delera.harness.m1, stuckAfterMin 2)
+21:44:38Z run 1f5954a65de8853f08e05e7f2968b02f bound
+21:49:08Z run.ended seen
+--- events of the run
+708|2026-11-02T21:44:24.285Z|run.bound|{"run":"1f5954a65de8853f08e05e7f2968b02f","atomic":"6cbce2a3-40c5-4d17-84cb-bc6201383f78"}
+709|2026-11-02T21:48:34.269Z|watchdog.judged|{"run":"1f5954a65de8853f08e05e7f2968b02f","verdict":"stuck","evidence":"At 21:44:37 the worker started `while ! test -f /tmp/swarm-int/via-m1; do sleep 30; done`, a loop that waits for an external file (copied from the issue text, not from the goal). At 21:44:52 it called a wait of up to 3600000 ms on that task. Nothing has happened since: scripts/hello-m1.sh has not been written and no test exists, so in 4 minutes it has made no progress toward the goal."}
+710|2026-11-02T21:49:05.067Z|stop.intended|{"run":"1f5954a65de8853f08e05e7f2968b02f","reason":"watchdog stuck: At 21:44:37 the worker started `while ! test -f /tmp/swarm-int/via-m1; do sleep 30; done`, a loop that waits for an external file (copied from the issue text, not from the goal). At 21:44:52 it called a wait of up to 3600000 ms on that task. Nothing has happened since: scripts/hello-m1.sh has not been written and no test exists, so in 4 minutes it has made no progress toward the goal."}
+711|2026-11-02T21:49:05.385Z|run.ended|{"run":"1f5954a65de8853f08e05e7f2968b02f","outcome":{"kind":"failed","cause":"stopped","retryable":false,"evidence":"watchdog stuck: At 21:44:37 the worker started `while ! test -f /tmp/swarm-int/via-m1; do sleep 30; done`, a loop that waits for an external file (copied from the issue text, not from the goal). At 21:44:52 it called a wait of up to 3600000 ms on that task. Nothing has happened since: scripts/hello-m1.sh has not been written and no test exists, so in 4 minutes it has made no progress toward the goal."},"usage":{"costUsd":0.0588516,"input":26093,"output":152,"cacheRead":51456,"turns":4,"durationMs":0}}
+--- counts
+run.ended|1
+stop.intended|1
+watchdog.judged|1
+--- watchdog.log
+2026-11-02T21:40:30.416Z daemon=ok(beat 0s ago, lap busy 0s) router=ok runs=0 live, 0 stalled 14ms
+2026-11-02T21:42:30.600Z daemon=ok(beat 5s ago) router=ok runs=0 live, 0 stalled 15ms
+2026-11-02T21:44:19.355Z daemon=ok(beat 0s ago, lap busy 0s) router=ok runs=0 live, 0 stalled 14ms
+2026-11-02T21:46:20.480Z daemon=ok(beat 0s ago) router=ok runs=1 live, 0 stalled 14ms
+2026-11-02T21:48:34.270Z daemon=ok(beat 0s ago) router=ok runs=1 live, 1 stalled judged=[1f5954a6:stuck $0.0345 12.0s] 13630ms
+--- engine.log (stop)
+2026-11-02T21:49:05.378Z stop 1f5954a65de8853f08e05e7f2968b02f: quit 6cbce2a3-40c5-4d17-84cb-bc6201383f78 -> {"action":"quit","runId":"6cbce2a3-40c5-4d17-84cb-bc6201383f78","status":"paused","message":"Run 6cbce2a3-40c5-4d17-84cb-bc6201383f78 quit and can be resumed with /workflow resume."}
+--- worktrees
+--- worktree 0de972b73839-a1 (assente = rimosso)
+assente
+--- record di Atomic al quit (run-<atomic>.json): modelAttempts per stadio
+{"status":"paused","stages":[{"name":"work","status":"paused","sessionId":"01a19e38-8c75-733f-8877-d36b1232c3f2","modelAttempts":0}]}
+--- harness
+DISCARDED  issue:uppifyagency/harness-sandbox#126  "README: a cosa serve il repo"  question: Quale sezione del README va corretta?
+STUCK  issue:uppifyagency/harness-sandbox#127  watchdog stuck: At 21:44:37 the worker started `while ! test -f /tmp/swarm-int/via-m1; do sleep 30; done`, a loop that waits for an external file (copied from the issue text, not from the goal). At 21:44:52 it called a wait of up to 3600000 ms on that task. Nothing has happened since: scripts/hello-
+--- commenti su #127
+[]
+--- dopo la prova: il filtro del fork legge startedAt (il record non ha createdAt). Stessa somma sul record e sulla sessione veri (usage-check.ts):
+since 0: {"costUsd":0.0588516,"input":26093,"output":152,"cacheRead":51456,"turns":4,"durationMs":0}
+since startedAt: {"costUsd":0.0588516,"input":26093,"output":152,"cacheRead":51456,"turns":4,"durationMs":0} durationMs 281124

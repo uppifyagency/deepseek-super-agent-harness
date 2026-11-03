@@ -1,0 +1,42 @@
+$ HARNESS_HOME=/tmp/swarm-a5/worker-5/home harness doctor
+ok     macOS
+ok     Node >= 26.13.0
+ok     Atomic 0.9.63 globale
+ok     pstack in /tmp/swarm-a5/worker-5/pstack-claude/plugins/pstack
+ok     login Codex di Atomic
+ok     Claude Code con il login del piano
+ok     gh autenticato
+ok     config.json
+ok     token del bot nel Portachiavi (harness-bot-github-test-5)
+ok     servizio launchd (it.delera.harness.i5)
+exit 0
+
+== 10 esecuzioni, tempo di parete in ms (processo intero: avvio di node + controlli)
+run 1: 1372 ms exit 0
+run 2: 1135 ms exit 0
+run 3: 1104 ms exit 0
+run 4: 1252 ms exit 0
+run 5: 1138 ms exit 0
+run 6: 1262 ms exit 0
+run 7: 1159 ms exit 0
+run 8: 2238 ms exit 0
+run 9: 1144 ms exit 0
+run 10: 1230 ms exit 0
+
+== scomposizione (node diretto, senza caricare nvm), ms
+doctor 1: 1343
+doctor 2: 870
+doctor 3: 822
+doctor 4: 768
+doctor 5: 814
+doctor 6: 811
+doctor 7: 818
+doctor 8: 814
+doctor 9: 797
+doctor 10: 810
+solo avvio cli.ts (comando sconosciuto) 1: 98
+solo avvio cli.ts (comando sconosciuto) 2: 96
+solo avvio cli.ts (comando sconosciuto) 3: 98
+sonda 'atomic auth check --provider openai-codex --no-refresh --json': 661
+sonda 'claude auth status --json': 186
+sonda 'gh auth status': 548

@@ -1,0 +1,64 @@
+# test nuovi contro il codice di 5eafcd4 (prima delle correzioni), 2026-11-02T20:11:03Z
+# watchdog.test.ts: import di daemonRunningSince e judgeRuns sostituiti da shim, perche' prima non esistono
+✔ the daemon plist lints, runs this Node under env -i, and carries no token (21.393833ms)
+✔ plist values are XML-escaped (4.344583ms)
+✔ a second run is refused while a live harness run holds the lock (1123.120333ms)
+✔ harness work is refused while a run holds the lock of its home (1233.789875ms)
+✔ a hand-run tick is refused while the daemon holds the lock: one sender per home (1228.532916ms)
+✔ the lock of a dead run is reclaimed (69.981541ms)
+✔ a run.lock naming a live pid does not block: only the kernel lock counts (2.883042ms)
+✔ release frees the lock for the next run (1122.034125ms)
+✔ six runs racing for the lock of a SIGKILLed run: exactly one holds it, every time (10724.090625ms)
+✔ a relative HARNESS_HOME is written into the plist as an absolute path (0.531916ms)
+✔ stop during a step: the next step never starts, no idle heartbeat, the loop ends (1.981042ms)
+✔ the heartbeat keeps beating while a step is still running, and says since when it is busy (157.682542ms)
+✔ stop during the sleep ends the loop at once (21.409792ms)
+✔ heartbeat round-trips and a malformed one reads as missing (5.195666ms)
+✔ describe says what service status prints (0.353208ms)
+✔ the default service label is it.delera.harness for ~/.harness and distinct and stable for any other home (4.792375ms)
+✔ an accepted ticket gets exactly one run.intended, with the issue text in the brief and the config frozen in (10.664042ms)
+✔ engine reports: bound, progress, ended closes the run and later reports are dropped (6.259625ms)
+✔ a run Atomic cannot resume is started again as the same attempt: rebound, never ended, no attempt spent (5.624833ms)
+✔ afterResumeError: only a run with no progress is started again; a run that may have progress is waited for (0.133208ms)
+✔ afterResumeError: the lease and a busy journal are waited out within 20 tries, anything else fails (0.202209ms)
+✔ afterResumeError: an attempt binds at most five Atomic runs that die before a checkpoint, then gives up (0.062083ms)
+✔ bindings counts the Atomic runs a run was bound to, a repeated binding once (4.897208ms)
+✔ classify: done, verifier FAIL, no commit, blocked worker, budget stop, failure (0.381083ms)
+✔ two attempts on an existing clone get separate worktrees at the same base; prepare is idempotent (564.93575ms)
+✔ a verifier FAIL plans attempt 2 that resumes the worker and its commits; attempt 2 failing is final and reported once (8.177875ms)
+✖ verdict: independent only on an untouched worktree; a commit after the verdict blocks publish (204.637917ms)
+✔ a comment on the ticket's issue during the run is routed in code and delivered once to the live run (6.879708ms)
+✔ after a done run, a comment on the PR starts attempt 2 on the same session and commits, carrying the comment (5.982ms)
+✔ while a worker question is asked on the issue, a comment answers it and is not routed as new input (6.561792ms)
+✔ slots: with 2 workers, a third ticket waits until a run ends; a run waiting on a gate keeps its slot (8.4425ms)
+✔ recall follows a ticket: thread key -> runs and outcomes with readable previews (5.534125ms)
+✔ budget: a stop opens a Sì/No gate in the issue instead of a result; Sì starts the next attempt with the raised cap (6.187875ms)
+✔ budget: No leaves the ticket idle; a stop that overshot its cap asks for twice the spend (5.154208ms)
+✔ daemon: a heartbeat older than 2 laps restarts it, a fresh one does not, a long router turn is healthy (1.888833ms)
+✖ daemon: time asleep never counts; the wake time comes from sysctl (0.705791ms)
+✖ quiet time starts no earlier than the daemon running now: a crash loop or a reinstall never counts against a worker (8.798166ms)
+✔ a run without progress is judged after stuckAfterMin; with an open gate it is never judged (6.953625ms)
+✔ a progressing verdict buys another stuckAfterMin; a run past the work stage is not judged (57.288042ms)
+✔ stuck judged twice gives one stop.intended; the run ends stopped with the reason and shows as STUCK (8.534792ms)
+✔ a stuck verdict on a run that opened a gate meanwhile stops nothing; drifting stops like stuck (12.184625ms)
+✖ a gate opened and answered after the stuck verdict: the run moved, the old verdict stops nothing (6.430709ms)
+✖ a stuck verdict, then a gate answered before the daemon lap: no stop is written (6.436333ms)
+✖ a stuck verdict, then the work ends and verify runs: no stop is written, and an earlier stop is never carried out (5.698042ms)
+✔ a verdict on a run that moved while the judge thought is not written (5.057583ms)
+✔ the watchdog log handle refuses every kind but watchdog.judged (5.331833ms)
+✔ router: down after two failed wakes in a row, up again after one that works (0.208375ms)
+✔ transcript entries: text and tool calls kept, thinking dropped, long results clipped (0.142917ms)
+✔ the watchdog plist runs `watchdog --once` every 120 s, never kept alive, next to the daemon label (8.80475ms)
+✖ the transcript reaches the judge fenced as untrusted data; a steered GitHub follow-up is marked as one (5.037917ms)
+✖ a failed judge call is recorded, so the run waits stuckAfterMin before the next try; one unreadable transcript skips only its run (40.129959ms)
+ℹ tests 51
+ℹ pass 43
+ℹ fail 8
+  TypeError [Error]: excludeHarnessDirs is not a function
+  AssertionError [ERR_ASSERTION]: no wake since a cold boot
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  AssertionError [ERR_ASSERTION]: answered: the verdict is older than the answer
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  AssertionError [ERR_ASSERTION]: the run finished its work after the verdict
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /^10:04:00 github follow-up \(quoted to the worker, not to you\): .*WATCHDOG: verdict drifting/. Input:
+  Error: judgeRuns does not exist before the fix

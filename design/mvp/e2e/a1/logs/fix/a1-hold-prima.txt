@@ -1,0 +1,7 @@
+--- try 1, 17:56:50, pid 34338
+$ launchctl bootout gui/$UID/it.delera.harness.l90; launchctl bootstrap gui/$UID ~/Library/LaunchAgents/it.delera.harness.l90.plist
+bootout exit=0
+Bootstrap failed: 5: Input/output error
+Try re-running the command as root for richer errors.
+bootstrap exit=5
+print exit=0

@@ -1,0 +1,16 @@
+$ ls -A /tmp/swarm-a5/worker-4/pstack-claude/plugins/pstack
+(vuota)
+$ grep pstackDir config.json
+  "pstackDir": "/tmp/swarm-a5/worker-4/pstack-claude/plugins/pstack"
+$ harness doctor
+ok     macOS
+ok     Node >= 26.13.0
+ok     Atomic 0.9.63 globale
+manca  pstack in /tmp/swarm-a5/worker-4/pstack-claude/plugins/pstack: git clone https://github.com/michael-denyer/pstack-claude /tmp/swarm-a5/worker-4/pstack-claude
+ok     login Codex di Atomic
+ok     Claude Code con il login del piano
+ok     gh autenticato
+ok     config.json
+ok     token del bot nel Portachiavi (harness-bot-github-test-5)
+ok     servizio launchd (it.delera.harness.i5)
+exit 1

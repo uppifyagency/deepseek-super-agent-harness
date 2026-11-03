@@ -1,0 +1,28 @@
+== before, doctor: radice con solo mkdir -p /tmp/swarm-a5fix/r1-before/p/plugins/pstack
+manca  pstack in /tmp/swarm-a5fix/r1-before/p/plugins/pstack: git clone https://github.com/michael-denyer/pstack-claude /tmp/swarm-a5fix/r1-before/p
+== before, il comando stampato: git clone https://github.com/michael-denyer/pstack-claude /tmp/swarm-a5fix/r1-before/p
+exit 128
+fatal: destination path '/tmp/swarm-a5fix/r1-before/p' already exists and is not an empty directory.
+== before, setup --yes sulla stessa radice
+fatal: destination path '/tmp/swarm-a5fix/r1-before/p' already exists and is not an empty directory.
+gia' fatto  Atomic globale, 0.9.x da 0.9.63 in su
+gia' fatto  Node >= 26.13.0
+gia' fatto  macOS
+manca  pstack in /tmp/swarm-a5fix/r1-before/p/plugins/pstack: git clone https://github.com/michael-denyer/pstack-claude /tmp/swarm-a5fix/r1-before/p
+ls: /tmp/swarm-a5fix/r1-before/p/plugins/pstack/pi/index.ts: No such file or directory
+== before, radice con un file
+manca  pstack in /tmp/swarm-a5fix/r1-before/p/plugins/pstack: git clone https://github.com/michael-denyer/pstack-claude /tmp/swarm-a5fix/r1-before/p
+note.txt
+== after, doctor: radice con solo mkdir -p /tmp/swarm-a5fix/r1-after/p/plugins/pstack
+manca  pstack in /tmp/swarm-a5fix/r1-after/p/plugins/pstack: find /tmp/swarm-a5fix/r1-after/p -depth -type d -empty -delete && git clone https://github.com/michael-denyer/pstack-claude /tmp/swarm-a5fix/r1-after/p
+== after, il comando stampato: find /tmp/swarm-a5fix/r1-after/p -depth -type d -empty -delete && git clone https://github.com/michael-denyer/pstack-claude /tmp/swarm-a5fix/r1-after/p
+exit 0
+== after, setup --yes sulla stessa radice
+fatto       pstack in /tmp/swarm-a5fix/r1-after/p/plugins/pstack
+gia' fatto  Atomic globale, 0.9.x da 0.9.63 in su
+gia' fatto  Node >= 26.13.0
+gia' fatto  macOS
+/tmp/swarm-a5fix/r1-after/p/plugins/pstack/pi/index.ts
+== after, radice con un file
+manca  pstack in /tmp/swarm-a5fix/r1-after/p/plugins/pstack: /tmp/swarm-a5fix/r1-after/p esiste e non e' un clone completo di pstack-claude: spostala, o scegli un'altra cartella con --pstack
+note.txt

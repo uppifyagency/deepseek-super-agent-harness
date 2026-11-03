@@ -1,0 +1,154 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>issue-reply statechart</title>
+<style>:root{--bg:#fafafa;--fg:#1c1c1c;--muted:#555;--card:#fff;--line:#ddd}@media (prefers-color-scheme:dark){:root{--bg:#161616;--fg:#f0f0f0;--muted:#aaa;--card:#202020;--line:#3a3a3a}}body{font-family:-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:24px 16px;max-width:1200px}h1{font-size:22px}h2{font-size:18px;margin:28px 0 8px}.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto}.note,li{color:var(--muted);font-size:14px;line-height:1.5}code{font-size:13px}</style></head><body>
+<h1>A reply in the issue across a crash between the POST and reply.settled</h1>
+<p class="note">Model <code>issue_reply.tla</code>, checked with TLC 2.19 (tla2tools 1.7.4) and drawn with the pstack statechart skill. Each state names the log fact (<code>Kinds</code> in harness/src/domain.ts) that stands for it. Rebuild with <code>node docs/statechart/build.mjs issue-reply</code>.</p>
+<h2>Rules</h2><ul><li>AtMostOneComment: one reply.intended gives at most one comment in the issue.</li><li>SettledMeansPosted: reply.settled sent means a comment exists.</li></ul>
+<h2>The model as configured</h2><p class="note">java -XX:+UseParallelGC -cp $TLA2TOOLS tlc2.TLC -workers 1 -config issue-reply.cfg issue_reply.tla<br>No error. 30 states generated, 21 distinct, depth 9.</p>
+<div class="card"><pre class="mermaid">---
+title: &quot;A reply in the issue across a crash between the POST and reply.settled&quot;
+---
+stateDiagram-v2
+  state &quot;Legend&quot; as legend {
+    lg0: Before the reply
+    lg1: Daemon sending
+    lg2: Daemon down
+    lg3: Settled
+  }
+  class lg0 tan
+  class lg1 blue
+  class lg2 orange
+  class lg3 teal
+  s0: Nothing to send yet
+  s1: Pending in the outbox (reply.intended)
+  s2: No marker on GitHub, about to POST
+  s3: Daemon down before the POST, still pending (reply.intended)
+  s4: Comment posted, settle not written yet
+  s5: Settled, one comment (reply.settled sent)
+  s6: Daemon down after the POST, still pending (reply.intended)
+  s7: Daemon back, comment on GitHub, still pending (reply.intended)
+  s8: Marker found on GitHub, no new POST
+  [*] --&gt; s0
+  s0 --&gt; s1: the router replies (reply.intended)
+  s1 --&gt; s2: the daemon lists the comments, no marker
+  s1 --&gt; s3: the daemon crashes
+  s2 --&gt; s3: the daemon crashes
+  s2 --&gt; s4: the daemon POSTs the comment with the marker
+  s3 --&gt; s1: launchd restarts the daemon
+  s4 --&gt; s5: the daemon writes reply.settled
+  s4 --&gt; s6: the daemon crashes
+  s6 --&gt; s7: launchd restarts the daemon
+  s7 --&gt; s8: the daemon lists the comments and finds the marker
+  s7 --&gt; s6: the daemon crashes
+  s8 --&gt; s5: the daemon writes reply.settled
+  s8 --&gt; s6: the daemon crashes
+  class s0 tan
+  class s1 blue
+  class s2 blue
+  class s3 orange
+  class s4 blue
+  class s5 teal
+  class s6 orange
+  class s7 blue
+  class s8 blue
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px
+</pre></div>
+<h2>Where each state and arrow is in the code</h2><ul><li>Pending in the outbox: reply.intended (routing.ts:174-183). The outbox is the fold outboxView: an intent stays pending until its reply.settled exists (routing.ts:43-56).</li><li>The daemon drains the outbox on every tick (cli.ts:48-55, cli.ts:57-65).</li><li>Lists the comments: send() looks for the marker harness:&lt;intent&gt; first (github.ts:121-128).</li><li>POSTs the comment: the body carries the marker (github.ts:129).</li><li>Settled: reply.settled with result sent (routing.ts:185-189).</li><li>Crash after the POST: the live proof is design/mvp/e2e/unit3/crash-after-post.ts, which POSTs and exits 137 without settling.</li></ul>
+<h2>The broken model</h2><p class="note">MarkerLookup = FALSE. send() POSTs without first listing the issue comments for the hidden marker, so a crash after the POST and before reply.settled gives a second comment on restart.</p><p class="note">java -XX:+UseParallelGC -cp $TLA2TOOLS tlc2.TLC -workers 1 -config issue-reply.rotto.cfg issue_reply.tla<br>Invariant AtMostOneComment is violated, trace of 8 states. 22 states generated, 18 distinct.</p>
+<div class="card"><pre class="mermaid">---
+title: &quot;A reply in the issue across a crash between the POST and reply.settled&quot;
+---
+stateDiagram-v2
+  state &quot;Legend&quot; as legend {
+    lg0: Before the reply
+    lg1: Daemon sending
+    lg2: Daemon down
+    lg3: Settled
+    lg4: Breaks AtMostOneComment
+    lg5: Path to the AtMostOneComment bug
+  }
+  class lg0 tan
+  class lg1 blue
+  class lg2 orange
+  class lg3 teal
+  class lg4 breaks
+  class lg5 bugPath
+  s0: Nothing to send yet
+  s1: Pending in the outbox (reply.intended)
+  s2: No marker on GitHub, about to POST
+  s3: Daemon down before the POST, still pending (reply.intended)
+  s4: Comment posted, settle not written yet
+  s5: Settled, one comment (reply.settled sent)
+  s6: Daemon down after the POST, still pending (reply.intended)
+  s7: Daemon back, comment on GitHub, still pending (reply.intended)
+  s8: Marker not looked up, about to POST again
+  s9: Two comments for one intent
+  [*] --&gt; s0
+  s0 --&gt; s1: the router replies (reply.intended)
+  s1 --&gt; s2: the daemon lists the comments, no marker
+  s1 --&gt; s3: the daemon crashes
+  s2 --&gt; s3: the daemon crashes
+  s2 --&gt; s4: the daemon POSTs the comment with the marker
+  s3 --&gt; s1: launchd restarts the daemon
+  s4 --&gt; s5: the daemon writes reply.settled
+  s4 --&gt; s6: the daemon crashes
+  s6 --&gt; s7: launchd restarts the daemon
+  s7 --&gt; s8: the daemon lists the comments, no marker
+  s7 --&gt; s6: the daemon crashes
+  s8 --&gt; s6: the daemon crashes
+  s8 --&gt; s9: the daemon POSTs the comment with the marker
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px
+  classDef breaks fill:#ffecee,stroke:#e72e3b,stroke-width:2.5px,color:#cd2834
+  class s0 tan
+  class s0 bugPath
+  class s1 blue
+  class s1 bugPath
+  class s2 blue
+  class s2 bugPath
+  class s3 orange
+  class s4 blue
+  class s4 bugPath
+  class s5 teal
+  class s6 orange
+  class s6 bugPath
+  class s7 blue
+  class s7 bugPath
+  class s8 blue
+  class s8 bugPath
+  class s9 breaks
+  class s9 bugPath
+</pre></div>
+<pre class="note"># issue_reply
+
+TLC reached 30 states and 39 steps. The chart draws 10 states and 13 arrows.
+The chart does not draw 7 steps that stay in one chart state.
+The view hides 6 steps, so the chart does not draw them.
+
+## AtMostOneComment breaks
+The shortest path has 7 steps:
+0. Nothing to send yet
+1. the router replies (reply.intended): Pending in the outbox (reply.intended)
+2. the daemon lists the comments, no marker: No marker on GitHub, about to POST
+3. the daemon POSTs the comment with the marker: Comment posted, settle not written yet
+4. the daemon crashes: Daemon down after the POST, still pending (reply.intended)
+5. launchd restarts the daemon: Daemon back, comment on GitHub, still pending (reply.intended)
+6. the daemon lists the comments, no marker: Marker not looked up, about to POST again
+7. the daemon POSTs the comment with the marker: Two comments for one intent
+
+## Rules that hold
+TypeOK, SettledMeansPosted, NoDeadlock</pre>
+<h2>What the model leaves out</h2><ul><li>One intent, one issue, at most 2 crashes. A POST that times out after GitHub created the comment acts like a crash after the POST.</li><li>The gone result (HTTP 404 or 410).</li><li>The model has two more switches, checked outside this folder: StaleList (GitHub's list can miss a fresh comment) and a second sender.</li></ul>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:true,securityLevel:"strict",theme:"default"});</script></body></html>

@@ -1,0 +1,39 @@
+$ prima: src/launchd.ts a 166031e, test nuovi del lock e di daemonJob (i test di daemonLoop non si importano: la funzione non esiste a 166031e)
+✔ the daemon plist lints, runs this Node under env -i, and carries no token (14.940625ms)
+✔ plist values are XML-escaped (4.127833ms)
+✔ a second run is refused while a live harness run holds the lock (66.629292ms)
+✔ the lock of a dead run is reclaimed (64.456458ms)
+✔ a run.lock naming a live pid does not block: only the kernel lock counts (4.261375ms)
+✔ release frees the lock for the next run (64.188917ms)
+✖ six runs racing for the lock of a SIGKILLed run: exactly one holds it, every time (2172.898042ms)
+✖ a relative HARNESS_HOME is written into the plist as an absolute path (0.348ms)
+✔ heartbeat round-trips and a malformed one reads as missing (1.168625ms)
+✔ describe says what service status prints (0.219125ms)
+✔ the default service label is it.delera.harness for ~/.harness and distinct and stable for any other home (2.219792ms)
+ℹ pass 9
+ℹ fail 2
+✖ failing tests:
+✖ six runs racing for the lock of a SIGKILLed run: exactly one holds it, every time (2172.898042ms)
+  AssertionError [ERR_ASSERTION]: trial 1: true false false false false true
+    actual: [ 'true', 'true' ],
+    expected: [ 'true' ],
+✖ a relative HARNESS_HOME is written into the plist as an absolute path (0.348ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+    actual: 'rel/home',
+    expected: '/private/tmp/swarm-a1r/gate-old/harness/rel/home',
+$ dopo, 3692c6f
+✔ the daemon plist lints, runs this Node under env -i, and carries no token (11.451166ms)
+✔ plist values are XML-escaped (3.896958ms)
+✔ a second run is refused while a live harness run holds the lock (1198.128417ms)
+✔ the lock of a dead run is reclaimed (81.52525ms)
+✔ a run.lock naming a live pid does not block: only the kernel lock counts (1.961125ms)
+✔ release frees the lock for the next run (1185.369834ms)
+✔ six runs racing for the lock of a SIGKILLed run: exactly one holds it, every time (11100.458416ms)
+✔ a relative HARNESS_HOME is written into the plist as an absolute path (0.466042ms)
+✔ stop during a step: the next step never starts, no heartbeat, the loop ends (0.773042ms)
+✔ stop during the sleep ends the loop at once (22.916459ms)
+✔ heartbeat round-trips and a malformed one reads as missing (1.591875ms)
+✔ describe says what service status prints (0.231208ms)
+✔ the default service label is it.delera.harness for ~/.harness and distinct and stable for any other home (4.114917ms)
+ℹ pass 13
+ℹ fail 0

@@ -1,0 +1,34 @@
+$ 18:01:36Z restart 1, 8 s after run.bound
+2026-11-02T18:01:27.929Z|run.intended
+2026-11-02T18:01:28.222Z|run.bound
+running pid=39563, no heartbeat yet
+$ 18:03:22Z restart 2, 3 s into verify
+2026-11-02T18:01:27.929Z|run.intended||
+2026-11-02T18:01:28.222Z|run.bound||
+2026-11-02T18:03:16.418Z|run.progress|work|completed
+2026-11-02T18:03:18.473Z|run.progress|verify|started on 67fae766
+running pid=43840, no heartbeat yet
+$ 18:05:28Z after run.ended
+2026-11-02T18:01:27.929Z|run.intended|||1|||
+2026-11-02T18:01:28.222Z|run.bound|cfc05dbf40bf059c7678b3db9de5afd4|96426493-9ba9-4085-ab42-a98f7b6ff629||||
+2026-11-02T18:04:56.900Z|run.ended|cfc05dbf40bf059c7678b3db9de5afd4|||done|https://github.com/uppifyagency/harness-sandbox/pull/40|
+$ launchctl print
+	state = running
+	runs = 3
+	pid = 43840
+	last exit code = 0
+		state = active
+		state = active
+$ engine.log
+2026-11-02T18:00:44.127Z engine session 01a19d6b-aa09-77de-89bd-6598fbab6bb6 pid 38089
+2026-11-02T18:01:28.225Z run cfc05dbf40bf059c7678b3db9de5afd4 bound to 96426493-9ba9-4085-ab42-a98f7b6ff629
+2026-11-02T18:01:36.431Z engine disposed in 44 ms
+2026-11-02T18:01:43.767Z engine session 01a19d6c-9642-79ac-ba61-aaf3bb7b65bc pid 39563
+2026-11-02T18:01:48.841Z resume 96426493-9ba9-4085-ab42-a98f7b6ff629: {"action":"resume","runId":"96426493-9ba9-4085-ab42-a98f7b6ff629","status":"running","message":"Resuming durable workflow \"harness-ticket\" (96426493-9ba9-4085-ab42-a98f7b6ff629) — completed checkpoints will be replayed."}
+2026-11-02T18:03:23.113Z diagnostic {"level":"error","source":"~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs","message":"Extension session_shutdown failed","sessionId":"01a19d6c-9642-79ac-ba61-aaf3bb7b65bc"}
+2026-11-02T18:03:23.172Z engine dispose failed after 647 ms: Session shutdown failed ["~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs: Workflow cleanup left uncooperative tools: 53a05428-919c-45aa-b955-e14ac73ed59d/tool:hbd683651c6034bae493d2ef84c7aeacc"]
+2026-11-02T18:04:06.317Z engine session 01a19d6e-b0de-71ba-825e-67dd06faf7ae pid 43840
+2026-11-02T18:04:11.115Z resume 96426493-9ba9-4085-ab42-a98f7b6ff629: {"action":"resume","runId":"96426493-9ba9-4085-ab42-a98f7b6ff629","status":"running","message":"Resuming durable workflow \"harness-ticket\" (96426493-9ba9-4085-ab42-a98f7b6ff629) — completed checkpoints will be replayed."}
+2026-11-02T18:04:48.142Z verify cfc05dbf40bf059c7678b3db9de5afd4 PASS -> independent PASS cost=0.0682898 session=10b8d786-46c9-4256-8666-fb9611f243b8
+2026-11-02T18:04:55.565Z publish cfc05dbf40bf059c7678b3db9de5afd4 67fae766 -> https://github.com/uppifyagency/harness-sandbox/pull/40
+2026-11-02T18:04:56.903Z run cfc05dbf40bf059c7678b3db9de5afd4 96426493-9ba9-4085-ab42-a98f7b6ff629 ended done

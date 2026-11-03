@@ -1,0 +1,35 @@
+2026-11-02T16:56:41.238Z engine session 01a19d31-0644-7d47-a752-998656d95a3d pid 34338
+2026-11-02T16:56:50.231Z engine disposed in 23 ms
+2026-11-02T17:02:13.301Z engine session 01a19d36-196a-7105-9eb9-487dfc4dfa51 pid 40060
+2026-11-02T17:02:18.525Z engine disposed in 43 ms
+2026-11-02T17:02:29.248Z engine session 01a19d36-57ec-70cb-a7b0-ef0fee0a3ca1 pid 40358
+2026-11-02T17:02:34.066Z engine disposed in 33 ms
+2026-11-02T17:02:50.998Z engine session 01a19d36-a9e5-7eaa-aa97-535b7e828317 pid 40675
+2026-11-02T17:02:55.670Z engine disposed in 43 ms
+2026-11-02T17:03:10.296Z engine session 01a19d36-f79f-79a8-ab5f-584dedaa2c45 pid 41081
+2026-11-02T17:03:14.197Z engine disposed in 18 ms
+2026-11-02T17:03:25.834Z engine session 01a19d37-338a-7099-ad2c-2f93a4a15536 pid 41412
+2026-11-02T17:04:56.699Z run 3cd78080c9dda35507ab51a8a4213618 bound to 79a000c7-a4ce-4e5a-97d8-7c12d852e8e5
+2026-11-02T17:05:27.465Z engine disposed in 48 ms
+2026-11-02T17:05:38.454Z engine session 01a19d39-3b65-7de3-84c7-6f81a29eaf4a pid 43465
+2026-11-02T17:05:42.105Z resume 79a000c7-a4ce-4e5a-97d8-7c12d852e8e5: {"action":"resume","runId":"79a000c7-a4ce-4e5a-97d8-7c12d852e8e5","status":"running","message":"Resuming durable workflow \"harness-ticket\" (79a000c7-a4ce-4e5a-97d8-7c12d852e8e5) — completed checkpoints will be replayed."}
+2026-11-02T17:06:13.720Z engine disposed in 34 ms
+2026-11-02T17:06:25.288Z engine session 01a19d39-f081-7a0b-8e25-21bbb88a656d pid 44282
+2026-11-02T17:06:29.671Z resume 79a000c7-a4ce-4e5a-97d8-7c12d852e8e5: {"action":"resume","runId":"79a000c7-a4ce-4e5a-97d8-7c12d852e8e5","status":"running","message":"Resuming durable workflow \"harness-ticket\" (79a000c7-a4ce-4e5a-97d8-7c12d852e8e5) — completed checkpoints will be replayed."}
+2026-11-02T17:07:00.489Z diagnostic {"level":"error","source":"~/.nvm/versions/node/v26.13.0/lib/node_modules/@bastani/atomic/dist/builtin/workflows/src/extension/index.bundle.mjs","message":"Extension session_shutdown failed","sessionId":"01a19d39-f081-7a0b-8e25-21bbb88a656d"}
+2026-11-02T17:07:17.015Z engine session 01a19d3a-b9f1-7b9b-acda-e41123135da3 pid 45102
+2026-11-02T17:07:21.558Z resume 79a000c7-a4ce-4e5a-97d8-7c12d852e8e5: {"action":"resume","runId":"79a000c7-a4ce-4e5a-97d8-7c12d852e8e5","status":"running","message":"Resuming durable workflow \"harness-ticket\" (79a000c7-a4ce-4e5a-97d8-7c12d852e8e5) — completed checkpoints will be replayed."}
+2026-11-02T17:07:24.588Z run 3cd78080c9dda35507ab51a8a4213618 79a000c7-a4ce-4e5a-97d8-7c12d852e8e5 ended failed
+2026-11-02T17:08:17.532Z engine disposed in 58 ms
+2026-11-02T17:08:32.558Z engine session 01a19d3b-dd06-78df-b754-9230ceb5ed38 pid 47535
+2026-11-02T17:08:36.614Z run b7c61499e9eebb79be7633deb72ea75b bound to 36a178b7-179b-4a2a-811d-a07515913244
+2026-11-02T17:09:11.963Z engine disposed in 48 ms
+2026-11-02T17:09:22.436Z engine session 01a19d3c-a691-73ed-a5fa-f8ad848e9bf5 pid 49006
+2026-11-02T17:09:26.402Z resume 36a178b7-179b-4a2a-811d-a07515913244: {"action":"resume","runId":"36a178b7-179b-4a2a-811d-a07515913244","status":"running","message":"Resuming durable workflow \"harness-ticket\" (36a178b7-179b-4a2a-811d-a07515913244) — completed checkpoints will be replayed."}
+2026-11-02T17:09:47.620Z engine disposed in 42 ms
+2026-11-02T17:10:02.199Z engine session 01a19d3d-40c2-741e-b136-814cd31e3f9b pid 49844
+2026-11-02T17:10:05.802Z resume 36a178b7-179b-4a2a-811d-a07515913244: {"action":"resume","runId":"36a178b7-179b-4a2a-811d-a07515913244","status":"running","message":"Resuming durable workflow \"harness-ticket\" (36a178b7-179b-4a2a-811d-a07515913244) — completed checkpoints will be replayed."}
+2026-11-02T17:10:56.657Z verify b7c61499e9eebb79be7633deb72ea75b PASS -> independent PASS cost=0.0953602 session=6be19a8b-c3cf-434e-af25-2103316d835b
+2026-11-02T17:11:03.261Z publish b7c61499e9eebb79be7633deb72ea75b ceb34d15 -> https://github.com/uppifyagency/harness-sandbox/pull/28
+2026-11-02T17:11:06.109Z run b7c61499e9eebb79be7633deb72ea75b 36a178b7-179b-4a2a-811d-a07515913244 ended done
+2026-11-02T17:13:36.248Z engine disposed in 33 ms

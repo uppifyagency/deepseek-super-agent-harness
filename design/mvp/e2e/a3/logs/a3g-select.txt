@@ -1,0 +1,32 @@
+# home /tmp/swarm-a3g/g1/home, testa 82a8239
+thread ticket:1f11a9b06e0fdecbe05e7ddd009a0333
+6 events
+  -> ticket.opened    3dd2ecbb7b8c0f4f7d1ef2d9d1f80f91  ticket "Aggiungi scripts/saluto-g.sh": Prima di scrivere qualsiasi file, chiedere all'utente (domanda con due opzioni: "Ciao" o "Salve") quale saluto usare. Po
+  -> run.intended     b739fe1bab63a998b8c57e0bf158a5b2  attempt 1 on uppifyagency/harness-sandbox
+  -> run.bound        91e52e0a02353942bb4d519eedb5e5f5  run.bound
+  -> run.progress     e53194c76948325fcda49cb8ffb02747  work: completed
+  -> run.ended        cb695a928339cc08f2e583e7aeac5523  failed (error): worker blocked: La scelta del saluto da parte dell’utente è necessaria ma non disponibile: ask_user_question è fallito p
+  -> ticket.closed    e3bab54310b872294c99e332bc5d1bae  closed discarded: blocked
+thread ticket:a2359774ead9172d5018b1b5bf51a9b9
+6 events
+  -> ticket.opened    ea79b7fff100e5a124348b66bc03e6b2  ticket "Aggiungi scripts/ciao-g3.sh citato nel README": Creare scripts/ciao-g3.sh eseguibile che stampa "Ciao, <nome>" usando il primo argomento come nome. Fatto quando `script
+  -> run.intended     4491055b8b723b65c52b796947af9194  attempt 1 on uppifyagency/harness-sandbox
+  -> run.bound        8591fe4ee6ff4bb386c1591d2d1c1ff3  run.bound
+  -> run.progress     5d4386169a8bc23ee259e19924106eb1  work: completed
+  -> run.ended        40a4d495ff114c867acf260d835a81b2  failed (error): worker blocked: La premessa del ticket speculativo non è stata confermata: README.md non cita scripts/ciao-g3.sh. Nessun
+  -> ticket.closed    3d7902abf4fe18a49a21134e85f24cc2  closed discarded: blocked
+
+# #110: uscita del worker
+{"workflow":"harness-ticket-attempt","runId":"6004efaf-e66f-45c3-8478-d56e51f963f9","status":"blocked","exited":true,"outputs":{"status":"blocked","summary":"La scelta del saluto da parte dell’utente è necessaria ma non disponibile: ask_user_question è fallito perché manca una UI interattiva. Quale saluto vuoi usare, \"Ciao\" o \"Salve\"?","sha":"950d70e38566fca89317d6439705170a7684d2d5","base":"950d70e38566fca89317d6439705170a7684d2d5","commits":0,"dirty":[],"workerSession":"01a19df4-b3d1-7596-bc00-9d10a81957cc","evidence":"","verdict":"","pr":0,"url":"","verifierUsd":0}}
+
+# #112: decisione del router
+  -> decided          bbe11ca5bda4cf7c1123f9246c6b9162  ignore: Speculative and it needs a question to the author before any work. A silent run can't ask, and the identical request on #110 was just discarded as blocked.
+
+# commenti su GitHub
+#110: 0
+#112: 0
+#113: 0
+
+# harness (attenzione)
+DISCARDED  issue:uppifyagency/harness-sandbox#110  "Aggiungi scripts/saluto-g.sh"  blocked
+DISCARDED  issue:uppifyagency/harness-sandbox#113  "Aggiungi scripts/ciao-g3.sh citato nel README"  blocked

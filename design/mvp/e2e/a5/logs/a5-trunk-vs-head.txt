@@ -1,0 +1,54 @@
+# Lane 1: home vuota fino alla prima PR, trunk 6e9beeb contro testa b2d4f2f (Mac di Vlad, 02/11)
+
+## Testa: un comando (harness setup), home /tmp/swarm-a5/worker-1/home, etichetta it.delera.harness.i1, comando /harness-i1
+$ security find-generic-password -s harness-bot-github -w | harness setup --yes --repo uppifyagency/harness-sandbox --allow uppifyagency --label it.delera.harness.i1 --handle /harness-i1 --keychain harness-bot-github-test-1 --pstack /tmp/swarm-a5/pstack-claude/plugins/pstack
+(il token del bot va in un servizio di prova del Portachiavi, mai stampato; la voce harness-bot-github e' solo letta)
+gia' fatto  macOS
+gia' fatto  Node >= 26.13.0
+gia' fatto  Atomic globale, 0.9.x da 0.9.63 in su
+gia' fatto  pstack in /tmp/swarm-a5/pstack-claude/plugins/pstack
+gia' fatto  login Codex di Atomic
+gia' fatto  Claude Code con il login del piano
+gia' fatto  gh autenticato
+fatto       config.json
+Token del bot GitHub (non viene mostrato): 
+fatto       token del bot nel Portachiavi (harness-bot-github-test-1)
+fatto       servizio launchd (it.delera.harness.i1)
+
+ok     macOS
+ok     Node >= 26.13.0
+ok     Atomic globale, 0.9.x da 0.9.63 in su
+ok     pstack in /tmp/swarm-a5/pstack-claude/plugins/pstack
+ok     login Codex di Atomic
+ok     Claude Code con il login del piano
+ok     gh autenticato
+ok     config.json
+ok     token del bot nel Portachiavi (harness-bot-github-test-1)
+ok     servizio launchd (it.delera.harness.i1)
+exit 0
+
+## Trunk: passi a mano
+# trunk 6e9beeb, passi a mano da HANDOFF.md §4 (Mac di Vlad, prerequisiti gia' presenti)
+[1] $ export HARNESS_HOME=/tmp/swarm-a5/worker-1t/home
+[2] $ node src/cli.ts init --repo uppifyagency/harness-sandbox --allow uppifyagency
+wrote /tmp/swarm-a5/worker-1t/home/config.json
+[3] modifica a mano di config.json: handles ["/harness-i1t"], serviceLabel it.delera.harness.i1t, botKeychainService harness-bot-github-test-1t
+[4] $ security add-generic-password -s harness-bot-github-test-1t -a $USER -w   (token incollato al prompt; qui passato a security -i su stdin)
+security exit 0
+[5] $ node src/cli.ts policy auto
+mode: auto, workers: 2
+[6] $ node src/cli.ts service install
+running pid=4431, no heartbeat yet
+
+## Dall'issue alla PR, nessun altro comando dopo l'ultimo passo
+issue #57 2026-11-02T19:04:28Z A5 lane 1 testa: scripts/a5-head.sh
+  2026-11-02T19:05:51Z uppifyagency: Presa in carico: creo lo script con test.
+  2026-11-02T19:09:29Z uppifyagency: Fatto: PR pronta, https://github.com/uppifyagency/harness-sandbox/pull/61
+issue #59 2026-11-02T19:05:58Z A5 lane 1 trunk: scripts/a5-trunk.sh
+  2026-11-02T19:07:26Z uppifyagency: Presa in carico: creo `scripts/a5-trunk.sh` con un test.
+  2026-11-02T19:10:55Z uppifyagency: Fatto: PR pronta, https://github.com/uppifyagency/harness-sandbox/pull/63
+PR #61 di lunadelera-ops, creata 2026-11-02T19:08:03Z, branch harness/2cbeaabfb990, file scripts/a5-head.sh, scripts/test-a5-head.sh
+PR #63 di lunadelera-ops, creata 2026-11-02T19:09:38Z, branch harness/da3e377983d4, file scripts/a5-trunk.sh, scripts/test-a5-trunk.sh
+
+Testa: issue 19:04:28Z, presa in carico 19:05:51Z, PR #61 19:08:03Z (215 s). Trunk: issue 19:05:58Z, presa in carico 19:07:26Z, PR #63 19:09:38Z (220 s).
+Comandi di Vlad su un Mac gia' pronto: testa 1 (setup; in modo interattivo risponde a repo, login autorizzati e token), trunk 5 comandi piu' 1 modifica a mano di config.json.

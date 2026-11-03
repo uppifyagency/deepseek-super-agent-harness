@@ -1,0 +1,30 @@
+# Ticket silenzioso scartato, fermato da engine.stop (issue #126, home /tmp/swarm-int/m1/home, label it.delera.harness.m1)
+--- events 693-700
+693|2026-11-02T21:40:26.005Z|eval.opened|{"triggers":["71f5251b18f03b5bcb95d0b63738037e"],"policy":"e00c19fa14ddc8886bb4b6c4524d8acb"}
+694|2026-11-02T21:40:26.007Z|decided|{"eval":"b56ae30f986f4b1e16a5864784f0e2fb","decision":{"kind":"accept","title":"README: a cosa serve il repo","scope":"README.md has one line at the top saying what the repo is for","silent":true}}
+695|2026-11-02T21:40:26.008Z|ticket.opened|{"title":"README: a cosa serve il repo","scope":"README.md has one line at the top saying what the repo is for","repo":"uppifyagency/harness-sandbox","visibility":"silent","origin":["71f5251b18f03b5bcb95d0b63738037e"]}
+696|2026-11-02T21:40:26.008Z|subscribed|{"ticket":"4ad3628952e55434b77e7795e3d08cfe"}
+697|2026-11-02T21:40:36.400Z|run.intended|{"ticket":"4ad3628952e55434b77e7795e3d08cfe","attempt":1,"repo":"uppifyagency/harness-sandbox","baseBranch":"main","brief":{"preview":"You are a worker of Vlad's harness. Ticket: \"README: a cosa serve il repo\" on uppifyagency/harness-sandbox (issue:uppifyagency/harness-sandbox#126).\nDone when: README.md has one line at the top saying what the repo is for\n\nThe request, verbatim from the issue:
+698|2026-11-02T21:40:36.442Z|run.bound|{"run":"7d094f8ffeea592c59821eb069a0a6d3","atomic":"894e4d7a-daa7-4462-a03f-a7f139ee89c7"}
+699|2026-11-02T21:40:59.517Z|ticket.closed|{"outcome":"discarded","reason":"question: Quale sezione del README va corretta?"}
+700|2026-11-02T21:41:11.919Z|run.ended|{"run":"7d094f8ffeea592c59821eb069a0a6d3","outcome":{"kind":"failed","cause":"stopped","retryable":false,"evidence":"ticket discarded, quit in Atomic: paused"}}
+--- engine.log
+2026-11-02T21:40:36.442Z run 7d094f8ffeea592c59821eb069a0a6d3 bound to 894e4d7a-daa7-4462-a03f-a7f139ee89c7
+2026-11-02T21:41:11.918Z stop 7d094f8ffeea592c59821eb069a0a6d3: quit 894e4d7a-daa7-4462-a03f-a7f139ee89c7 -> {"action":"quit","runId":"894e4d7a-daa7-4462-a03f-a7f139ee89c7","status":"paused","message":"Run 894e4d7a-daa7-4462-a03f-a7f139ee89c7 quit and can be resumed with /workflow resume."}
+--- daemon lap
+run 7d094f8ffeea592c59821eb069a0a6d3 stop: quit
+--- Atomic journal
+894e4d7a-daa7-4462-a03f-a7f139ee89c7|paused
+6cbce2a3-40c5-4d17-84cb-bc6201383f78|running
+--- Atomic run-usage checkpoint at the quit
+{"kind":"tool","workflowId":"894e4d7a-daa7-4462-a03f-a7f139ee89c7","checkpointId":"run-usage:hdad7978ede0a391f3daf9680e310d664","name":"workflow-run-usage","argsHash":"workflow-run-usage","output":{"accounting":{"baseline":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"cost":0},"tokens":0,"cost":0,"perCounter":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0}}},"completedAt":1793655671915}
+--- worktrees (vuota = rimosso)
+0de972b73839-a1
+--- commenti su #126 (GitHub API)
+0
+--- outbox
+0
+--- worktree del ticket 4ad36289 (assente = rimosso)
+assente
+--- costo nella sessione dello stadio work (resolveSessionStore, sonda store.ts): voci, turni, $ di listino, primo turno
+23 3 0.0902756 2026-11-02T21:40:59.352Z [ 'type', 'id', 'parentId', 'timestamp', 'provider', 'modelId' ]

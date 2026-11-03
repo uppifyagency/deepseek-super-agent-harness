@@ -1,0 +1,179 @@
+
+> super-agent-harness@0.0.0 test
+> node --test test/*.test.ts
+
+✔ a worker question becomes one gate the router asks in the issue; the reply comes back as the answer (34.342333ms)
+✔ Vlad can answer from the terminal before the router asks; unknown gates and empty answers are refused (11.149417ms)
+✔ the guard blocks git push, gh and keychain reads with the reason, and lets ordinary commands run (1.764167ms)
+✔ the daemon plist lints, runs this Node under env -i, and carries no token (57.963667ms)
+✔ plist values are XML-escaped (6.861ms)
+✔ a second run is refused while a live harness run holds the lock (1124.217167ms)
+✖ harness work is refused while a run holds the lock of its home (1559.434917ms)
+✔ the lock of a dead run is reclaimed (63.227458ms)
+✔ a run.lock naming a live pid does not block: only the kernel lock counts (2.321167ms)
+✔ release frees the lock for the next run (1130.050834ms)
+✔ six runs racing for the lock of a SIGKILLed run: exactly one holds it, every time (10797.871334ms)
+✔ a relative HARNESS_HOME is written into the plist as an absolute path (0.297625ms)
+✔ stop during a step: the next step never starts, no heartbeat, the loop ends (0.455791ms)
+✔ stop during the sleep ends the loop at once (21.548625ms)
+✔ heartbeat round-trips and a malformed one reads as missing (0.939ms)
+✔ describe says what service status prints (0.129792ms)
+✔ the default service label is it.delera.harness for ~/.harness and distinct and stable for any other home (2.200459ms)
+✔ replay into an empty log gives the same ids and views (seed 1) (131.492166ms)
+✔ replay into an empty log gives the same ids and views (seed 7) (104.917375ms)
+✔ replay into an empty log gives the same ids and views (seed 42) (111.9275ms)
+✔ replay into an empty log gives the same ids and views (seed 1234) (102.867583ms)
+✔ replay into an empty log gives the same ids and views (seed 99991) (98.023583ms)
+✔ the same draft twice is one row, and transact returns the stored event (9.50725ms)
+✔ ids ignore object key order and cause order, but not content (1.053667ms)
+✔ views are caches: dropping them and reopening gives the same answers (40.391583ms)
+✔ a view version bump rebuilds that view by replay (12.582292ms)
+✔ a second handle with fewer views (the watchdog) does not leave the daemon views stale (4.072583ms)
+✔ spill keeps a preview inline and the full text in the blob store (2.602291ms)
+✔ causes and effects walk the reference graph both ways (2.8105ms)
+✔ tail yields existing and new events, including ones appended later (35.216167ms)
+✔ two processes appending the same drafts concurrently: same ids, no duplicates, no busy errors (158.58ms)
+✔ next batches everything that piled up on a thread into one eval, and re-shows it until decided (18.618333ms)
+✔ observe turns accept into would-accept: no ticket, an attention item, nothing to send (7.906875ms)
+✔ auto: accept opens a ticket and subscribes the thread, so follow-ups bypass the router (9.639459ms)
+✔ reply: channel norms, idempotent by content, outbox until settled (7.3445ms)
+✔ ask: an operator message reaches the router as an addressed trigger (4.545833ms)
+✔ MCP server over stdio: initialize, tools/list, tools/call next (105.279917ms)
+✔ board: open tickets with their issue, recent decisions, recent talk with Vlad (6.104583ms)
+✔ shouldRotate: fresh when there is no session or the last wake crossed the threshold (1.033334ms)
+warning: You appear to have cloned an empty repository.
+✔ an accepted ticket gets exactly one run.intended, with the issue text in the brief and the config frozen in (17.898916ms)
+✔ engine reports: bound, progress, ended closes the run and later reports are dropped (10.082458ms)
+✔ a run Atomic cannot resume is started again as the same attempt: rebound, never ended, no attempt spent (5.560167ms)
+✖ afterResumeError: only a run with no progress is started again; a run that may have progress is waited for (0.680416ms)
+✖ afterResumeError: the lease and a busy journal are waited out within 20 tries, anything else fails (0.133375ms)
+✖ afterResumeError: an attempt binds at most five Atomic runs that die before a checkpoint, then gives up (0.099917ms)
+✖ bindings counts the Atomic runs a run was bound to, a repeated binding once (6.407875ms)
+✔ classify: done, verifier FAIL, no commit, blocked worker, budget stop, failure (0.397375ms)
+✔ two attempts on an existing clone get separate worktrees at the same base; prepare is idempotent (640.317208ms)
+✔ a verifier FAIL plans attempt 2 that resumes the worker and its commits; attempt 2 failing is final and reported once (7.974917ms)
+✔ verdict: independent only on an untouched worktree; a commit after the verdict blocks publish (316.722917ms)
+✔ a comment on the ticket's issue during the run is routed in code and delivered once to the live run (5.521542ms)
+✔ after a done run, a comment on the PR starts attempt 2 on the same session and commits, carrying the comment (4.699667ms)
+✔ while a worker question is asked on the issue, a comment answers it and is not routed as new input (5.669125ms)
+✔ slots: with 2 workers, a third ticket waits until a run ends; a run waiting on a gate keeps its slot (7.541042ms)
+✔ recall follows a ticket: thread key -> runs and outcomes with readable previews (4.053ms)
+✔ budget: a stop opens a Sì/No gate in the issue instead of a result; Sì starts the next attempt with the raised cap (5.077959ms)
+✔ budget: No leaves the ticket idle; a stop that overshot its cap asks for twice the spend (4.457542ms)
+✔ filter: first matching row wins (0.540625ms)
+✔ addresses: the handle counts only as a whole token (5.216375ms)
+✔ correlatesOf: closing keywords link a PR to its issues (0.823584ms)
+✔ intake: duplicate, filtered, to-router; edits are new triggers; own messages are dropped (12.376166ms)
+✔ a resume after the work stage reaches verify and publish: the replayed JSON text reads like the live value (1.13125ms)
+ℹ tests 62
+ℹ suites 0
+ℹ pass 57
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14890.430541
+
+✖ failing tests:
+
+test at test/launchd.test.ts:82:1
+✖ harness work is refused while a run holds the lock of its home (1559.434917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   code: 0,
+  +   stderr: ''
+  -   code: 3,
+  -   stderr: 'already running (pid 59440)\n'
+    }
+  
+      at TestContext.<anonymous> (file://<sessione>/scratchpad/at-73d/harness/test/launchd.test.ts:88:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { code: 0, stderr: '' },
+    expected: { code: 3, stderr: 'already running (pid 59440)\n' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at test/runs.test.ts:77:1
+✖ afterResumeError: only a run with no progress is started again; a run that may have progress is waited for (0.680416ms)
+  AssertionError [ERR_ASSERTION]: Workflow f019fff8 is already running or has a pending resume admission.
+  + actual - expected
+  
+  + 'start-again'
+  - 'wait'
+  
+      at TestContext.<anonymous> (file://<sessione>/scratchpad/at-73d/harness/test/runs.test.ts:85:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'start-again',
+    expected: 'wait',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/runs.test.ts:90:1
+✖ afterResumeError: the lease and a busy journal are waited out within 20 tries, anything else fails (0.133375ms)
+  AssertionError [ERR_ASSERTION]: WORKFLOW_RUN_STORAGE
+  
+  'fail' !== 'wait'
+  
+      at TestContext.<anonymous> (file://<sessione>/scratchpad/at-73d/harness/test/runs.test.ts:92:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'fail',
+    expected: 'wait',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/runs.test.ts:99:1
+✖ afterResumeError: an attempt binds at most five Atomic runs that die before a checkpoint, then gives up (0.099917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'start-again'
+  - 'give-up'
+  
+      at TestContext.<anonymous> (file://<sessione>/scratchpad/at-73d/harness/test/runs.test.ts:101:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'start-again',
+    expected: 'give-up',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test/runs.test.ts:104:1
+✖ bindings counts the Atomic runs a run was bound to, a repeated binding once (6.407875ms)
+  TypeError [Error]: h.bindings is not a function
+      at TestContext.<anonymous> (file://<sessione>/scratchpad/at-73d/harness/test/runs.test.ts:107:18)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

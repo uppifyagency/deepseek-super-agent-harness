@@ -1,0 +1,76 @@
+# harness setup --yes, head 931ccaf, 2026-11-02T22:07:56Z
+# home paths redacted to ~ after the run
+gia' fatto  macOS
+gia' fatto  Node >= 26.13.0
+gia' fatto  Atomic globale, 0.9.x da 0.9.63 in su
+gia' fatto  pstack in ~/src/pstack-claude/plugins/pstack
+gia' fatto  login Codex di Atomic
+gia' fatto  Claude Code con il login del piano
+gia' fatto  gh autenticato
+fatto       config.json
+Token del bot GitHub (non viene mostrato): 
+fatto       token del bot nel Portachiavi (harness-bot-github-test-int)
+fatto       servizio launchd (it.delera.harness.si)
+gia' fatto  watchdog launchd (it.delera.harness.watchdog.si)
+
+ok     macOS
+ok     Node >= 26.13.0
+ok     Atomic globale, 0.9.x da 0.9.63 in su
+ok     pstack in ~/src/pstack-claude/plugins/pstack
+ok     login Codex di Atomic
+ok     Claude Code con il login del piano
+ok     gh autenticato
+ok     config.json
+ok     token del bot nel Portachiavi (harness-bot-github-test-int)
+ok     servizio launchd (it.delera.harness.si)
+ok     watchdog launchd (it.delera.harness.watchdog.si)
+setup exit 0
+--- launchctl print it.delera.harness.si
+gui/501/it.delera.harness.si = {
+	state = running
+	runs = 1
+	pid = 31955
+	last exit code = (never exited)
+		state = active
+		state = active
+}
+--- plist it.delera.harness.si
+~/Library/LaunchAgents/it.delera.harness.si.plist
+--- launchctl print it.delera.harness.watchdog.si
+gui/501/it.delera.harness.watchdog.si = {
+	state = not running
+	runs = 1
+	last exit code = 0
+		state = active
+		state = active
+	run interval = 120 seconds
+}
+--- plist it.delera.harness.watchdog.si
+~/Library/LaunchAgents/it.delera.harness.watchdog.si.plist
+--- harness doctor
+ok     macOS
+ok     Node >= 26.13.0
+ok     Atomic globale, 0.9.x da 0.9.63 in su
+ok     pstack in ~/src/pstack-claude/plugins/pstack
+ok     login Codex di Atomic
+ok     Claude Code con il login del piano
+ok     gh autenticato
+ok     config.json
+ok     token del bot nel Portachiavi (harness-bot-github-test-int)
+ok     servizio launchd (it.delera.harness.si)
+ok     watchdog launchd (it.delera.harness.watchdog.si)
+doctor exit 0
+--- harness service uninstall
+it.delera.harness.si: not installed
+it.delera.harness.watchdog.si: not installed
+--- launchctl print it.delera.harness.si
+Bad request.
+Could not find service "it.delera.harness.si" in domain for user gui: 501
+--- plist it.delera.harness.si
+ls: ~/Library/LaunchAgents/it.delera.harness.si.plist: No such file or directory
+--- launchctl print it.delera.harness.watchdog.si
+Bad request.
+Could not find service "it.delera.harness.watchdog.si" in domain for user gui: 501
+--- plist it.delera.harness.watchdog.si
+ls: ~/Library/LaunchAgents/it.delera.harness.watchdog.si.plist: No such file or directory
+keychain harness-bot-github-test-int removed

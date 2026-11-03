@@ -1,0 +1,29 @@
+# lane 7, issue #64, 2026-11-02T19:11:55Z
+$ harness tick
+2026-11-02T19:11:57.458Z uppifyagency/harness-sandbox: 15 items {"duplicate":11,"filtered":4}
+$ harness recall issue:uppifyagency/harness-sandbox#64
+thread issue:uppifyagency/harness-sandbox#64
+2 events, 1 triggers, 1 dropped
+  -> trigger          d8de50969529eb6abc462f260889a5a8  uppifyagency: [a3-s7] conta-parole.sh -l sbaglia su un file senza a capo finale Lane 7 di A3 (repo in ascolto explicit). Con un file c
+  -> trigger.filtered 9ce8460a5837ffeda71e41a90db04e06  DROP not-addressed
+$ harness status
+{
+  "mode": "auto",
+  "maxWorkers": 1,
+  "policy": "74ba6fa39929155f7f6e579b88845d34",
+  "head": 355,
+  "filter": {
+    "drop:not-addressed": 86,
+    "drop:own-message": 91
+  },
+  "waitingForRouter": 0,
+  "outbox": 0
+}
+$ harness   (attention)
+$ ls router-runs.jsonl
+ls: /tmp/swarm-a3/worker-7/home/router-runs.jsonl: No such file or directory
+$ gh issue view 64 --comments
+0
+$ harness status   (config con listen explicit e speculative.enabled true)
+      if (listen !== 'candidates') throw new Error(`speculative on ${x.repo} needs listen "candidates", not "${listen}"`)
+Error: speculative on uppifyagency/harness-sandbox needs listen "candidates", not "explicit"

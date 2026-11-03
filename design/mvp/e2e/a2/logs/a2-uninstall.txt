@@ -1,0 +1,20 @@
+$ launchctl list | grep w1 (before)
+75967	0	it.delera.harness.w1
+-	0	it.delera.harness.watchdog.w1
+$ harness service status
+it.delera.harness.w1: running pid=75967 last heartbeat 18s ago
+it.delera.harness.watchdog.w1: loaded, next check within 120 s
+$ harness service uninstall
+it.delera.harness.w1: not installed
+it.delera.harness.watchdog.w1: not installed
+node src/cli.ts service uninstall  0.16s user 0.04s system 52% cpu 0.380 total
+$ launchctl list | grep w1 (after)
+(no line)
+$ ls ~/Library/LaunchAgents | grep w1
+(no plist)
+$ processes of home w1
+(none)
+$ harness service uninstall (again)
+it.delera.harness.w1: not installed
+it.delera.harness.watchdog.w1: not installed
+exit 0

@@ -1,0 +1,33 @@
+# lane 9 on the lane 2c run (1c5303cbd9b29f5533d0c3561dd0ac48, issue #79), code 2f2b5fd
+$ harness recall ticket:671dfbf16f033632fa3e001d34f4b680
+thread ticket:671dfbf16f033632fa3e001d34f4b680
+6 events
+  -> ticket.opened    0f6cb2887a07b8b05d92d99a95512ae9  ticket "attesa-w2c": scripts/attesa-w2c.sh stampa pronto
+  -> run.intended     1c5303cbd9b29f5533d0c3561dd0ac48  attempt 1 on uppifyagency/harness-sandbox
+  -> run.bound        6e4f359a07611e577c3a492b78743e34  run.bound
+  -> watchdog.judged  150611eea5db34983c4bd244bd8b97c0  stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 19:26:55 it began
+  -> stop.intended    9fff243afad2fcb9c17668eafd55c4c1  stop: watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 1
+  -> run.ended        a1ef952b8a92055c48fd3293cb60366f  failed (stopped): watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 1
+
+$ harness recall a1ef952b8a92055c48fd3293cb60366f
+run.ended a1ef952b8a92055c48fd3293cb60366f
+failed (stopped): watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 1
+  -> thread           ticket:671dfbf16f033632fa3e001d34f4b680  
+  -> cause            1c5303cbd9b29f5533d0c3561dd0ac48  attempt 1 on uppifyagency/harness-sandbox
+  -> cause            9fff243afad2fcb9c17668eafd55c4c1  stop: watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 1
+  -> effect           d40ff21613aaf278a2f64221c43fd6ea  result -> issue:uppifyagency/harness-sandbox#79: ❌ Lavoro interrotto: `scripts/attesa-w2c.sh` non è stato creato **Cosa è successo** - Il lavoro si è messo in attesa del
+
+$ harness recall 9fff243afad2fcb9c17668eafd55c4c1
+stop.intended 9fff243afad2fcb9c17668eafd55c4c1
+stop: watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 1
+  -> thread           ticket:671dfbf16f033632fa3e001d34f4b680  
+  -> cause            1c5303cbd9b29f5533d0c3561dd0ac48  attempt 1 on uppifyagency/harness-sandbox
+  -> cause            150611eea5db34983c4bd244bd8b97c0  stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 19:26:55 it began
+  -> effect           a1ef952b8a92055c48fd3293cb60366f  failed (stopped): watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 1
+
+$ harness recall 150611eea5db34983c4bd244bd8b97c0
+watchdog.judged 150611eea5db34983c4bd244bd8b97c0
+stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 19:26:55 it began
+  -> thread           ticket:671dfbf16f033632fa3e001d34f4b680  
+  -> cause            1c5303cbd9b29f5533d0c3561dd0ac48  attempt 1 on uppifyagency/harness-sandbox
+  -> effect           9fff243afad2fcb9c17668eafd55c4c1  stop: watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 1

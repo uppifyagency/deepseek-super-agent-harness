@@ -1,0 +1,5 @@
+2026-11-02T19:14:48.209Z engine session 01a19daf-83bf-76bf-bce1-b54294e395dd pid 35394
+2026-11-02T19:15:09.019Z run 9b801b44ab7deb7413c23ad7569e39de bound to ebf356ca-c113-4dfc-ba82-d6289467f16f
+2026-11-02T19:15:25.973Z question in speculative run 9b801b44ab7deb7413c23ad7569e39de: discarded, telling the worker to stop
+2026-11-02T19:15:36.190Z run 9b801b44ab7deb7413c23ad7569e39de ebf356ca-c113-4dfc-ba82-d6289467f16f ended budget
+2026-11-02T19:16:25.187Z engine disposed in 14 ms

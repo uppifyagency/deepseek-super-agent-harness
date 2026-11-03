@@ -1,0 +1,4 @@
+== before, doctor con GH_TOKEN solo nella shell (il gh finto e' ok solo con GH_TOKEN)
+ok     gh autenticato
+== after, doctor con GH_TOKEN solo nella shell (il gh finto e' ok solo con GH_TOKEN)
+manca  gh autenticato: gh auth login

@@ -1,0 +1,33 @@
+19:26:38Z run 1c5303cbd9b29f5533d0c3561dd0ac48 bound
+19:29:43Z two checks at once
+check A: 2026-11-02T19:29:50.396Z daemon=ok(beat 14s ago) router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck(not written, the run moved) $0.0234 5.6s] 7077ms
+check B: 2026-11-02T19:29:49.780Z daemon=ok(beat 14s ago) router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0241 4.7s] 6461ms
+19:30:48Z run.ended
+--- events of the run
+455|2026-11-02T19:26:38.127Z|run.bound|{"run":"1c5303cbd9b29f5533d0c3561dd0ac48","atomic":"09040e23-bbb4-4c36-b700-294e68a8383d"}
+462|2026-11-02T19:29:49.779Z|watchdog.judged|{"run":"1c5303cbd9b29f5533d0c3561dd0ac48","verdict":"stuck","evidence":"At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 19:26:55 it began waiting on that task with a budget of 3600000 ms. Nothing in the harness creates /tmp/mai (in Italian \"mai\" means \"never\"), so this wait will not end. Since then it has not written scripts/attesa-w2c.sh and has produced nothing new for about 3 minutes."}
+463|2026-11-02T19:30:47.703Z|stop.intended|{"run":"1c5303cbd9b29f5533d0c3561dd0ac48","reason":"watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 19:26:55 it began waiting on that task with a budget of 3600000 ms. Nothing in the harness creates /tmp/mai (in Italian \"mai\" means \"never\"), so this wait will not end. Since then it has not written scripts/attesa-w2c.sh and has produced nothing new for about 3 minutes."}
+464|2026-11-02T19:30:48.033Z|run.ended|{"run":"1c5303cbd9b29f5533d0c3561dd0ac48","outcome":{"kind":"failed","cause":"stopped","retryable":false,"evidence":"watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 19:26:55 it began waiting on that task with a budget of 3600000 ms. Nothing in the harness creates /tmp/mai (in Italian \"mai\" means \"never\"), so this wait will not end. Since then it has not written scripts/attesa-w2c.sh and has produced nothing new for about 3 minutes."}}
+--- counts
+run.ended|1
+stop.intended|1
+watchdog.judged|1
+--- watchdog.log
+2026-11-02T19:27:28.047Z daemon=ok(beat 50s ago) router=ok runs=1 live, 0 stalled 13ms
+2026-11-02T19:29:28.220Z daemon=ok(beat 45s ago) router=ok runs=1 live, 0 stalled 15ms
+2026-11-02T19:29:49.780Z daemon=ok(beat 14s ago) router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0241 4.7s] 6461ms
+2026-11-02T19:29:50.396Z daemon=ok(beat 14s ago) router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck(not written, the run moved) $0.0234 5.6s] 7077ms
+--- engine.log
+2026-11-02T19:25:29.546Z engine session 01a19db9-4c9d-78d8-ae8a-9e60e9e8c94d pid 75683
+2026-11-02T19:26:38.128Z run 1c5303cbd9b29f5533d0c3561dd0ac48 bound to 09040e23-bbb4-4c36-b700-294e68a8383d
+2026-11-02T19:30:48.032Z stop 1c5303cbd9b29f5533d0c3561dd0ac48: quit 09040e23-bbb4-4c36-b700-294e68a8383d -> {"action":"quit","runId":"09040e23-bbb4-4c36-b700-294e68a8383d","status":"paused","message":"Run 09040e23-bbb4-4c36-b700-294e68a8383d quit and can be resumed with /workflow resume."}
+--- worker transcript, last entry (the quit stopped it)
+2026-11-02T19:30:48.038Z
+--- Atomic journal
+09040e23-bbb4-4c36-b700-294e68a8383d|paused
+--- worktrees
+0039074736fa-a1
+--- harness
+STUCK  issue:uppifyagency/harness-sandbox#51  watchdog stuck: At 18:54:17 the worker started `until test -f /tmp/mai; do sleep 30; done` with a 3600s timeout. That was its second try, after the 86400s timeout was rejected at 18:54:12. It is waiting for a file that nothing will create (the issue title is "worker che gira in tondo"), and no code 
+STUCK  issue:uppifyagency/harness-sandbox#58  watchdog stuck: At 19:06:49 the worker started a loop that checks every 30 seconds for a file, /tmp/mai, and at 19:07:25 it began waiting up to 3600000 ms (an hour) on that task. Nothing in the ticket creates /tmp/mai, and "mai" means "never" in Italian. By 19:11:43 it had made no further moves and 
+STUCK  issue:uppifyagency/harness-sandbox#79  watchdog stuck: At 19:26:53 the worker started `while ! test -f /tmp/mai; do sleep 30; done` in the background, and at 19:26:55 it began waiting on that task with a budget of 3600000 ms. Nothing in the harness creates /tmp/mai (in Italian "mai" means "never"), so this wait will not end. Since then i

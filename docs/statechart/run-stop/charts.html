@@ -1,0 +1,194 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>run-stop statechart</title>
+<style>:root{--bg:#fafafa;--fg:#1c1c1c;--muted:#555;--card:#fff;--line:#ddd}@media (prefers-color-scheme:dark){:root{--bg:#161616;--fg:#f0f0f0;--muted:#aaa;--card:#202020;--line:#3a3a3a}}body{font-family:-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:24px 16px;max-width:1200px}h1{font-size:22px}h2{font-size:18px;margin:28px 0 8px}.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto}.note,li{color:var(--muted);font-size:14px;line-height:1.5}code{font-size:13px}</style></head><body>
+<h1>One run with a gate, a budget and the watchdog (A2)</h1>
+<p class="note">Model <code>run_stop.tla</code>, checked with TLC 2.19 (tla2tools 1.7.4) and drawn with the pstack statechart skill. Each state names the log fact (<code>Kinds</code> in harness/src/domain.ts) that stands for it. Rebuild with <code>node docs/statechart/build.mjs run-stop</code>.</p>
+<h2>Rules</h2><ul><li>NoStopWhileGateOpen: the daemon never writes stop.intended while the run has an open gate.</li><li>OneStopPerRun: at most one stop.intended per run, even when the stuck judgement arrives twice.</li></ul>
+<h2>The model as configured</h2><p class="note">java -XX:+UseParallelGC -cp $TLA2TOOLS tlc2.TLC -workers 1 -config run-stop.cfg run_stop.tla<br>No error. 381 states generated, 143 distinct, depth 11.</p>
+<div class="card"><pre class="mermaid">---
+title: &quot;One run with a gate, a budget and the watchdog (A2)&quot;
+---
+stateDiagram-v2
+  state &quot;Legend&quot; as legend {
+    lg0: Worker running
+    lg1: Waiting for Vlad
+    lg2: Stop written
+    lg3: Run ended
+  }
+  class lg0 blue
+  class lg1 yellow
+  class lg2 orange
+  class lg3 tan
+  s0: Worker on it (run.bound, run.progress)
+  s1: Budget used up, Vlad asked to raise it (run.ended budget, gate.opened budget)
+  s2: Run finished (run.ended)
+  s3: Question open in the issue (gate.opened question)
+  s4: Budget not raised (gate.answered no)
+  s5: Worker on it, judged stuck (watchdog.judged stuck)
+  s6: Question open, judged stuck on an older read (watchdog.judged stuck)
+  s7: Worker on it, stop written (stop.intended)
+  s8: Question open, stop written just before it (stop.intended)
+  s9: Stopped (run.ended failed stopped)
+  [*] --&gt; s0
+  s0 --&gt; s1: Atomic blocks the run at its budget
+  s0 --&gt; s2: the run finishes
+  s0 --&gt; s3: the worker asks (gate.opened)
+  s1 --&gt; s4: Vlad says no
+  s1 --&gt; s0: Vlad says yes (gate.answered, next run.intended)
+  s0 --&gt; s5: no run.progress for 15 min, the watchdog judges stuck or drifting
+  s3 --&gt; s0: the answer arrives (gate.answered)
+  s5 --&gt; s6: the worker asks (gate.opened)
+  s5 --&gt; s7: the daemon writes stop.intended
+  s3 --&gt; s6: the watchdog judges stuck on a read from before the question
+  s6 --&gt; s5: the answer arrives (gate.answered)
+  s6 --&gt; s3: the daemon drops the judgement
+  s7 --&gt; s8: the worker asks (gate.opened)
+  s7 --&gt; s9: the engine stops the run in Atomic
+  s8 --&gt; s7: the answer arrives (gate.answered)
+  s8 --&gt; s9: the engine stops the run in Atomic
+  class s0 blue
+  class s1 yellow
+  class s2 tan
+  class s3 yellow
+  class s4 tan
+  class s5 blue
+  class s6 yellow
+  class s7 orange
+  class s8 orange
+  class s9 tan
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px
+</pre></div>
+<h2>Where each state and arrow is in the code</h2><ul><li>Worker on it: run.bound (engine.ts:231) and run.progress after each stage (engine.ts:195).</li><li>Question open: a stage asks, askHost opens gate.opened kind question (engine.ts:155-173, gates.ts:49-56) and waits for gate.answered (gates.ts:59-67).</li><li>Budget used up: Atomic reports blocked or budget_exceeded, classify turns it into kind budget (engine.ts:303-306), and reportDrafts writes run.ended and gate.opened kind budget together (runs.ts:209-214). A budget stop is not final (runs.ts:63).</li><li>Vlad says yes: gate.answered starting with si, yes or ok (runs.ts:77), then planRuns writes the next run.intended with the raised budget (runs.ts:119-124).</li><li>Judged stuck: watchdog.judged with verdict stuck or drifting (domain.ts:100). The watchdog log handle may write only that kind (log.ts:48). The watchdog itself is the A2 plan, not code.</li><li>Stop written: stop.intended (domain.ts:95), written by the daemon after a stuck or drifting judgement (plan A2).</li><li>Stopped: the engine stops the run in Atomic, status killed, classify gives run.ended failed with cause stopped (engine.ts:309).</li></ul>
+<h2>The broken model</h2><p class="note">DaemonChecksGate = FALSE and DaemonDedupes = FALSE. The daemon turns every stuck or drifting judgement into stop.intended. It does not look for an open gate when it writes, and it does not look for an earlier stop of the same run. Plain TLC stops at NoStopWhileGateOpen, the shorter path. The statechart run also finds OneStopPerRun.</p><p class="note">java -XX:+UseParallelGC -cp $TLA2TOOLS tlc2.TLC -workers 1 -config run-stop.rotto.cfg run_stop.tla<br>Invariant NoStopWhileGateOpen is violated, trace of 5 states. 36 states generated, 23 distinct.</p>
+<div class="card"><pre class="mermaid">---
+title: &quot;One run with a gate, a budget and the watchdog (A2)&quot;
+---
+stateDiagram-v2
+  state &quot;Legend&quot; as legend {
+    lg0: Worker running
+    lg1: Waiting for Vlad
+    lg2: Stop written
+    lg3: Run ended
+    lg4: Breaks NoStopWhileGateOpen or OneStopPerRun
+    lg5: Breaks NoStopWhileGateOpen or OneStopPerRun in some cases
+    lg6: Path to the NoStopWhileGateOpen or OneStopPerRun bug
+  }
+  class lg0 blue
+  class lg1 yellow
+  class lg2 orange
+  class lg3 tan
+  class lg4 breaks
+  class lg5 mayBreak
+  class lg6 bugPath
+  s0: Worker on it (run.bound, run.progress)
+  s1: Budget used up, Vlad asked to raise it (run.ended budget, gate.opened budget)
+  s2: Run finished (run.ended)
+  s3: Question open in the issue (gate.opened question)
+  s4: Budget not raised (gate.answered no)
+  s5: Worker on it, judged stuck (watchdog.judged stuck)
+  s6: Question open, judged stuck on an older read (watchdog.judged stuck)
+  s7: Worker on it, stop written (stop.intended)
+  s8: Question open, stop written just before it (stop.intended)
+  s9: Question open, stop written while it is open (stop.intended)
+  s10: Stopped (run.ended failed stopped)
+  s11: Two stops for one run (stop.intended twice)
+  [*] --&gt; s0
+  s0 --&gt; s1: Atomic blocks the run at its budget
+  s0 --&gt; s2: the run finishes
+  s0 --&gt; s0: the watchdog reads the log
+  s0 --&gt; s3: the worker asks (gate.opened)
+  s1 --&gt; s4: Vlad says no
+  s1 --&gt; s0: Vlad says yes (gate.answered, next run.intended)
+  s0 --&gt; s5: no run.progress for 15 min, the watchdog judges stuck or drifting
+  s3 --&gt; s0: the answer arrives (gate.answered)
+  s5 --&gt; s6: the worker asks (gate.opened)
+  s5 --&gt; s7: the daemon writes stop.intended
+  s3 --&gt; s6: the watchdog judges stuck on a read from before the question
+  s6 --&gt; s5: the answer arrives (gate.answered)
+  s6 --&gt; s9: the daemon writes stop.intended
+  s7 --&gt; s7: the watchdog reads the log or no run.progress for 15 min, the watchdog judges stuck or drifting
+  s7 --&gt; s8: the worker asks (gate.opened)
+  s7 --&gt; s10: the engine stops the run in Atomic
+  s8 --&gt; s7: the answer arrives (gate.answered)
+  s8 --&gt; s10: the engine stops the run in Atomic
+  s9 --&gt; s7: the answer arrives (gate.answered)
+  s9 --&gt; s10: the engine stops the run in Atomic
+  s7 --&gt; s11: the daemon writes stop.intended
+  s7 --&gt; s9: the worker asks (gate.opened)
+  s8 --&gt; s11: the daemon writes stop.intended
+  s9 --&gt; s11: the daemon writes stop.intended
+  s11 --&gt; s10: the engine stops the run in Atomic
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px
+  classDef breaks fill:#ffecee,stroke:#e72e3b,stroke-width:2.5px,color:#cd2834
+  classDef mayBreak fill:#fff3e6,stroke:#e8730c,stroke-width:2.5px,color:#b85a06
+  class s0 blue
+  class s0 mayBreak
+  class s0 bugPath
+  class s1 yellow
+  class s1 mayBreak
+  class s2 tan
+  class s2 mayBreak
+  class s3 yellow
+  class s3 mayBreak
+  class s4 tan
+  class s4 mayBreak
+  class s5 blue
+  class s5 mayBreak
+  class s5 bugPath
+  class s6 yellow
+  class s6 mayBreak
+  class s6 bugPath
+  class s7 orange
+  class s7 mayBreak
+  class s7 bugPath
+  class s8 orange
+  class s9 orange
+  class s9 breaks
+  class s9 bugPath
+  class s10 tan
+  class s10 mayBreak
+  class s11 orange
+  class s11 breaks
+  class s11 bugPath
+</pre></div>
+<pre class="note"># run_stop
+
+TLC reached 233 states and 584 steps. The chart draws 12 states and 25 arrows.
+The chart does not draw 134 steps that stay in one chart state.
+The view hides 241 steps, so the chart does not draw them.
+
+## NoStopWhileGateOpen breaks
+The shortest path has 4 steps:
+0. Worker on it (run.bound, run.progress)
+1. the watchdog reads the log: Worker on it (run.bound, run.progress)
+2. no run.progress for 15 min, the watchdog judges stuck or drifting: Worker on it, judged stuck (watchdog.judged stuck)
+3. the worker asks (gate.opened): Question open, judged stuck on an older read (watchdog.judged stuck)
+4. the daemon writes stop.intended: Question open, stop written while it is open (stop.intended)
+
+## OneStopPerRun breaks
+The shortest path has 6 steps:
+0. Worker on it (run.bound, run.progress)
+1. the watchdog reads the log: Worker on it (run.bound, run.progress)
+2. no run.progress for 15 min, the watchdog judges stuck or drifting: Worker on it, judged stuck (watchdog.judged stuck)
+3. the daemon writes stop.intended: Worker on it, stop written (stop.intended)
+4. the watchdog reads the log: Worker on it, stop written (stop.intended)
+5. no run.progress for 15 min, the watchdog judges stuck or drifting: Worker on it, stop written (stop.intended)
+6. the daemon writes stop.intended: Two stops for one run (stop.intended twice)
+
+## Rules that hold
+TypeOK, NoDeadlock</pre>
+<h2>What the model leaves out</h2><ul><li>The watchdog's restart of a dead daemon (launchctl kickstart), the progressing verdict as a separate state, and the attention list.</li><li>Two attempts at most. run.ended failed and done are one end state.</li><li>The chart hides the finish and budget arrows from states where a judgement or a stop is pending. Those steps exist in the model.</li></ul>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:true,securityLevel:"strict",theme:"default"});</script></body></html>

@@ -1,0 +1,13 @@
+$ 18:13:06 harness service status
+running pid=56402 last heartbeat 1s ago
+$ 18:13:06 harness service uninstall
+not installed
+uninstall 0.4 s
+ls: ~/Library/LaunchAgents/it.delera.harness.l9.plist: No such file or directory
+launchctl print exit=113
+pid 56402 gone
+0
+2026-11-02T17:13:06.704Z engine disposed in 23 ms
+$ 18:13:07 harness service uninstall (seconda volta)
+not installed
+exit code=0

@@ -1,0 +1,6 @@
+$ 17:11:53 harness service status (run legato, prima di run.ended)
+running pid=77465 last heartbeat 6s ago
+2026-11-02T16:10:55.743Z engine session 01a19d07-255b-770b-9eb3-8d37900b6cae pid 77465
+2026-11-02T16:11:47.756Z run 184b82e7b2360909e1fdc987247aa789 bound to 7e006b0b-2fd3-40f9-a9e8-c5aa53b0829a
+$ 17:11:53 harness service restart
+running pid=79038, no heartbeat yet

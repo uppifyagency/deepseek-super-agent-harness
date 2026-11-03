@@ -1,0 +1,18 @@
+$ harness service status
+running pid=64807 last heartbeat 11s ago
+$ 17:20:47 harness service uninstall   (codice a 35fa767)
+not installed
+exit 0
+$ 17:20:47 ls ~/Library/LaunchAgents/it.delera.harness.l2.plist
+ls: ~/Library/LaunchAgents/it.delera.harness.l2.plist: No such file or directory
+$ launchctl print gui/501/it.delera.harness.l2
+Bad request.
+Could not find service "it.delera.harness.l2" in domain for user gui: 501
+exit 113
+$ ps -p 64807 (il pid del daemon)
+nessun processo 64807
+$ processi cli.ts run con HARNESS_HOME worker-2
+(fine elenco)
+$ harness service uninstall di nuovo (idempotente)
+not installed
+exit 0

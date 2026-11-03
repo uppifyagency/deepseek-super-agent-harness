@@ -1,0 +1,20 @@
+1 empty wall=0.13s | 2026-11-02T19:35:11.063Z daemon=absent router=ok runs=0 live, 0 stalled 15ms
+1 stuck wall=12.36s | 2026-11-02T19:35:23.457Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0371 9.3s] 12242ms
+2 empty wall=0.12s | 2026-11-02T19:35:23.657Z daemon=absent router=ok runs=0 live, 0 stalled 14ms
+2 stuck wall=5.75s | 2026-11-02T19:35:29.439Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0230 4.2s] 5626ms
+3 empty wall=0.12s | 2026-11-02T19:35:29.627Z daemon=absent router=ok runs=0 live, 0 stalled 13ms
+3 stuck wall=6.9s | 2026-11-02T19:35:36.564Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0244 5.7s] 6789ms
+4 empty wall=0.12s | 2026-11-02T19:35:36.747Z daemon=absent router=ok runs=0 live, 0 stalled 12ms
+4 stuck wall=7.77s | 2026-11-02T19:35:44.549Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0234 6.3s] 7656ms
+5 empty wall=0.12s | 2026-11-02T19:35:44.738Z daemon=absent router=ok runs=0 live, 0 stalled 14ms
+5 stuck wall=7.59s | 2026-11-02T19:35:52.369Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0230 6.6s] 7476ms
+6 empty wall=0.16s | 2026-11-02T19:35:52.597Z daemon=absent router=ok runs=0 live, 0 stalled 17ms
+6 stuck wall=10.61s | 2026-11-02T19:36:03.250Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0233 9.2s] 10498ms
+7 empty wall=0.13s | 2026-11-02T19:36:03.434Z daemon=absent router=ok runs=0 live, 0 stalled 14ms
+7 stuck wall=7.74s | 2026-11-02T19:36:11.212Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0230 6.5s] 7623ms
+8 empty wall=0.12s | 2026-11-02T19:36:11.405Z daemon=absent router=ok runs=0 live, 0 stalled 12ms
+8 stuck wall=6.23s | 2026-11-02T19:36:17.670Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0232 4.8s] 6111ms
+9 empty wall=0.12s | 2026-11-02T19:36:17.867Z daemon=absent router=ok runs=0 live, 0 stalled 13ms
+9 stuck wall=6.43s | 2026-11-02T19:36:24.327Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0229 4.8s] 6308ms
+10 empty wall=0.12s | 2026-11-02T19:36:24.524Z daemon=absent router=ok runs=0 live, 0 stalled 15ms
+10 stuck wall=7.32s | 2026-11-02T19:36:31.881Z daemon=absent router=ok runs=1 live, 1 stalled judged=[1c5303cb:stuck $0.0233 5.5s] 7202ms

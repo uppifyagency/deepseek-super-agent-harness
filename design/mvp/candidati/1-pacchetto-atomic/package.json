@@ -1,0 +1,12 @@
+{
+  "name": "super-agent-harness",
+  "private": true,
+  "type": "module",
+  "bin": { "harness": "./src/host.ts" },
+  "atomic": {
+    "extensions": ["./src/extension.ts"],
+    "workflows": ["./workflows"],
+    "skills": ["./skills"]
+  },
+  "peerDependencies": { "@bastani/atomic": "0.9.63", "@earendil-works/pi-coding-agent": "*", "typebox": "*" }
+}

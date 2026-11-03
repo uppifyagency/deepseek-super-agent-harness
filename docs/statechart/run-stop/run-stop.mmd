@@ -1,0 +1,59 @@
+---
+title: "One run with a gate, a budget and the watchdog (A2)"
+---
+stateDiagram-v2
+  state "Legend" as legend {
+    lg0: Worker running
+    lg1: Waiting for Vlad
+    lg2: Stop written
+    lg3: Run ended
+  }
+  class lg0 blue
+  class lg1 yellow
+  class lg2 orange
+  class lg3 tan
+  s0: Worker on it (run.bound, run.progress)
+  s1: Budget used up, Vlad asked to raise it (run.ended budget, gate.opened budget)
+  s2: Run finished (run.ended)
+  s3: Question open in the issue (gate.opened question)
+  s4: Budget not raised (gate.answered no)
+  s5: Worker on it, judged stuck (watchdog.judged stuck)
+  s6: Question open, judged stuck on an older read (watchdog.judged stuck)
+  s7: Worker on it, stop written (stop.intended)
+  s8: Question open, stop written just before it (stop.intended)
+  s9: Stopped (run.ended failed stopped)
+  [*] --> s0
+  s0 --> s1: Atomic blocks the run at its budget
+  s0 --> s2: the run finishes
+  s0 --> s3: the worker asks (gate.opened)
+  s1 --> s4: Vlad says no
+  s1 --> s0: Vlad says yes (gate.answered, next run.intended)
+  s0 --> s5: no run.progress for 15 min, the watchdog judges stuck or drifting
+  s3 --> s0: the answer arrives (gate.answered)
+  s5 --> s6: the worker asks (gate.opened)
+  s5 --> s7: the daemon writes stop.intended
+  s3 --> s6: the watchdog judges stuck on a read from before the question
+  s6 --> s5: the answer arrives (gate.answered)
+  s6 --> s3: the daemon drops the judgement
+  s7 --> s8: the worker asks (gate.opened)
+  s7 --> s9: the engine stops the run in Atomic
+  s8 --> s7: the answer arrives (gate.answered)
+  s8 --> s9: the engine stops the run in Atomic
+  class s0 blue
+  class s1 yellow
+  class s2 tan
+  class s3 yellow
+  class s4 tan
+  class s5 blue
+  class s6 yellow
+  class s7 orange
+  class s8 orange
+  class s9 tan
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px

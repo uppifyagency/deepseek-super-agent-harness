@@ -1,0 +1,24 @@
+# Pulizia 2026-11-02T21:50:34Z
+--- plist m1
+nessuno
+--- launchctl m1
+nessuno
+--- processi da /tmp/swarm-int
+nessuno
+--- issue
+CLOSED
+CLOSED
+--- PR aperte del bot
+0
+--- checkout /tmp/swarm-int/repo cancellato, home /tmp/swarm-int/m1 tenuta
+e.bak
+m1
+n-a2
+n-main
+n-merged
+r.bak
+test-run1.txt
+test-run2.txt
+v.bak
+watch2.out
+watch2.sh

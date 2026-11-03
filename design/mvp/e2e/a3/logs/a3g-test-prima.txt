@@ -1,0 +1,11 @@
+ℹ fail 8
+ℹ pass 45
+✖ /harness while the silent run is live: the steer tells the worker it is a normal ticket now (4.81625ms)
+✖ /harness while the silent run is queued: the run starts as a normal ticket, with the visible budget and brief (4.995666ms)
+✖ a budget stop of a silent ticket notifies nothing; a visible one asks to answer in the issue (4.294292ms)
+✖ a call that lands while a speculative eval is open waits for that eval to be decided before any reply (4.927542ms)
+✖ a discarded ticket with a live run is stopped, never resumed (4.176375ms)
+✖ a select in a silent ticket is cancelled, never answered with its first option (0.7685ms)
+✖ an old call does not open the thread for good: a later speculative eval, open or decided, gets no reply (6.698875ms)
+✖ failing tests:
+✖ the board shows the router only the last discarded tickets (17.846542ms)

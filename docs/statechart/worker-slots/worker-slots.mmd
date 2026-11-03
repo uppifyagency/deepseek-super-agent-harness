@@ -1,0 +1,66 @@
+---
+title: "Worker slots never exceed maxWorkers"
+---
+stateDiagram-v2
+  state "Legend" as legend {
+    lg0: No worker
+    lg1: Starting a run
+    lg2: Workers live
+  }
+  class lg0 tan
+  class lg1 yellow
+  class lg2 blue
+  s0: No worker, 3 waiting (run.intended)
+  s1: 1 worker (0 run.bound, 1 starting), 2 waiting (run.intended)
+  s2: 1 worker (1 run.bound), 2 waiting (run.intended)
+  s3: No worker, 2 waiting (run.intended)
+  s4: 2 workers (1 run.bound, 1 starting), 1 waiting (run.intended)
+  s5: 1 worker (0 run.bound, 1 starting), 1 waiting (run.intended)
+  s6: 2 workers (2 run.bound), 1 waiting (run.intended)
+  s7: 1 worker (1 run.bound), 1 waiting (run.intended)
+  s8: No worker, 1 waiting (run.intended)
+  s9: 2 workers (1 run.bound, 1 starting), 0 waiting (run.intended)
+  s10: 1 worker (0 run.bound, 1 starting), 0 waiting (run.intended)
+  s11: 2 workers (2 run.bound), 0 waiting (run.intended)
+  s12: 1 worker (1 run.bound), 0 waiting (run.intended)
+  s13: No worker, 0 waiting (run.intended)
+  [*] --> s0
+  s0 --> s1: the daemon starts the next run in its pass
+  s1 --> s2: Atomic gives the run id (run.bound)
+  s2 --> s3: a run ends (run.ended)
+  s2 --> s4: the daemon starts the next run in its pass
+  s3 --> s5: the daemon starts the next run in its pass
+  s4 --> s5: a run ends (run.ended)
+  s4 --> s6: Atomic gives the run id (run.bound)
+  s5 --> s7: Atomic gives the run id (run.bound)
+  s6 --> s7: a run ends (run.ended)
+  s7 --> s8: a run ends (run.ended)
+  s7 --> s9: the daemon starts the next run in its pass
+  s8 --> s10: the daemon starts the next run in its pass
+  s9 --> s10: a run ends (run.ended)
+  s9 --> s11: Atomic gives the run id (run.bound)
+  s10 --> s12: Atomic gives the run id (run.bound)
+  s11 --> s12: a run ends (run.ended)
+  s12 --> s13: a run ends (run.ended)
+  class s0 tan
+  class s1 yellow
+  class s2 blue
+  class s3 tan
+  class s4 yellow
+  class s5 yellow
+  class s6 blue
+  class s7 blue
+  class s8 tan
+  class s9 yellow
+  class s10 yellow
+  class s11 blue
+  class s12 blue
+  class s13 tan
+  classDef blue fill:#c3e0ff,stroke:#808080,color:#1c1c1c
+  classDef orange fill:#f0d3bf,stroke:#808080,color:#1c1c1c
+  classDef purple fill:#e3d5ff,stroke:#808080,color:#1c1c1c
+  classDef yellow fill:#f0dcbf,stroke:#808080,color:#1c1c1c
+  classDef teal fill:#bfe3df,stroke:#808080,color:#1c1c1c
+  classDef tan fill:#e5d9ce,stroke:#808080,color:#1c1c1c
+  classDef pink fill:#ffcbe6,stroke:#808080,color:#1c1c1c
+  classDef bugPath stroke:#1680f3,stroke-width:2.5px

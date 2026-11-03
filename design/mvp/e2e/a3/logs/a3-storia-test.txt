@@ -1,0 +1,14 @@
+# prima: 87a8e21 (test nuovi, codice 490d10a)
+  AssertionError [ERR_ASSERTION]: a discarded ticket has nothing to start again
+  AssertionError [ERR_ASSERTION]: an old message read by the first poll
+ℹ fail 2
+ℹ pass 79
+ℹ tests 81
+✖ a silent run started again before its first checkpoint stays silent on one attempt; once its ticket is discarded it is not started again (6.573792ms)
+✖ failing tests:
+✖ speculative replays no history: only messages created after it was turned on for the repo are candidates, across restarts (10.630834ms)
+
+# dopo: af72a49
+ℹ tests 81
+ℹ pass 81
+ℹ fail 0

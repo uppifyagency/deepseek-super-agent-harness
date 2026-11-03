@@ -1,0 +1,9 @@
+$ harness setup --yes --repo not-a-repo --allow uppifyagency   (home vuota)
+bad repo "not-a-repo", expected owner/name
+exit 1
+file nella home: 0 (la home esiste: no)
+plist it.delera.harness.i9: assente
+Portachiavi harness-bot-github-test-9: assente
+
+== riferimento: loadConfig sullo stesso valore (config.json scritto a mano in una home diversa, poi harness status)
+Error: bad repo "not-a-repo", expected owner/name

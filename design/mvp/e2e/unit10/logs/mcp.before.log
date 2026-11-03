@@ -1,0 +1,15 @@
+2026-11-02T15:00:25.002Z next {}
+2026-11-02T15:00:27.689Z decide {"eval":"10dbed88025a6848b971f7f8700608f8","decision":{"kind":"accept","title":"Aggiungi docs/nota-uno.md","scope":"Il file docs/nota-uno.md esiste e contiene una sola riga in italiano: \"questa è la nota uno della prova dei worker in parallelo\"."}}
+2026-11-02T15:00:29.023Z decide {"eval":"f84b77b2b16b07a2cedf482b33b7f624","decision":{"kind":"accept","title":"Aggiungi docs/nota-due.md","scope":"Il file docs/nota-due.md esiste e contiene una sola riga in italiano: \"questa è la nota due della prova dei worker in parallelo\"."}}
+2026-11-02T15:00:30.168Z decide {"eval":"583dffc670d701f650414fb9790d4a22","decision":{"kind":"accept","title":"Aggiungi docs/nota-tre.md","scope":"Il file docs/nota-tre.md esiste e contiene una sola riga in italiano: \"questa è la nota tre della prova dei worker in parallelo\"."}}
+2026-11-02T15:00:31.624Z reply {"to":"issue:uppifyagency/harness-sandbox#10","purpose":"ack","about":"10dbed88025a6848b971f7f8700608f8","text":"Presa in carico: aggiungo docs/nota-uno.md.\n\nIl file conterrà una sola riga: \"questa è la nota uno della prova dei worker in parallelo\"."}
+2026-11-02T15:00:33.224Z reply {"to":"issue:uppifyagency/harness-sandbox#11","purpose":"ack","about":"f84b77b2b16b07a2cedf482b33b7f624","text":"Presa in carico: aggiungo docs/nota-due.md.\n\nIl file conterrà una sola riga: \"questa è la nota due della prova dei worker in parallelo\"."}
+2026-11-02T15:00:34.723Z reply {"to":"issue:uppifyagency/harness-sandbox#12","purpose":"ack","about":"583dffc670d701f650414fb9790d4a22","text":"Presa in carico: aggiungo docs/nota-tre.md.\n\nIl file conterrà una sola riga: \"questa è la nota tre della prova dei worker in parallelo\"."}
+2026-11-02T15:00:34.774Z next {}
+2026-11-02T15:01:56.140Z next {}
+2026-11-02T15:02:00.892Z reply {"to":"issue:uppifyagency/harness-sandbox#10","purpose":"result","about":"0f79bd76af99bf5f825a8df1383ecd97","text":"Fatto: PR pronta, https://github.com/uppifyagency/harness-sandbox/pull/14\n\n- **Modifica**: aggiunto `docs/nota-uno.md` con la sola riga \"questa è la nota uno della prova dei worker 
+2026-11-02T15:02:03.029Z reply {"to":"issue:uppifyagency/harness-sandbox#11","purpose":"result","about":"7a543ba60a4797a52d448a2b35eb26bf","text":"Fatto: PR pronta, https://github.com/uppifyagency/harness-sandbox/pull/13\n\n- **Modifica**: aggiunto `docs/nota-due.md` con la sola riga \"questa è la nota due della prova dei worker 
+2026-11-02T15:02:03.037Z next {}
+2026-11-02T15:03:41.433Z next {}
+2026-11-02T15:03:48.893Z reply {"to":"issue:uppifyagency/harness-sandbox#12","purpose":"result","about":"e7234b7a4d8df9354afc5d2f16f6e5b5","text":"Fatto: PR pronta, https://github.com/uppifyagency/harness-sandbox/pull/15\n\n- **Modifica**: aggiunto `docs/nota-tre.md` con la sola riga \"questa è la nota tre della prova dei worker 
+2026-11-02T15:03:48.979Z next {}

@@ -1,0 +1,32 @@
+--- try 1 18:02:18 pid 40060
+bootout exit=0
+Bootstrap failed: 5: Input/output error
+Try re-running the command as root for richer errors.
+bootstrap exit=5
+label forgotten 0.099999904632568359 s after bootout; pid 40060 alive: no
+bootstrap after teardown exit=0
+--- try 2 18:02:34 pid 40358
+bootout exit=0
+Bootstrap failed: 5: Input/output error
+Try re-running the command as root for richer errors.
+bootstrap exit=5
+label forgotten 0.20000004768371582 s after bootout; pid 40358 alive: no
+bootstrap after teardown exit=0
+--- try 3 18:02:55 pid 40675
+bootout exit=0
+Bootstrap failed: 5: Input/output error
+Try re-running the command as root for richer errors.
+bootstrap exit=5
+label forgotten 0.20000004768371582 s after bootout; pid 40675 alive: no
+bootstrap after teardown exit=0
+--- try 4 18:03:14 pid 41081
+bootout exit=0
+Bootstrap failed: 5: Input/output error
+Try re-running the command as root for richer errors.
+bootstrap exit=5
+label forgotten 0.099999904632568359 s after bootout; pid 41081 alive: no
+bootstrap after teardown exit=0
+2026-11-02T17:02:18.525Z engine disposed in 43 ms
+2026-11-02T17:02:34.066Z engine disposed in 33 ms
+2026-11-02T17:02:55.670Z engine disposed in 43 ms
+2026-11-02T17:03:14.197Z engine disposed in 18 ms

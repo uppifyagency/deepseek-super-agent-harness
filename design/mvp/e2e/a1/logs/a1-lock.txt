@@ -1,0 +1,7 @@
+$ harness service status
+running pid=62492 last heartbeat 11s ago
+$ node src/cli.ts run --every 20   (a mano, servizio attivo)
+already running (pid 62492)
+exit code: 3
+$ cat run.lock
+62492

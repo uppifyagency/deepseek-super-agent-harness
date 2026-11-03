@@ -1,0 +1,5 @@
+$ 17:21:08 harness service restart (SIGTERM dal kickstart -k)
+running pid=94565, no heartbeat yet
+$ launchctl print: uscita del processo precedente
+	runs = 2
+	last exit code = 0

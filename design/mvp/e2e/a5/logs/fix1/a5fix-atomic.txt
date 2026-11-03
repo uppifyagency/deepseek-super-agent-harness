@@ -1,0 +1,16 @@
+== before, Atomic 0.9.64 installato, atomic nel PATH: off
+FAKE npm: i -g @bastani/atomic@0.9.63
+exit 1; chiamate a npm:
+npm i -g @bastani/atomic@0.9.63
+== before, Atomic 0.10.0 installato, atomic nel PATH: on
+FAKE npm: i -g @bastani/atomic@0.9.63
+exit 1; chiamate a npm:
+npm i -g @bastani/atomic@0.9.63
+== after, Atomic 0.9.64 installato, atomic nel PATH: off
+manca  Atomic globale, 0.9.x da 0.9.63 in su: atomic 0.9.64 e' in /private/tmp/swarm-a5fix/r2-after/prefix/bin, che non e' nel PATH: export PATH="/private/tmp/swarm-a5fix/r2-after/prefix/bin:$PATH"
+exit 1; chiamate a npm:
+(nessuna)
+== after, Atomic 0.10.0 installato, atomic nel PATH: on
+manca  Atomic globale, 0.9.x da 0.9.63 in su: Atomic 0.10.0 e' piu' nuovo delle versioni provate; per tornare a quella provata: npm i -g @bastani/atomic@0.9.63
+exit 1; chiamate a npm:
+(nessuna)

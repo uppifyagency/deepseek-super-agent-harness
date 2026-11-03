@@ -1,0 +1,27 @@
+2026-11-02T16:03:24.156Z uppifyagency/harness-sandbox: 52 items {"filtered":52}
+2026-11-02T16:03:47.989Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:04:04.644Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:04:35.012Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:05:05.703Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:05:28.914Z uppifyagency/harness-sandbox: 8 items {"duplicate":8}
+2026-11-02T16:12:21.028Z uppifyagency/harness-sandbox: 19 items {"duplicate":8,"to-router":1,"filtered":10}
+router: ok=true (new session) cost=$0.0373 time=11.9s turns=4 denied=[]
+2026-11-02T16:13:08.399Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:13:31.411Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:13:54.526Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:14:17.737Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:14:40.767Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:15:03.488Z uppifyagency/harness-sandbox: 9 items {"duplicate":9}
+2026-11-02T16:15:27.547Z uppifyagency/harness-sandbox: 10 items {"duplicate":9,"filtered":1}
+2026-11-02T16:15:50.432Z uppifyagency/harness-sandbox: 9 items {"duplicate":8,"filtered":1}
+2026-11-02T16:16:13.671Z uppifyagency/harness-sandbox: 7 items {"duplicate":6,"filtered":1}
+2026-11-02T16:16:37.127Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:16:59.600Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}
+2026-11-02T16:17:22.923Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T16:17:45.797Z uppifyagency/harness-sandbox: 8 items {"duplicate":6,"filtered":2}
+2026-11-02T16:18:08.753Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:18:49.711Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:19:20.478Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:19:48.337Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:20:11.773Z uppifyagency/harness-sandbox: 7 items {"duplicate":7}
+2026-11-02T16:20:36.014Z uppifyagency/harness-sandbox: 8 items {"duplicate":7,"filtered":1}

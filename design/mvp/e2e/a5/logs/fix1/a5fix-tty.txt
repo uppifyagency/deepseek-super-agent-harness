@@ -1,0 +1,21 @@
+before run 1: token visibile 1 volte; exit 0
+before run 2: token visibile 1 volte; exit 0
+before run 3: token visibile 1 volte; exit 0
+before run 4: token visibile 1 volte; exit 0
+before run 5: token visibile 1 volte; exit 0
+Token del bot GitHub (non viene mostrato): fake_token_for_tests^M
+before Ctrl-C: Token del bot GitHub (non viene mostrato): ^Cexit 0
+after run 1: token visibile 0 volte; exit 0
+after run 2: token visibile 0 volte; exit 0
+after run 3: token visibile 0 volte; exit 0
+after run 4: token visibile 0 volte; exit 0
+after run 5: token visibile 0 volte; exit 0
+Token del bot GitHub (non viene mostrato): ^M
+after Ctrl-C: exit 130
+== before Ctrl-C al prompt
+gia' fatto  gh autenticato
+gia' fatto  config.json
+Token del bot GitHub (non viene mostrato): ^C== after Ctrl-C al prompt
+Token del bot GitHub (non viene mostrato): 
+node-exit=130
+echo

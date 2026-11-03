@@ -1,0 +1,23 @@
+# lane 2 first run, home w2, issue #51, stuckAfterMin 3. The daemon ran 672c743 (quit -> paused hung, see a2-drift.txt); restarted on 31989f0 at 19:04:05Z, it ended the run as not owned
+301|2026-11-02T18:53:54.662Z|run.bound|{"run":"f0a8ffd6ea29ece528a33c7700d95aa2","atomic":"ad560e66-3ae9-40be-9034-edfb9e27e07c"}
+324|2026-11-02T18:58:00.180Z|watchdog.judged|{"run":"f0a8ffd6ea29ece528a33c7700d95aa2","verdict":"stuck","evidence":"At 18:54:17 the worker started `until test -f /tmp/mai; do sleep 30; done` with a 3600s timeout. That was its second try, after the 86400s timeout was rejected at 18:54:12. It is waiting for a file that nothing will create (the issue title is \"worker che gira in tondo\"), and no code has been written in the 3.5 minutes since."}
+325|2026-11-02T18:58:03.071Z|stop.intended|{"run":"f0a8ffd6ea29ece528a33c7700d95aa2","reason":"watchdog stuck: At 18:54:17 the worker started `until test -f /tmp/mai; do sleep 30; done` with a 3600s timeout. That was its second try, after the 86400s timeout was rejected at 18:54:12. It is waiting for a file that nothing will create (the issue title is \"worker che gira in tondo\"), and no code has been written in the 3.5 minutes since."}
+326|2026-11-02T19:04:09.549Z|run.ended|{"run":"f0a8ffd6ea29ece528a33c7700d95aa2","outcome":{"kind":"failed","cause":"stopped","retryable":false,"evidence":"watchdog stuck: At 18:54:17 the worker started `until test -f /tmp/mai; do sleep 30; done` with a 3600s timeout. That was its second try, after the 86400s timeout was rejected at 18:54:12. It is waiting for a file that nothing will create (the issue title is \"worker che gira in tondo\"), and no code has been written in the 3.5 minutes since."}}
+
+$ watchdog.log
+2026-11-02T18:53:50.769Z daemon=pid 48929 no heartbeat yet router=ok runs=not judged, no daemon beating 59ms
+2026-11-02T18:55:51.089Z daemon=ok(beat 54s ago) router=ok runs=1 live, 0 stalled 18ms
+2026-11-02T18:58:00.181Z daemon=ok(beat 3s ago) router=ok runs=1 live, 1 stalled judged=[f0a8ffd6:stuck $0.0362 4.1s] 5477ms
+2026-11-02T19:00:00.390Z daemon=ok(beat 8s ago) router=ok runs=1 live, 0 stalled 10ms
+2026-11-02T19:02:00.602Z daemon=ok(beat 8s ago) router=ok runs=1 live, 0 stalled 15ms
+2026-11-02T19:04:00.815Z daemon=ok(beat 8s ago) router=ok runs=1 live, 0 stalled 16ms
+
+$ harness
+STUCK  issue:uppifyagency/harness-sandbox#51  watchdog stuck: At 18:54:17 the worker started `until test -f /tmp/mai; do sleep 30; done` with a 3600s timeout. That was its second try, after the 86400s timeout was rejected at 18:54:12. It is waiting for a file that nothing will create (the issue title is "worker che gira in tondo"), and no code 
+
+$ engine.log
+2026-11-02T18:53:54.662Z run f0a8ffd6ea29ece528a33c7700d95aa2 bound to ad560e66-3ae9-40be-9034-edfb9e27e07c
+2026-11-02T18:58:03.425Z stop f0a8ffd6ea29ece528a33c7700d95aa2: quit ad560e66-3ae9-40be-9034-edfb9e27e07c -> {"action":"quit","runId":"ad560e66-3ae9-40be-9034-edfb9e27e07c","status":"paused","message":"Run ad560e66-3ae9-40be-9034-edfb9e27e07c quit and can be resumed with /workflow resume."}
+2026-11-02T19:04:06.030Z engine disposed in 40 ms
+2026-11-02T19:04:07.452Z engine session 01a19da5-bc87-7072-b0e1-cffa57819ff2 pid 98372
+2026-11-02T19:04:09.550Z stop f0a8ffd6ea29ece528a33c7700d95aa2: not running here, ended in the log

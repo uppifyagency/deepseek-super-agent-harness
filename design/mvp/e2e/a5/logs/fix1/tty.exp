@@ -1,0 +1,9 @@
+set timeout 30
+set R [lindex $argv 0]
+set v [lindex $argv 1]
+log_user 1
+spawn env -i PATH=$R/prefix/bin:$R/bin:/usr/bin:/bin HOME=$R/user HARNESS_HOME=$R/home $R/prefix/bin/node /tmp/swarm-a5fix/$v/harness/src/cli.ts setup
+expect "non viene mostrato): " ; send "fake_token_for_tests\r"
+expect eof
+catch wait result
+send_user "exit [lindex $result 3]\n"

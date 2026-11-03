@@ -1,0 +1,10 @@
+# prova-h1.sh, home /tmp/swarm-a2f/t1/home, issue #108, codice ef6feb6, stuckAfterMin 2, giri di 300 s. Avvio 2026-11-02T20:18:51Z
+20:19:12Z run 5a54ec25b50a86673e8dcad7af113ea7 bound
+20:24:14Z giro finito, controllo: 2026-11-02T20:24:23.096Z daemon=ok(beat 1s ago) router=ok runs=1 live, 1 stalled judged=[5a54ec25:progressing $0.0374 7.6s] 8936ms
+--- giudizi
+2026-11-02T20:24:23.094Z|progressing|At 20:19:22 the worker started a polling loop for /tmp/a2f-t1-go, and at 20:19:36 it began waiting on that task (task-1-0-0). Waiting for that file is the first step the ticket's done-when requires. It fixed its invalid-timeout error at 20:19:19 and is now blocked on a step it was told to wait for, not repeating actions or working on anything outside the goal.
+--- scope accettato dal router
+Seguire i passi dell'issue #108 in ordine: attendere /tmp/a2f-t1-go, chiedere a Vlad "NOTE-A o NOTE-B?" (opzioni NOTE-A, NOTE-B), scrivere la risposta in scripts/a2f-t1.txt, attendere /tmp/a2f-mai, poi creare scripts/a2f-t1.sh che stampa "ciao", committare e aprire la PR.
+--- uninstall 2026-11-02T20:25:29Z
+it.delera.harness.t1: not installed
+it.delera.harness.watchdog.t1: not installed

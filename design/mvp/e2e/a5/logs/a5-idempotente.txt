@@ -1,0 +1,35 @@
+== prima
+config.json mtime=1793646028 size=354
+61755f310b2180ef
+pid daemon 78350
+
+$ harness setup --yes (stessi flag, nessun token sulla pipe)
+gia' fatto  macOS
+gia' fatto  Node >= 26.13.0
+gia' fatto  Atomic 0.9.63 globale
+gia' fatto  pstack in /tmp/swarm-a5/worker-5/pstack-claude/plugins/pstack
+gia' fatto  login Codex di Atomic
+gia' fatto  Claude Code con il login del piano
+gia' fatto  gh autenticato
+gia' fatto  config.json
+gia' fatto  token del bot nel Portachiavi (harness-bot-github-test-5)
+gia' fatto  servizio launchd (it.delera.harness.i5)
+
+ok     macOS
+ok     Node >= 26.13.0
+ok     Atomic 0.9.63 globale
+ok     pstack in /tmp/swarm-a5/worker-5/pstack-claude/plugins/pstack
+ok     login Codex di Atomic
+ok     Claude Code con il login del piano
+ok     gh autenticato
+ok     config.json
+ok     token del bot nel Portachiavi (harness-bot-github-test-5)
+ok     servizio launchd (it.delera.harness.i5)
+exit 0
+
+== dopo
+config.json mtime=1793646028 size=354
+61755f310b2180ef
+pid daemon 78350 (stesso: si)
+== file cambiati fra prima e dopo (mtime/size), il daemon in esecuzione scrive i suoi:
+(fine elenco)

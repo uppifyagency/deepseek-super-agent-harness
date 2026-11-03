@@ -1,0 +1,14 @@
+2026-11-02T19:16:34.960Z uppifyagency/harness-sandbox: 22 items {"duplicate":22}
+2026-11-02T19:16:56.926Z uppifyagency/harness-sandbox: 24 items {"duplicate":22,"to-router":2}
+router: ok=true (new session) cost=$0.0593 time=9.8s turns=5 denied=[]
+run intended: 8bfd398f9a454a28026aa41361355029
+run intended: 08c48840b624724817359cbc7c165709
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a3/worker-6/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a3/worker-6/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run 8bfd398f9a454a28026aa41361355029 started (ticket 82d5d1b90e3ce39bc117d3a23c76d2b6, attempt 1, openai-codex/gpt-6.1-sol:high)
+2026-11-02T19:17:30.126Z uppifyagency/harness-sandbox: 25 items {"duplicate":23,"filtered":1,"to-router":1}
+router: ok=true cost=$0.1047 time=10.7s turns=5 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/77#issuecomment-6586177424
+run intended: 2f22fa3468ffdf22d4114bef6049272c
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a3/worker-6/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a3/worker-6/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run 2f22fa3468ffdf22d4114bef6049272c started (ticket f9e7617c5bfb338c2a37a149a6473090, attempt 1, openai-codex/gpt-6.1-sol:high)
+2026-11-02T19:18:06.867Z uppifyagency/harness-sandbox: 24 items {"duplicate":22,"filtered":2}

@@ -1,0 +1,20 @@
+2026-11-02T13:49:58.302Z uppifyagency/harness-sandbox: 4 items {"duplicate":4}
+2026-11-02T13:50:15.561Z uppifyagency/harness-sandbox: 5 items {"duplicate":4,"to-router":1}
+router: ok=true cost=$0.1739 time=11.1s turns=5 denied=[]
+reply sent: https://github.com/uppifyagency/harness-sandbox/issues/7#issuecomment-6578845567
+run intended: 963e60b9e30454375486636d7d74b4ee
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at <sessione>/scratchpad/home-unit6/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at <sessione>/scratchpad/home-unit6/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run 963e60b9e30454375486636d7d74b4ee started (ticket fd90c1ac7c0d656c204958f8b911e754, openai-codex/gpt-6.1-sol:high)
+2026-11-02T13:50:47.064Z uppifyagency/harness-sandbox: 6 items {"duplicate":4,"filtered":1,"to-ticket":1}
+2026-11-02T13:51:04.195Z uppifyagency/harness-sandbox: 3 items {"duplicate":3}
+2026-11-02T13:51:21.166Z uppifyagency/harness-sandbox: 3 items {"duplicate":3}
+2026-11-02T13:51:38.271Z uppifyagency/harness-sandbox: 3 items {"duplicate":3}
+2026-11-02T13:51:55.233Z uppifyagency/harness-sandbox: 3 items {"duplicate":3}
+2026-11-02T13:52:12.353Z uppifyagency/harness-sandbox: 3 items {"duplicate":3}
+2026-11-02T13:52:31.665Z uppifyagency/harness-sandbox: 3 items {"duplicate":3}
+2026-11-02T13:52:48.545Z uppifyagency/harness-sandbox: 3 items {"duplicate":3}
+2026-11-02T13:53:05.520Z uppifyagency/harness-sandbox: 3 items {"duplicate":3}
+2026-11-02T13:53:22.596Z uppifyagency/harness-sandbox: 3 items {"duplicate":3}
+run intended: 827d2fbf10da95375033cfe7f9fe4cde
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at <sessione>/scratchpad/home-unit6/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at <sessione>/scratchpad/home-unit6/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run 827d2fbf10da95375033cfe7f9fe4cde started (ticket fd90c1ac7c0d656c204958f8b911e754, openai-codex/gpt-6.1-sol:high)

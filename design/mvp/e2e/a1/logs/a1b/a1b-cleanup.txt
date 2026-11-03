@@ -1,0 +1,18 @@
+$ 18:56:28Z service uninstall
+not installed
+exit 0
+$ ls plist
+ls: ~/Library/LaunchAgents/it.delera.harness.y1.plist: No such file or directory
+$ launchctl print gui/501/it.delera.harness.y1
+Bad request.
+$ processes with HARNESS_HOME=/tmp/swarm-a1b/home
+(none listed means none)
+$ lsof run.lock.db
+lsof exit 1
+✓ Closed pull request uppifyagency/harness-sandbox#54 (Aggiungi scripts/somma-y1.sh con test)
+✓ Deleted branch harness/f0d0df1ff758
+pr close exit 0
+✓ Closed issue uppifyagency/harness-sandbox#48 (A1b verifica y1)
+issue close exit 0
+PR #54 CLOSED
+issue #48 CLOSED

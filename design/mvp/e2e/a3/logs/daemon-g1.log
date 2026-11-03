@@ -1,0 +1,19 @@
+2026-11-02T20:29:55.628Z uppifyagency/harness-sandbox: 300 items {"filtered":299,"to-router":1}
+router: ok=true (new session) cost=$0.0514 time=20.3s turns=4 denied=[]
+run intended: b739fe1bab63a998b8c57e0bf158a5b2
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a3g/g1/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a3g/g1/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run b739fe1bab63a998b8c57e0bf158a5b2 started (ticket 1f11a9b06e0fdecbe05e7ddd009a0333, attempt 1, openai-codex/gpt-6.1-sol:high)
+2026-11-02T20:30:40.450Z uppifyagency/harness-sandbox: 6 items {"duplicate":4,"filtered":2}
+2026-11-02T20:31:02.688Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T20:31:24.741Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T20:31:51.967Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T20:32:13.991Z uppifyagency/harness-sandbox: 7 items {"duplicate":6,"to-router":1}
+router: ok=true cost=$0.0829 time=13.2s turns=4 denied=[]
+2026-11-02T20:33:03.017Z uppifyagency/harness-sandbox: 7 items {"duplicate":6,"to-router":1}
+router: ok=true cost=$0.1162 time=10.9s turns=4 denied=[]
+run intended: 4491055b8b723b65c52b796947af9194
+atomic-workflows: possible-stages scan produced 2 warning(s): possible-stages: child definition name for ctx.workflow at /tmp/swarm-a3g/g1/home/.atomic/workflows/harness-ticket.ts was not statically visible; using "attempt" as the boundary segment | possible-stages: ctx.workflow child at /tmp/swarm-a3g/g1/home/.atomic/workflows/harness-ticket.ts could not be resolved to a source file; its stages were not scanned
+run 4491055b8b723b65c52b796947af9194 started (ticket a2359774ead9172d5018b1b5bf51a9b9, attempt 1, openai-codex/gpt-6.1-sol:high)
+2026-11-02T20:33:37.458Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T20:33:59.718Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}
+2026-11-02T20:34:21.903Z uppifyagency/harness-sandbox: 6 items {"duplicate":6}

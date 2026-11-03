@@ -1,0 +1,44 @@
+it.delera.harness.w2: not installed
+it.delera.harness.watchdog.w2: not installed
+it.delera.harness.w3: not installed
+it.delera.harness.watchdog.w3: not installed
+it.delera.harness.w4: not installed
+it.delera.harness.watchdog.w4: not installed
+it.delera.harness.w1: not installed
+it.delera.harness.watchdog.w1: not installed
+it.delera.harness.w6: not installed
+it.delera.harness.watchdog.w6: not installed
+it.delera.harness.w7: not installed
+it.delera.harness.watchdog.w7: not installed
+✓ Closed pull request uppifyagency/harness-sandbox#55 (somma-w6)
+PR #55 closed
+✓ Closed pull request uppifyagency/harness-sandbox#80 (Aggiungi file di note in docs/ con la riga "nota A2 w4")
+PR #80 closed
+✓ Closed pull request uppifyagency/harness-sandbox#84 (Aggiungi scripts/lungo-w3b.sh e il suo test)
+PR #84 closed
+✓ Closed issue uppifyagency/harness-sandbox#49 (A2 w3: script lungo e sano)
+issue #49 closed
+✓ Closed issue uppifyagency/harness-sandbox#50 (A2 w4: domanda aperta)
+issue #50 closed
+non-200 OK status code: 502 Bad Gateway body: "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+✓ Closed issue uppifyagency/harness-sandbox#52 (A2 w6: script di somma)
+issue #52 closed
+✓ Closed issue uppifyagency/harness-sandbox#53 (A2 w7: router senza rete)
+issue #53 closed
+✓ Closed issue uppifyagency/harness-sandbox#56 (A2 w6b: somma, con un README da riscrivere)
+issue #56 closed
+✓ Closed issue uppifyagency/harness-sandbox#58 (A2 w2b: worker che gira in tondo, di nuovo)
+issue #58 closed
+✓ Closed issue uppifyagency/harness-sandbox#79 (A2 w2c: worker che gira in tondo, terza prova)
+issue #79 closed
+✓ Closed issue uppifyagency/harness-sandbox#81 (A2 w3b: script lungo e sano, seconda prova)
+issue #81 closed
+--- launchctl list | grep harness.*w[0-9]
+(none)
+--- plists
+(none)
+--- processes
+(none)
+✓ Closed issue uppifyagency/harness-sandbox#51 (A2 w2: worker che gira in tondo)
+issue #51 closed (retry after 502)
+worktrees removed

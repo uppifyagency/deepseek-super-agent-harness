@@ -1,0 +1,16 @@
+Notifica macOS del gate (lane 8). gate.opened nel registro l8: 2026-11-02T16:17:01.686Z (17:17:01.686 ora locale). Screenshot dello schermo non possibile (screencapture: could not create image from display), quindi la prova e' il log unificato:
+2026-11-02 17:17:02.061 A  osascript[88170:2acf5ce] (TCC) TCCAccessRequest() IPC
+2026-11-02 17:17:02.577 Df NotificationCenter[758:19a6] [com.apple.unc:application] Looking up app info for com.apple.ScriptEditor2
+2026-11-02 17:17:02.579 Df NotificationCenter[758:19a6] [com.apple.unc:application] Found info for com.apple.ScriptEditor2 at <private>. app name: Script Editor
+2026-11-02 17:17:02.588 Df usernoted[661:2ace1ec] [com.apple.unc:application] Delivering <NotificationRecord app:"com.apple.ScriptEditor2" ident:"DA39-A3EE" req:"" uuid:"25BE58DC" source:"4179D7C2" st
+2026-11-02 17:17:02.589 Df usernoted[661:2ace1ec] [com.apple.unc:application] Presenting <NotificationRecord app:"com.apple.ScriptEditor2" ident:"DA39-A3EE" req:"" uuid:"25BE58DC" source:"4179D7C2" st
+2026-11-02 17:17:02.590 Df NotificationCenter[758:2accc24] [com.apple.donotdisturb:BehaviorResolution] [com.apple.private.nc.dnd:25D24F84-A677-4E8D-8A98-30234B811814] Resolving behavior for event, det
+2026-11-02 17:17:02.592 Df NotificationCenter[758:2accc24] [com.apple.donotdisturb:BehaviorResolution] [com.apple.private.nc.dnd:25D24F84-A677-4E8D-8A98-30234B811814] Resolved event behavior=<DNDClien
+2026-11-02 17:17:02.593 Df NotificationCenter[758:19a6] [com.apple.unc:dnd] record <NotificationRecord app:"com.apple.ScriptEditor2" ident:"DA39-A3EE" req:"" uuid:"25BE58DC" source:"4179D7C2" staticCa
+2026-11-02 17:17:02.594 Df NotificationCenter[758:19a6] [com.apple.unc:application] addOrUpdate listItem: com.apple.ScriptEditor2:25BE58DC from app com.apple.ScriptEditor2, canDisplayWhileCenterIsClos
+2026-11-02 17:17:02.594 Df NotificationCenter[758:19a6] [com.apple.unc:application] Adding notification to storage: com.apple.ScriptEditor2:25BE58DC
+2026-11-02 17:17:02.594 Df NotificationCenter[758:19a6] [com.apple.unc:application] [com.apple.ScriptEditor2:25BE58DC][record: <NotificationRecord app:"com.apple.ScriptEditor2" ident:"DA39-A3EE" req:"
+2026-11-02 17:17:02.595 Df NotificationCenter[758:19a6] [com.apple.unc:dnd] Not playing sound for <NotificationRecord app:"com.apple.ScriptEditor2" ident:"DA39-A3EE" req:"" uuid:"25BE58DC" source:"417
+2026-11-02 17:17:02.628 Df NotificationCenter[758:19a6] [com.apple.unc:dnd] record <NotificationRecord app:"com.apple.ScriptEditor2" ident:"DA39-A3EE" req:"" uuid:"25BE58DC" source:"4179D7C2" staticCa
+2026-11-02 17:17:02.628 Df NotificationCenter[758:19a6] [com.apple.unc:application] [com.apple.ScriptEditor2:25BE58DC] updating existing notification with content from 25BE58DC
+2026-11-02 17:17:02.628 Df NotificationCenter[758:19a6] [com.apple.unc:application] Adding notification to storage: com.apple.ScriptEditor2:25BE58DC

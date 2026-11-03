@@ -1,0 +1,48 @@
+$ printf "%s
+" "$DUMMY_TOKEN" | harness setup --yes --repo uppifyagency/harness-sandbox --allow uppifyagency --label it.delera.harness.i5 --handle /harness-i5 --keychain harness-bot-github-test-5 --pstack /tmp/swarm-a5/worker-5/pstack-claude/plugins/pstack
+(HARNESS_HOME=/tmp/swarm-a5/worker-5/home, vuota: 0 file)
+gia' fatto  macOS
+gia' fatto  Node >= 26.13.0
+gia' fatto  Atomic 0.9.63 globale
+Cloning into '/tmp/swarm-a5/worker-5/pstack-claude'...
+fatto       pstack in /tmp/swarm-a5/worker-5/pstack-claude/plugins/pstack
+gia' fatto  login Codex di Atomic
+gia' fatto  Claude Code con il login del piano
+gia' fatto  gh autenticato
+fatto       config.json
+Token del bot GitHub (non viene mostrato): 
+fatto       token del bot nel Portachiavi (harness-bot-github-test-5)
+fatto       servizio launchd (it.delera.harness.i5)
+
+ok     macOS
+ok     Node >= 26.13.0
+ok     Atomic 0.9.63 globale
+ok     pstack in /tmp/swarm-a5/worker-5/pstack-claude/plugins/pstack
+ok     login Codex di Atomic
+ok     Claude Code con il login del piano
+ok     gh autenticato
+ok     config.json
+ok     token del bot nel Portachiavi (harness-bot-github-test-5)
+ok     servizio launchd (it.delera.harness.i5)
+exit 0
+
+$ cat config.json
+{
+  "handles": [
+    "/harness-i5"
+  ],
+  "repos": [
+    {
+      "repo": "uppifyagency/harness-sandbox",
+      "listen": "explicit"
+    }
+  ],
+  "allowedActors": [
+    "uppifyagency"
+  ],
+  "serviceLabel": "it.delera.harness.i5",
+  "botKeychainService": "harness-bot-github-test-5",
+  "pstackDir": "/tmp/swarm-a5/worker-5/pstack-claude/plugins/pstack"
+}
+$ harness service status
+running pid=78350, no heartbeat yet

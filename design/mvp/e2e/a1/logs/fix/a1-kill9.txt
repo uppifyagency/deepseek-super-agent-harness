@@ -1,0 +1,4 @@
+$ 18:12:27 kill9.sh it.delera.harness.l3 (testa 1275655, run --every 60, ThrottleInterval 30)
+killed 55010 at 18:12:27, new pid 55713 heartbeat {"pid":55713,"at":"2026-11-02T17:12:39.898Z","tick":1} after 12.900000095367432 s
+	runs = 2
+	last terminating signal = Killed: 9

@@ -1,0 +1,16 @@
+# test del daemon fermo prima del primo battito, contro ef6feb6 (prima), 2026-11-02T20:22:59Z. parseEtime e' uno shim: prima non esiste
+✖ daemon: a process frozen before its first heartbeat is restarted once past its boot window; a fresh one is left alone (2.705667ms)
+ℹ tests 1
+ℹ pass 0
+ℹ fail 1
+✖ failing tests:
+  AssertionError [ERR_ASSERTION]: the heartbeat still names the old pid
+  + actual - expected
+    actual: { kind: 'no-heartbeat', pid: 43 },
+    expected: { kind: 'boot-hung', pid: 43, ageMs: 180000 },
+
+# dopo, sulla testa di lavoro
+✔ daemon: a process frozen before its first heartbeat is restarted once past its boot window; a fresh one is left alone (2.219291ms)
+ℹ tests 1
+ℹ pass 1
+ℹ fail 0
